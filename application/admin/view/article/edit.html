@@ -1,0 +1,142 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li><a href="{:url('admin/article/index')}">文章管理</a></li>
+            <li><a href="{:url('admin/article/add')}">添加文章</a></li>
+            <li class="active"><a>编辑文章</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <form class="form-horizontal" action="{:url('admin/article/update')}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2">所属栏目</label>
+                       <div class="col-md-6 col-sm-10">
+                           <select class="form-control" name="cid" >
+                                {foreach name="category_level_list" item="vo"}
+                                <option value="{$vo.id}" {if condition="$article.cid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">标题</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="title" value="{$article.title}" required   placeholder="请输入标题" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">作者</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="author" value="{$article.author}" placeholder="（选填）请输入作者" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">简介</label>
+                       <div class="col-md-6 col-sm-10">
+                            <textarea name="introduction" placeholder="（选填）请输入简介" class="form-control" rows="3">{$article.introduction}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">内容</label>
+                       <div class="col-md-6 col-sm-10">
+                            <textarea name="content" id="content">{$article.content}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">缩略图</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input class="form-control" type="text" name="thumb" value="{$article.thumb}" readonly>
+                            <input type="file" imge="thumb" name="file" class="form-control" value="" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">状态</label>
+                       <div class="col-md-6 col-sm-10">
+                           <label class="radio-inline">
+                            <input type="radio" name="status" value="1" {if condition="$article.status==1"} checked="checked"{/if}>
+                               已审核
+                           </label>
+                           <label class="radio-inline">
+                            <input type="radio" name="status" value="0"  {if condition="$article.status==0"} checked="checked"{/if}>
+                               未审核
+                           </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">置顶</label>
+                       <div class="col-md-6 col-sm-10">
+                           <label class="radio-inline">
+                            <input type="radio" name="is_top" value="1" {if condition="$article.is_top==1"} checked="checked"{/if}>
+                               置顶
+                           </label>
+                           <label class="radio-inline">
+                            <input type="radio" name="is_top" value="0"  {if condition="$article.is_top==0"} checked="checked"{/if}>
+                               未置顶
+                           </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">发布时间</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="publish_time" value="{$article.publish_time}" class="form-control form-date"  readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">排序</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="sort" value="{$article.sort}" required   class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <div class="col-sm-offset-2 col-sm-10">
+                            <input type="hidden" name="id" value="{$article.id}">
+                            <button type="submit" class="btn btn-primary">更新</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="__ZUI__/lib/datetimepicker/datetimepicker.min.css">
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    window.UEDITOR_HOME_URL = '/public/static/js/ueditor/';
+</script>>
+<script src="__JS__/ueditor/ueditor.config.js"></script>
+<script src="__JS__/ueditor/ueditor.all.min.js"></script>
+<script src="__ZUI__/lib/datetimepicker/datetimepicker.min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $(document).ready(function () {
+        var html_c=$('#content').val();
+        var ue = UE.getEditor('content');
+        ue.ready(function() {
+            ue.setContent(html_c);
+        });
+        ue.addListener("selectionchange",function(){
+            var html = ue.getContent();
+            $('#content').val(html);
+        });
+        $(".form-date").datetimepicker(
+            {
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1,
+                format: "yyyy-mm-dd hh:ii"
+            });
+    });
+</script>
+{/block}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{$adminsite_title}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__ZUI__/dist/css/zui.min.css">
+    <style>
+        .main > .container-fluid > .container-fluid > .container-fluid {
+            padding: 20px;
+            border-top: 0;
+        }
+
+        .main > .container-fluid{
+            border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .main  .container-fluid{
+            padding-left:0;
+        }
+
+        form > .container-fluid {
+            padding: 0;
+        }
+
+        .main  .container-fluid ul li:first-child  a{
+            border-left-width: 0px;
+        }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+            border-bottom-color: #fff;
+        }
+
+        .nopadding {
+            padding: 0;
+        }
+
+        .menu-base li a{
+            height:60px;
+            padding-top: 22px;
+            text-align: center;
+        }
+    </style>
+    <!--CSS引用-->
+    {block name="css"}{/block}
+    <!--[if lt IE 9]>
+    <script src="__CSS__/html5shiv.min.js"></script>
+    <script src="__CSS__/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid nopadding">
+    <!--头部-->
+    <nav class="navbar navbar-inverse"
+         role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- 移动设备上的导航切换按钮 -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-collapse-m">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- 品牌名称或logo -->
+                <a class="navbar-brand">{$adminsite_title}</a>
+            </div>
+            <div class="navbar-collapse navbar-collapse-m collapse">
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        {foreach name="menu" item="vo"}
+                        {if condition="isset($vo['children'])"}
+                        <li {$Think.session.nav_1_id==$vo.id?
+                        'class="active show nav-parent dropdown"':'dropdown'}>
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i
+                                class="{$vo.icon?$vo.icon:''}"></i>
+                            <x>{$vo.title}</x>
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {foreach name="vo['children']" item="v"}
+                            <li {$Think.session.nav_2_id==$v.id?
+                            'class="active"':''}>
+                            <?php if($v['type']==1){?>
+                            <a href="{:url($v.name,['nav_1_id'=>$vo['id'],'nav_2_id'=>$v['id']])}">
+                                <?php }else if($v['type']==2){?>
+                                <a href="{$v.name}" target="_blank">
+                                <?php }?>
+                                <i class="{$v.icon?$v.icon:''}"></i>
+                            <x>{$v.title}</x>
+                        </a></li>
+                            {/foreach}
+                        </ul>
+                        </li>
+                        {else /}
+                        <li {$Think.session.nav_1_id==$vo.id?
+                        'class="active show nav-parent"':''}>
+                        <?php if($vo['type']==1){?>
+                        <a href="{:url($vo.name,['nav_1_id'=>$vo['id']])}">
+                            <?php }else if($vo['type']==2){?>
+                            <a href="{$vo.name}" target="_blank">
+                                <?php }?>
+                            <i class="{$vo.icon}"></i> {$vo.title}</a>
+                        </li>
+                        {/if}
+                        {/foreach}
+
+                            {foreach name="modules" item="vo"}
+                            <li {$Think.session.nav_1_id==$vo.name?
+                            'class="active show nav-parent dropdown"':'dropdown'}>
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <x>{$vo.title}</x>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {foreach name="vo['actions']" item="v"}
+                                <li><a href="{:site_url($vo['name'] . '.' . $v['name'] )}">
+                                    <x>{$v.title}</x>
+                                </a></li>
+                                {/foreach}
+                            </ul>
+                            </li>
+                            {/foreach}
+
+                        <li><a href="" data-url="{:url('admin/system/clear')}" id="clear-cache">清除缓存</a></li>
+                        <li class="dropdown">
+                            <a href="your/nice/url" class="dropdown-toggle"
+                               data-toggle="dropdown">{:session('admin_name')}<b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{:url('admin/change_password/index')}">修改密码</a></li>
+                                <li><a href="{:url('admin/login/logout')}">退出登录</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="padding:0">
+        <!--侧边栏-->
+        {if condition="$moduleType=='admin' "}
+        <div class="col-md-2 hidden-xs" >
+            <nav class="menu" data-toggle="menu">
+                <ul class="nav nav-primary">
+                    {foreach name="menu2" item="vo"}
+                    {if condition="isset($vo['children'])"}
+                    <li {$Think.session.nav_2_id==$vo.id?
+                    'class="active  show nav-parent"':''}>
+                    <a href="javascript:;"><i class="{$vo.icon?$vo.icon:'icon icon-heart'}"></i>
+                        <x>{$vo.title}</x>
+                    </a>
+                    <ul class="nav">
+                        {foreach name="vo['children']" item="v"}
+                        <li {$Think.session.nav_2_id==$v.id?
+                        'class="active"':''}><a href="{:url($v.name,['nav_2_id'=>$vo['id']])}"><i
+                            class="{$v.icon?$v.icon:'icon icon-heart'}"></i>
+                        <x>{$v.title}</x>
+                    </a></li>
+                        {/foreach}
+                    </ul>
+                    </li>
+                    {else /}
+                    <li {$Think.session.nav_2_id==$vo.id?
+                    'class="active"':''}>
+                    <a href="{:url($vo.name,['nav_2_id'=>$vo['id']])}"><i class="{$vo.icon}"></i> {$vo.title}</a>
+                    </li>
+                    {/if}
+                    {/foreach}
+                </ul>
+            </nav>
+        </div>
+        {elseif condition="$moduleType=='addon'"/}
+            <div class="col-md-2 hidden-xs">
+                <nav class="menu" data-toggle="menu">
+                    <ul class="nav nav-primary">
+                        {foreach name="menu2" item="vo"}
+                        <li {$Think.session.nav_2_id==$vo.name?
+                        'class="active"':''}>
+                        <a href="{:site_url($Think.session.nav_1_id . '.' . $vo['name'] )}"><i class="{$vo.icon}"></i> {$vo.title}</a></li>
+                        {/foreach}
+                    </ul>
+                </nav>
+            </div>
+        {/if}
+
+        <!--主体-->
+        <div class="col-md-10 col-sm-12 main" style="padding:0">
+            {block name="body"}{/block}
+        </div>
+    </div>
+    <!--底部-->
+    <hr>
+    <div class="container-fluid">
+        <div class="text-center">2016 &copy; 作者：吴渭明</div>
+    </div>
+</div>
+
+<script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "admin.php/{$controller|default=''}/",
+        base_url: "__STATIC__"
+    };
+</script>
+<!--JS引用-->
+<!-- ZUI Javascript 依赖 jQuery -->
+<script src="__ZUI__/dist/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="__ZUI__/dist/js/zui.min.js"></script>
+<script src="__JS__/jquery.ajaxfileupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('input[type="file"]').ajaxfileupload({
+            action: '/index.php/api/upload/upload',
+            onComplete: function (d) {
+                if (d.error == 0) {
+                    $('input[name="' + $(this).attr('imge') + '"]').val(d.url);
+                } else {
+
+                }
+            }
+        });
+    });
+</script>
+{block name="js"}{/block}
+<!--页面JS脚本-->
+{block name="script"}{/block}
+</body>
+</html>

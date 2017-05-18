@@ -1,0 +1,31 @@
+ {include file="public/article_header" /}
+   {include file="public/nav" /}
+
+   <!-- content srart -->
+<div class="amz-container am-animation-fade" style="margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+padding-left: 1rem;
+    padding-right: 1rem;">
+    <div class="am-u-sm-12">
+      <article class="am-article blog-article-p">
+        <div class="am-article-hd">
+          <h1 class="am-article-title blog-text-center">{$article.title}</h1>
+          <p class="am-article-meta blog-text-center">
+              <span>{$article.publish_time}</span>
+          </p>
+        </div>        
+        {notempty name="article.introduction"}
+          <div class="am-article-lead">
+            {$article.introduction}
+          </div>
+        {/notempty}
+        <div class="am-article-bd">
+          {$article.content}
+       </div>
+      </article>
+    </div>
+</div>
+<!-- content end -->
+ {include file="public/article_footer" /}
+

@@ -1,0 +1,58 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>导航管理</a></li>
+            <li><a href="{:url('admin/nav/add')}">添加导航</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <hr><div class="table-responsive">  <table class="table table-bordered tree">
+                    <thead>
+                    <tr>
+                        <th>导航名称</th>
+                        <th style="width: 30px;">排序</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="nav_level_list" item="vo"}
+                    <?php if($vo['pid']==0) {?>
+                    <tr class="treegrid-{$vo.id} success">
+                        <?php }else{?>
+                    <tr class="treegrid-{$vo.id} treegrid-parent-{$vo.pid}">
+                        <?php }?>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.sort}</td>
+                        <td>{php}echo $vo['status']==1 ? '<span class="label label-success">显示</span>' : '<span class="label">隐藏</span>';{/php}</td>
+                        <td>
+                            <a href="{:url('admin/nav/add',['pid'=>$vo['id']])}" class="btn btn-mini btn-primary">添加子导航</a>
+                            <a href="{:url('admin/nav/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                            <a href="{:url('admin/nav/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="css"}
+<link rel="stylesheet" href="__JS__/treegrid/css/jquery.treegrid.css">
+{/block}
+{block name="js"}
+<script src="__JS__/treegrid/js/jquery.treegrid.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $(document).ready(function () {
+        $('.tree').treegrid();
+    });
+</script>
+{/block}

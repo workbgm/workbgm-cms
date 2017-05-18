@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{$adminsite_title}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="__ZUI__/dist/css/zui.min.css">
+    <style>
+        .main >.container-fluid>.container-fluid>.container-fluid{
+            padding:20px;
+        }
+    </style>
+    <!--CSS引用-->
+    {block name="css"}{/block}
+    <!--[if lt IE 9]>
+    <script src="__CSS__/html5shiv.min.js"></script>
+    <script src="__CSS__/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container" style="max-width:600px;">
+    <div class="panel panel-primary" style="margin:20% auto;">
+        <div class="panel-heading">{$adminsite_title}</div>
+        <div class="panel-body">
+            <form class="form-horizontal" action="{:url('admin/login/login')}" method="post">
+                <div class="form-group">
+                    <label class="col-sm-3">用户名</label>
+                   <div class="col-md-6 col-sm-9">
+                        <input type="text" name="username" required  autocomplete="off" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3">密码</label>
+                   <div class="col-md-6 col-sm-9">
+                        <input type="password" name="password" required  class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                   <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block">登 录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer" style="text-align: center">2016 &copy; 半城山水</div>
+    </div>
+</div>
+<script>
+    // 定义全局JS变量
+    var GV = {
+        current_controller: "admin.php/{$controller|default=''}/"
+    };
+</script>
+<!-- ZUI Javascript 依赖 jQuery -->
+<script src="__ZUI__/dist/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="__ZUI__/dist/js/zui.min.js"></script>
+</body>
+</html>

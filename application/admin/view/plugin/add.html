@@ -1,0 +1,42 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li><a href="{:url('admin/plugin/index')}">模块管理</a></li>
+            <li class="active"><a>添加模块</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <form class="form-horizontal" action="{:url('admin/plugin/add')}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2">模块名称</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="title" value="" required   placeholder="请输入模块名称" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">模块标识</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="name" value="" required   placeholder="请输入模块标识(英文全小写)" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">模块动作</label>
+                       <div class="col-md-6 col-sm-10">
+                            <textarea name="actions" class="form-control" rows="10" placeholder="分类管理|category"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,733 @@
+/**
+ * Created by wuweiming on 2017/5/11.
+ */
+
+
+.index-infomation{
+    position: relative;
+    background: url("../images/index-infomation-bg.jpg")no-repeat center center;
+    background-size: auto;
+    height:600px;
+}
+
+.index-mobile{
+    position: relative;
+    background: url("../images/index-mobile-bg.jpg") no-repeat center center;
+    background-size: auto;
+    height:700px;
+}
+
+.index-iot{
+    position: relative;
+    background: url("../images/index-iot-bg.jpg") no-repeat center center;
+    background-size: auto;
+    height:600px;
+}
+
+.index-about {
+    position: relative;
+    height: 400px;
+    background-color: #F6F6F6;
+
+}
+.index-news{
+    position: relative;
+    height:300px;
+    background-color:#F6F6F6;
+}
+
+.index-infomation-animation,.index-mobile-animation,.index-iot-animation,.index-about-animation{
+    float:left;
+    width:50%;
+    height:423px;
+    zoom: 0.7;
+}
+
+.index-infomation-content,.index-mobile-content,.index-iot-content,.index-about-content{
+    float:left;
+    width:50%;
+    zoom:0.7;
+}
+
+.index-infomation-case,.index-mobile-case,.index-iot-case{
+    float:left;
+    width:720px;
+}
+
+.index-mobile-content{
+    width:720px;
+}
+
+.index-infomation-content .title,.index-mobile-content .title,.index-iot-content .title,.index-about-content .title{
+    color: #fff;
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+.index-about-content .title{
+    color:#656565;
+}
+
+.index-infomation-content>.title .info,.index-infomation-case .case-title,
+.index-mobile-content>.title .info,.index-mobile-case .case-title,
+.index-iot-content>.title .info,.index-iot-case .case-title,.index-about-content>.title .info{
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.index-about-content>.title .info{
+    color:#656565;
+}
+
+.index-infomation-case .case-title,.index-mobile-case .case-title,.index-iot-case .case-title{
+    position: absolute;
+    text-align: center;
+    top:50%;
+    margin-top:-8px;
+    width:100%;
+    z-index:2;
+}
+
+.index-infomation-case .item img,.index-mobile-case .item img,.index-iot-case .item img{
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+}
+
+.index-infomation-case .item:hover img,.index-mobile-case .item:hover img,.index-iot-case .item:hover img{
+    background-color:#12B4EC;
+    opacity: 0.8;
+}
+
+.index-infomation-case .item .case-more,.index-mobile-case .item .case-more,.index-iot-case .item .case-more{
+    display: none;
+}
+
+.index-infomation-case .item:hover .case-more,.index-mobile-case .item:hover .case-more
+,.index-iot-case .item:hover .case-more{
+    font-size: 1.2rem;
+    color:#fff;
+    display: block;
+    text-align: center;
+    border: 1px solid #fff;
+    position: absolute;
+    width:80px;
+    padding:8px 0;
+    top:86px;
+    left:50%;
+    margin-left:-40px;
+}
+
+.index-infomation-case .item:hover .case-title,.index-mobile-case .item:hover .case-title
+,.index-iot-case .item:hover .case-title{
+    top:43px;
+}
+
+.index-infomation-case .item img,.index-mobile-case .item img,.index-iot-case .item img{
+    width:240px;
+    height:155px;
+}
+
+
+.index-infomation-container,.index-mobile-container,.index-iot-container,.index-about-container{
+    top:22%;
+    left:12%;
+    right:12%;
+    position: absolute;
+}
+
+.index-infomation-case .item,.index-mobile-case .item,.index-iot-case .item{
+    position: relative;
+    width:240px;
+    height:155px;
+    float:left;
+}
+
+.index-infomation-content .more,.index-mobile-content .more,.index-iot-content .more{
+    color:#737373;
+    font-size: 1rem;
+    background-color: #fff;
+    width:80px;
+    height:8px;
+    margin-top:20px;
+    float:right;
+    text-align: center;
+    padding:12px 0;
+    line-height: 8px;
+}
+
+.index-infomation-content .more:hover,.index-mobile-content .more:hover,.index-iot-content .more:hover{
+    color:#fff;
+    background-color: #12B4EC;
+}
+
+.index-about-detailed{
+    color:#656565;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+}
+
+.index-about-content{
+    height: 350px;
+    position: relative;
+}
+
+.index-about-more{
+    position: absolute;
+    left:0;
+    bottom:24px;
+}
+
+.index-about-more .item{
+    float:left;
+    width:240px;
+    height:82px;
+    background-color:#fff;
+}
+
+.index-about-more a:hover{
+    background-color: #00B9EF !important;
+}
+
+.index-about-more a:hover .title,.index-about-more a:hover .title-en{
+    color:#fff !important;
+}
+
+.index-about-more a:hover .more{
+    background: #fff url(../images/index-about-item-more-active.png) no-repeat center center;
+}
+
+.index-about-more a:hover .manifesto-logo{
+    background:url(../images/index-manifesto-white.png) no-repeat center center;
+}
+
+.index-about-more a:hover .customers-logo{
+    background:url(../images/index-customers-white.png) no-repeat center center;
+}
+
+.index-about-more a:hover .qualifications-logo{
+    background:url(../images/index-qualifications-white.png) no-repeat center center;
+}
+
+
+
+.index-about-more .more{
+    width:26px;
+    height:26px;
+    border-radius: 50%;
+    background: #fff url(../images/index-about-more.png) no-repeat center center;
+    float:right;
+   margin-top:30px;
+    margin-right:20px;
+}
+
+.index-about-more .manifesto-logo{
+    float:left;
+    background:url(../images/index-manifesto.png) no-repeat center center;
+    padding:28px 20px;
+    width:26px;
+    height:26px;
+}
+
+.index-about-more .customers-logo{
+    float:left;
+    background:url(../images/index-customers.png) no-repeat center center;
+    padding:28px 20px;
+    width:26px;
+    height:26px;
+}
+
+.index-about-more .qualifications-logo{
+    float:left;
+    background:url(../images/index-qualifications.png) no-repeat center center;
+    padding:28px 20px;
+    width:26px;
+    height:26px;
+}
+
+.index-about-more .title{
+    float:left;
+    font-size: 1.6rem;
+    color:#656565;
+    width:100px;
+    padding:25px 0;
+    line-height: 1.2rem;
+}
+
+.index-about-more .title-en{
+    font-size: 1.2rem;
+    color:#d3d3d3;
+}
+
+.index-news-item {
+    float: left;
+    width: 44%;
+}
+
+.index-news-item:first-child{
+    padding-right: 12%;
+}
+
+.index-news-container{
+    overflow: hidden;
+}
+
+/*index-infomation-animation*/
+.index-infomation-animation .index-infomation-bg-pc{
+    position: absolute;
+    top:53px;
+    left:38px;
+    width:427px;
+    height:337px;
+    background: url(../images/index-infomation-bg-pc.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-infomation-animation .index-infomation-bg-c2{
+    position: absolute;
+    top:53px;
+    left:500px;
+    width:71px;
+    height:71px;
+    background: url(../images/index-infomation-bg-c2.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-infomation-animation .index-infomation-bg-c3{
+    position: absolute;
+    top:105px;
+    left:562px;
+    width:99px;
+    height:99px;
+    background: url(../images/index-infomation-bg-c3.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-infomation-animation .index-infomation-bg-c1{
+    position: absolute;
+    top:150px;
+    left:448px;
+    width:121px;
+    height:121px;
+    background: url(../images/index-infomation-bg-c1.png)no-repeat center center;
+    background-size: 100%;
+    z-index:2;
+}
+
+.index-infomation-animation .index-infomation-bg-c4{
+    position: absolute;
+    top:232px;
+    left:562px;
+    width:98px;
+    height:98px;
+    background: url(../images/index-infomation-bg-c4.png)no-repeat center center;
+    background-size: 100%;
+    z-index:2;
+}
+
+.index-mobile-animation .index-mobile-mobile{
+    position: absolute;
+    top:162px;
+    left:981px;
+    width:203px;
+    height:343px;
+    background: url(../images/index-mobile-mobile.png)no-repeat center center;
+    background-size: 100%;
+    z-index:2;
+}
+
+.index-mobile-animation .index-mobile-c1{
+    position: absolute;
+    top:194px;
+    left:868px;
+    width:65px;
+    height:65px;
+    background: url(../images/index-mobile-c1.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-mobile-animation .index-mobile-c2{
+    position: absolute;
+    top:40px;
+    left:808px;
+    width:103px;
+    height:103px;
+    background: url(../images/index-mobile-c2.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-mobile-animation .index-mobile-c3{
+    position: absolute;
+    top:2px;
+    left:960px;
+    width:103px;
+    height:103px;
+    background: url(../images/index-mobile-c3.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-mobile-animation .index-mobile-c4{
+    position: absolute;
+    top:-74px;
+    left:1102px;
+    width:112px;
+    height:112px;
+    background: url(../images/index-mobile-c4.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-mobile-animation .index-mobile-c5{
+    position: absolute;
+    top:54px;
+    left:1214px;
+    width:108px;
+    height:108px;
+    background: url(../images/index-mobile-c5.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-mobile-animation .index-mobile-c6{
+    position: absolute;
+    top:199px;
+    left:1170px;
+    width:92px;
+    height:92px;
+    background: url(../images/index-mobile-c6.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-mobile-animation .index-mobile-c7{
+    position: absolute;
+    top:247px;
+    left:1274px;
+    width:91px;
+    height:91px;
+    background: url(../images/index-mobile-c7.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-iot-animation .index-iot-bg{
+    position: absolute;
+    top:-16px;
+    left:13px;
+    width:579px;
+    height:479px;
+    background: url(../images/index-iot-bg.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.index-about-animation .index-about-bg{
+    position: absolute;
+    top:-16px;
+    left:13px;
+    width:653px;
+    height:350px;
+    background: url(../images/index-abount-bg-pc.png)no-repeat center center;
+    background-size: 100%;
+}
+
+.my-news-logo{
+     float:left;
+     width:26px;
+     height:26px;
+     margin-right: 10px;
+     background: url(../images/index-new-header.png) no-repeat center center;
+     background-size: 100%;
+ }
+
+.ids-news-logo{
+    float:left;
+    width:26px;
+    height:26px;
+    margin-right: 10px;
+    background: url(../images/index-ids-new-header.png) no-repeat center center;
+    background-size: 100%;
+}
+
+.index-news-panel .header{
+    padding:24px 0;
+    border-bottom: 1px solid #D3D3D3;
+}
+.index-news-panel .header .title{
+    float:left;
+    font-size: 1.6rem;
+    color:#656565;
+}
+
+.index-news-panel .header .more{
+    display: inline-block;
+    width:24px;
+    height:24px;
+    border-radius: 50%;
+    border:1px solid #696969;
+    background: #F6F6F6 url(../images/index-about-more.png) no-repeat center center;
+    float:right;
+}
+
+.index-news-panel .header .more:hover{
+    border: 1px solid #00B9EF;
+    background: #fff url(../images/index-about-item-more-active.png) no-repeat center center;
+}
+
+.index-news-panel .content{
+    padding-top:20px;
+}
+
+.index-news-panel .content .title{
+    color: #000f1f;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.index-news-panel .content .article-thumbnail{
+    display: block;
+    float: left;
+    width:22%;
+}
+
+.index-news-panel .content .article{
+    float: left;
+    width:78%;
+}
+
+.index-news-panel:first-child .content .article{
+    float: left;
+    width:74%;
+    padding-left: 4%;
+}
+
+
+.index-news-panel .content .article .info{
+    color: #656565;
+    font-size: 1.2rem;
+    height:68px;
+    overflow: hidden;
+}
+
+.index-news-panel .content .article .date{
+    float:right;
+    color: #656565;
+    font-size: 1.6rem;
+}
+
+.index-news-panel .content .article .date-year{
+    font-size: 1.2rem;
+    margin-left:10px;
+}
+
+.index-news-panel .content  .more{
+    display: inline-block;
+    width:80px;
+    height:16px;
+    background-color: #fff;
+    color:#656565;
+    font-size: 1.2rem;
+    text-align: center;
+    padding:8px 0;
+    margin-top: 20px;
+}
+
+.index-news-panel .content  .more:hover{
+    color: #fff;
+    background-color:#00B9EF;
+}
+
+.index-companyinfo{
+    position: relative;
+    background-color: #fff;
+    height: 250px;
+}
+
+.index-companyinfo li{
+    float:left;
+    width:25%;
+    padding-top:58px;
+    text-align: center;
+}
+
+.index-companyinfo li .logo,.index-companyinfo-wechat{
+    margin: 0 auto;
+}
+
+.index-companyinfo-wechat{
+    margin-top: 25px;
+}
+
+.index-companyinfo li h1{
+    color: #000f1f;
+    font-size: 1.6rem;
+    margin-top: 40px;
+    margin-bottom: 12px;
+}
+
+.index-companyinfo li p{
+    color: #656565;
+    font-size: 1.2rem;
+}
+
+
+
+/*手机竖屏*/
+@media screen and (min-width: 320px) and (max-width: 767px){
+
+    .index-infomation-container, .index-mobile-container, .index-iot-container, .index-about-container {
+        width: 76% !important;
+    }
+
+    .index-infomation-case .item img, .index-mobile-case .item img, .index-iot-case .item img {
+        width: 100%;
+    }
+
+    .index-about{
+        height:440px;
+    }
+
+
+    .index-infomation-case .item, .index-mobile-case .item, .index-iot-case .item {
+        width: 50%;
+    }
+    .index-infomation-case, .index-mobile-case, .index-iot-case {
+        width: 100%;
+    }
+
+
+    .index-infomation-content, .index-mobile-content, .index-iot-content, .index-about-content {
+        zoom: 0.5;
+    }
+
+    .index-infomation-animation,.index-mobile-animation,.index-iot-animation,.index-about-animation{
+        display: none;
+    }
+    .index-infomation-content,.index-mobile-content,.index-iot-content,.index-about-content{
+        width: 100%;
+    }
+
+    .index-news-item:first-child {
+        padding-right: 0;
+    }
+
+    .index-news-item{
+        float:none;
+        width: 80%;
+        margin: 0 10%;
+    }
+
+    .index-news{
+        height: 600px;
+    }
+
+    .index-infomation,.index-mobile,.index-iot{
+        height:500px;
+    }
+
+    .index-companyinfo li{
+        width: 50%;
+    }
+
+    .index-companyinfo{
+        height: 500px;
+        padding: 0 10%;
+    }
+    .index-about-detailed{
+        width:90%;
+    }
+
+    .index-about-more {
+       position: relative;
+        bottom: 0;
+    }
+
+}
+
+/*平板或手机横屏*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    .index-infomation-animation,.index-mobile-animation,.index-iot-animation,.index-about-animation{
+        display: none;
+    }
+    .index-infomation-content,.index-mobile-content,.index-iot-content,.index-about-content{
+        width: 100%;
+    }
+
+    .index-news-item:first-child {
+         padding-right: 0;
+    }
+
+    .index-news-item{
+        float:none;
+        width: 80%;
+        margin: 0 10%;
+    }
+
+    .index-news{
+        height: 600px;
+    }
+
+    .index-infomation,.index-mobile,.index-iot{
+        height:500px;
+    }
+
+    .index-companyinfo li{
+        width: 50%;
+    }
+
+    .index-companyinfo{
+        height: 500px;
+    }
+
+    .index-about-detailed{
+        width:760px;
+    }
+}
+
+/*小分辨率PC*/
+@media screen and (min-width: 992px) and (max-width:1199px) {
+
+    .index-infomation,.index-mobile,.index-iot{
+        height:400px;
+    }
+
+    .index-about{
+        height:400px;
+    }
+
+    .index-about-more{
+        zoom:0.9;
+    }
+
+    .index-about-detailed {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+    }
+
+    .index-infomation-case .item .case-more, .index-mobile-case .item .case-more, .index-iot-case .item .case-more{
+        line-height: 1rem;
+    }
+
+}
+/*大分辨率PC */
+@media screen and (min-width: 1200px) and (max-width: 1899px){
+
+
+}
+
+@media screen and (min-width: 1900px){
+
+    .index-infomation-animation,.index-mobile-animation,.index-iot-animation,.index-about-animation{
+        zoom:1;
+    }
+    .index-infomation-content,.index-mobile-content,.index-iot-content,.index-about-content{
+        zoom:1;
+    }
+
+    .index-infomation,.index-mobile,.index-iot{
+        height:700px;
+    }
+
+    .index-about{
+        height:600px;
+    }
+}

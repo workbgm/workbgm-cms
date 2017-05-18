@@ -1,0 +1,46 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>模块管理</a></li>
+            <li><a href="{:url('admin/plugin/add')}">添加模块</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>模块名称</th>
+                            <th>模块标识</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach name="actionData" item="vo"}
+                        <tr>
+                            <td>{$vo.title}</td>
+                            <td>{$vo.name}</td>
+                            <td>
+                                {if condition="in_array($vo['name'],$has)"}
+                                <a href="{:url('admin/plugin/uninstall',['name'=>$vo['name']])}"
+                                   class="btn btn-mini btn-danger">卸载</a>
+                                {else /}
+                                <a href="{:url('admin/plugin/install',['name'=>$vo['name']])}"
+                                   class="btn btn-mini btn-success">安装</a>
+                                <a href="{:url('admin/plugin/delete',['name'=>$vo['name']])}"
+                                   class="btn btn-mini btn-warning">删除</a>
+                                {/if}
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

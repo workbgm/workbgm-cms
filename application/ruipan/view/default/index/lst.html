@@ -1,0 +1,28 @@
+ {include file="public/iframe_header" /}
+  {include file="public/nav" /}
+  <!-- content srart -->
+<div class="am-g" style="background-color: #EDEDED;height:100%;">
+{volist name="articles" id="article"}
+    <div class="am-u-md-2 am-u-sm-12 articleblock am-animation-fade" >
+        <a href="{:url('index/article',['id'=>$article.id])}">
+            <article class="blog-entry-article"  data-am-popover="{content: '{$article.title}', trigger: 'hover focus'}">
+                <div class="blog-entry-img">
+                    <span class="am-badge am-badge-secondary am-radius blog-entry-img-badge"><?php echo get_category_bycid($article['cid'])['name'];?></span>
+                    <?php if(empty($article['thumb'])){?>
+                        <img src="http://7s1r5m.com1.z0.glb.clouddn.com/2.png" alt="{$article.title}" class="am-u-sm-12">
+                    <?php }else{?>
+                        <img src="{$article.thumb}" alt="{$article.title}" class="am-u-sm-12">
+                    <?php }?>
+                </div>
+                <div class="blog-entry-text">
+                    <h3 style="margin-bottom: 0;"><?php echo help_sub($article['title'],12);?></h3>
+                    <div class="am-text-right"><small>{$article.publish_time}</small></div>
+                </div>
+            </article>
+        </a>
+    </div>
+{/volist}
+</div>
+<!-- content end -->
+
+ {include file="public/iframe_footer" /}

@@ -1,0 +1,182 @@
+/**
+ * Created by wuweiming on 2017/5/11.
+ */
+.solution-catalog{
+    background-color: #F6F6F6;
+    padding-top:80px;
+}
+
+body{
+    background-color: #F6F6F6;
+}
+
+.solution-banner{
+    background: url(../images/solution-bg.jpg) no-repeat;
+    background-size: 100% 100%;
+    width:1920px;
+    height:333px;
+}
+
+.solution-catalog .catalog-btn{
+    float:left;
+    text-align: center;
+    color:#737373;
+    font-size: 1.4rem;
+    background-color: #fff;
+    width:122px;
+    margin-right:20px;
+    padding:12px 0;
+}
+
+.solution-catalog .catalog-btn:after {
+    display:inline-block;
+    width:0;
+    height:100%;
+    vertical-align:middle;
+    content:"";
+}
+
+.solution-catalog-list .active,.solution-catalog-list .catalog-btn:hover{
+    color:#fff;
+    background-color: #12B4EC;
+}
+
+.solution-catalog-list{
+    width:568px;
+    margin:0 auto;
+    /*padding-bottom: 80px;*/
+}
+
+.solution-item{
+    width:100%;
+    padding:80px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.item-thumbnail,.article{
+    float:left;
+    width:720px;
+}
+
+.item-thumbnail{
+    background: url("../images/solution-item-mac-bg.png") no-repeat center center;
+    background-size: 100% 100%;
+    width:630px;
+    height:363px;
+    position: relative;
+}
+
+.thumbnail{
+    position: absolute;
+    left:75px;
+    top:22px;
+    width:480px;
+    height:300px;
+}
+
+.article .title{
+    font-size: 1.6rem;
+    color:#000f1f;
+    margin-bottom:12px;
+    margin-top:20px;
+}
+
+.article .catalog,.article .content{
+    font-size: 1.2rem;
+    color:#656565;
+    margin-bottom: 40px;
+    height:60px;
+    overflow: hidden;
+}
+
+.article .more{
+    color:#fff;
+    background-color: #666;
+    display: inline-block;
+    width:80px;
+    font-size: 1.2rem;
+    text-align: center;
+    padding:8px 0;
+    margin-top: 20px;
+}
+
+.article .more:after {
+    display:inline-block;
+    width:0;
+    height:100%;
+    vertical-align:middle;
+    content:"";
+}
+
+.article .more:hover{
+     color:#fff;
+     background-color: #12B4EC;
+ }
+
+/*手机竖屏*/
+@media screen and (min-width: 320px) and (max-width: 767px){
+    .public-header {
+        height: 120px;
+    }
+
+    .solution-banner{
+        display: none;
+    }
+
+    .solution-catalog {
+        padding-top: 80px;
+        zoom: 0.4;
+    }
+
+    .item-thumbnail, .article {
+        width: 630px;
+    }
+
+    .pagin {
+        width: 60%;
+    }
+
+    .article .more{
+        zoom: 2;
+    }
+
+
+}
+
+/*平板或手机横屏*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .solution-banner{
+        width:100%;
+    }
+
+    .public-header {
+        height: 180px;
+    }
+
+    .item-thumbnail, .article {
+        width: 630px;
+    }
+
+    .pagin {
+        width: 40%;
+    }
+}
+
+/*小分辨率PC*/
+@media screen and (min-width: 992px) and (max-width:1199px) {
+    .solution-banner{
+        width:100%;
+    }
+
+}
+/*大分辨率PC */
+@media screen and (min-width: 1200px) and (max-width: 1899px){
+    .solution-item{
+        zoom:0.7;
+    }
+
+}
+
+@media screen and (min-width: 1900px){
+
+}

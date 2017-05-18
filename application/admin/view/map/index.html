@@ -1,0 +1,43 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>字典管理</a></li>
+            <li><a href="{:url('admin/map/add')}">添加字典</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <hr><div class="table-responsive">  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>字典名称</th>
+                        <th>字典值</th>
+                        <th>功能描述</th>
+                        <th>所属组</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="map_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.value}</td>
+                        <td>{$vo.describe}</td>
+                        <td>{$vo.group}</td>
+                        <td>
+                            <a href="{:url('admin/map/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                            <a href="{:url('admin/map/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,150 @@
+/**
+ * Created by wuweiming on 2017/5/11.
+ */
+
+body{
+    background-color: #F6F6F6;
+}
+
+.contactus-banner{
+    background: url(../images/contactus-bg.jpg) no-repeat;
+    background-size: 100% 100%;
+    width:1920px;
+    height:316px;
+}
+
+.contactus-item{
+    width:100%;
+    padding: 80px 0;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.my-map,.article{
+    float:left;
+    width:500px;
+}
+
+.my-map{
+    width:600px;
+    height:300px;
+    margin-right: 100px;
+}
+
+.article .logo{
+    float: left;
+    margin-right:36px;
+}
+
+.article .content{
+    float:left;
+}
+
+.article .title{
+    font-size: 1.6rem;
+    color:#000f1f;
+    margin-bottom:12px;
+}
+
+.article .content p{
+    font-size: 1.2rem;
+    color:#656565;
+}
+
+.article .item{
+    margin-bottom: 44px;
+}
+
+/*手机竖屏*/
+@media screen and (min-width: 320px) and (max-width: 767px){
+    .public-header {
+        height: 120px;
+    }
+
+    .contactus-banner{
+        display: none;
+    }
+
+    .contactus-catalog {
+        padding-top: 30px;
+    }
+
+    .my-map{
+        margin: 0 auto 40px;
+        width:100%;
+        float:none;
+    }
+
+    .contactus-item{
+        padding: 0;
+    }
+
+    .article{
+        float: none;
+        margin:0 2%;
+        width:96%;
+    }
+
+
+
+}
+
+/*平板或手机横屏*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .contactus-banner{
+        width:100%;
+    }
+
+    .public-header {
+        height: 180px;
+    }
+
+    .contactus-item{
+        padding:20px 0;
+    }
+
+    .my-map{
+        margin: 0 auto 40px;
+        width:100% !important;
+        float:none;
+    }
+
+    .article{
+        float: none;
+        margin:0 2%;
+        width:96%;
+    }
+
+    .article .item{
+        width: 50%;
+        float:left;
+    }
+
+}
+
+/*小分辨率PC*/
+@media screen and (min-width: 992px) and (max-width:1199px) {
+    .contactus-banner{
+        width:100%;
+    }
+
+    .contactus-item{
+        zoom:0.7;
+    }
+
+}
+/*大分辨率PC */
+@media screen and (min-width: 1200px) and (max-width: 1899px){
+
+    .contactus-banner{
+        width:100%;
+    }
+
+    .my-map,.article{
+        width:300px;
+    }
+
+}
+
+@media screen and (min-width: 1900px){
+
+}

@@ -1,0 +1,43 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li><a href="{:url('admin/auth_group/index')}">权限组</a></li>
+            <li class="active"><a>添加权限组</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <form class="form-horizontal" action="{:url('admin/auth_group/save')}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2">名称</label>
+                       <div class="col-md-6 col-sm-10">
+                            <input type="text" name="title" value="" required   placeholder="请输入权限组名称" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">状态</label>
+                        <div class="col-md-6 col-sm-10">
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="1" checked="checked">
+                                启用
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="0" >
+                                禁用
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

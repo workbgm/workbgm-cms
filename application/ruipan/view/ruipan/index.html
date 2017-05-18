@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>瑞攀科技-云南顶尖的IT互联网企业</title>
+    <meta name="Keywords" content="云南OA开发,云南工程项目管理开发,云南微信商城开发,云南门户网站开发,云南管理信息化开发,云南移动应用开发,云南微信公众平台开发,云南商城开发,云南物联网应用开发。" />
+    <meta name="Description" content="云南瑞攀科技有限公司是一家专注软件研发的科技公司，于2011年11月成立。秉承“为客户创造价值”的理念，致力于通过我们的产品及服务，使客户的工作更简单、企业更高效、心情更愉悦！" />
+    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="stylesheet" href="__PUBLIC__/ruipan/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/ruipan/css/animate.css">
+    <link rel="stylesheet" href="__PUBLIC__/ruipan/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/ruipan/css/index.css">
+    <script src="__PUBLIC__/ruipanjs/jquery.min.js"></script>
+    <script src="__PUBLIC__/ruipanjs/common.js"></script>
+    <script src="__PUBLIC__/ruipanjs/banner.js"></script>
+    <script>
+        var $window;
+        var win_height_padded;
+
+        function revealOnScroll() {
+            var scrolled = $window.scrollTop();
+            $(".revealOnScroll:not(.animated)").each(function () {
+                var $this     = $(this),
+                    offsetTop = $this.offset().top;
+
+                if (scrolled + win_height_padded > offsetTop) {
+                    if ($this.data('timeout')) {
+                        window.setTimeout(function(){
+                            $this.addClass('animated ' + $this.data('animation'));
+                        }, parseInt($this.data('timeout'),10));
+                    } else {
+                        $this.addClass('animated ' + $this.data('animation'));
+                    }
+                }
+            });
+            $(".revealOnScroll.animated").each(function (index) {
+                var $this     = $(this),
+                    offsetTop = $this.offset().top;
+                if (scrolled + win_height_padded < offsetTop) {
+                    $(this).removeClass('animated fadeInUp flipInX lightSpeedIn fadeInLeft  zoomIn rotateIn pulse slideInUp')
+                }
+            });
+        }
+
+        $(function(){
+            $window= $(window),
+                win_height_padded = $window.height() * 1.1;
+            $window.on('scroll', revealOnScroll);
+        });
+    </script>
+</head>
+<body>
+<!--[if lte IE 8]>
+<p class="browserupgrade">您的浏览器版本太老了, 请到 <a href="http://browsehappy.com/">这里</a> 更新, 以获取最佳的体验</p>
+<![endif]-->
+<!--公共头部-->
+    <div class="public-header">
+        <div class="public-container clearfloat">
+            <a href="" class="public-header-logo"></a>
+            <div class="public-header-logotext">为客户创造价值   create value for customers</div>
+            <ul class="public-header-nav">
+                <li class="item active"><a href="index.html">首页</a></li>
+                <li class="item"><a href="news.html">新闻中心</a></li>
+                <li class="item"><a data-content="solution" href="solution.html">解决方案</a></li>
+                <li class="item"><a href="aboutus.html">关于我们</a></li>
+                <li class="item xs-hidden"><a href="contactus.html">联系我们</a></li>
+                <div id="solution" class="public-header-nav-item-content" style="display: none">
+                    <ul class="content-list">
+                        <h4><img src="__PUBLIC__/ruipan/images/public-header-content-information.png">管理信息化解决方案</h4>
+                        <li class="content-item"><a href="">电力工程项目管理系统</a></li>
+                        <li class="content-item"><a href="">银行集中放款系统</a></li>
+                        <li class="content-item"><a href="">银行客户关系管理系统</a></li>
+                        <li class="content-item"><a href="">创先工作管理平台</a></li>
+                        <li class="content-item"><a href="">企业在线培训、考试系统</a></li>
+                        <li class="content-item"><a href="">小型制造企业生成管理系统</a></li>
+                    </ul>
+                    <ul class="content-list">
+                        <h4><img src="__PUBLIC__/ruipan/images/public-header-content-mobile.png">移动应用解决方案</h4>
+                        <li class="content-item"><a href="">乐乎旅行网</a></li>
+                        <li class="content-item"><a href="">自来水微信公众服务平台</a></li>
+                        <li class="content-item"><a href="">农村科技服务平台</a></li>
+                        <li class="content-item"><a href="">微信招聘平台</a></li>
+                        <li class="content-item"><a href="">方寸销帮</a></li>
+                    </ul>
+                    <ul class="content-list">
+                        <h4><img src="__PUBLIC__/ruipan/images/public-header-content-iot.png">物联网解决方案</h4>
+                        <li class="content-item"><a href="">输电线路在线监测方案</a></li>
+                        <li class="content-item"><a href="">配网故障在线监测平台</a></li>
+                        <li class="content-item"><a href="">配网三相平衡解决方案</a></li>
+                        <li class="content-item"><a href="">分布式馈线自动化解决方案</a></li>
+                        <li class="content-item"><a href="">营业厅视频监控解决方案</a></li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+<!--首页banner-->
+    <div class="index-banner">
+        <div class="index-banner-block">
+            <img src="__PUBLIC__/ruipan/images/public-banner-demo1.jpg">
+            <div class="index-banner-info">
+                <p class="title">管理信息化解决方案</p>
+                <p class="title-en">management information solutions</p>
+                <a href="" class="more">立即查看</a>
+            </div>
+        </div>
+        <div class="index-banner-block" style="display: none">
+            <img src="__PUBLIC__/ruipan/images/public-banner-demo2.jpg">
+            <div class="index-banner-info">
+                <p class="title">移动应用解决方案</p>
+                <p class="title-en">Mobile application solutions</p>
+                <a href="" class="more">立即查看</a>
+            </div>
+        </div>
+        <div class="index-banner-block" style="display: none">
+            <img src="__PUBLIC__/ruipan/images/public-banner-demo3.jpg">
+            <div class="index-banner-info">
+                <p class="title">物联网解决方案</p>
+                <p class="title-en">IOT solutions</p>
+                <a href="" class="more">立即查看</a>
+            </div>
+        </div>
+        <div class="index-banner-control">
+            <div class="control-list clearfloat">
+                <a href="javascript:void(0);" class="control-item active clearfloat">
+                    <i class="tra-up"></i>
+                    <div class="control-item-logo information-logo active"></div>
+                    <div class="title-info">
+                    <p class="title">管理信息化解决方案</p>
+                    <p class="info">应用信息化手段，优化公司内部 流程、固化业务标准，让企业运 转更高效和规范。 </p>
+                    </div>
+                </a>
+                <a class="control-item clearfloat" href="javascript:void(0);">
+                    <i class="tra-up"></i>
+                    <div class="control-item-logo mobile-logo"></div>
+                    <div class="title-info">
+                    <p class="title">移动应用解决方案</p>
+                    <p class="info">借助移动APP和微信公众号应用， 拓展与客户及时沟通交流的渠道， 更好融入市场。</p>
+                    </div>
+                </a>
+                <a href="javascript:void(0);" class="control-item clearfloat" >
+                    <i class="tra-up"></i>
+                    <div class="control-item-logo iot-logo"></div>
+                    <div class="title-info">
+                    <p class="title">物联网解决方案</p>
+                    <p class="info">应用物联网技术和无线通信技术， 全面准确掌握生产现场情况，加强 远程监管。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+<!--首页管理信息化解决方案-->
+   <div class="index-infomation">
+       <div class="public-container clearfloat index-infomation-container">
+           <div class="index-infomation-animation">
+               <div class="index-infomation-bg-pc" ></div>
+               <div class="index-infomation-bg-c1 revealOnScroll" data-animation="rotateIn"  ></div>
+               <div class="index-infomation-bg-c2 revealOnScroll" data-animation="rotateIn"  ></div>
+               <div class="index-infomation-bg-c3 revealOnScroll" data-animation="rotateIn"  ></div>
+               <div class="index-infomation-bg-c4 revealOnScroll" data-animation="rotateIn"  ></div>
+           </div>
+           <div class="index-infomation-content">
+               <div class="title">管理信息化解决方案<span class="info">management information solutions</span></div>
+               <div class="index-infomation-case">
+                   <a href="" class="item">
+                       <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                       <div class="case-title">电力工程项目管理系统</div>
+                       <div class="case-more">查看详情</div>
+                   </a><a href="" class="item">
+                   <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                   <div class="case-title">银行集中放款系统</div>
+                   <div class="case-more">查看详情</div>
+               </a><a href="" class="item">
+                   <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                   <div class="case-title">银行客户关系管理系统</div>
+                   <div class="case-more">查看详情</div>
+               </a><a href="" class="item">
+                   <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                   <div class="case-title">创先工作管理平台</div>
+                   <div class="case-more">查看详情</div>
+               </a><a href="" class="item">
+                   <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                   <div class="case-title">企业在线培训、考试系统</div>
+                   <div class="case-more">查看详情</div>
+               </a><a href="" class="item">
+                   <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                   <div class="case-title">小型制造企业生成管理系统</div>
+                   <div class="case-more">查看详情</div>
+               </a>
+                   <a href="" class="more">MORE</a>
+               </div>
+           </div>
+       </div>
+   </div>
+<!--首页移动应用解决方案-->
+    <div class="index-mobile clearfloat">
+        <div class="public-container clearfloat index-mobile-container">
+            <div class="index-mobile-content clearfloat ">
+                <div class="title">移动应用解决方案<span class="info">Mobile application solutions</span></div>
+                <div class="index-mobile-case">
+                    <a href="" class="item">
+                        <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                        <div class="case-title">乐乎旅行网</div>
+                        <div class="case-more">查看详情</div>
+                    </a><a href="" class="item">
+                    <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                    <div class="case-title">自来水微信公众服务平台</div>
+                    <div class="case-more">查看详情</div>
+                </a><a href="" class="item">
+                    <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                    <div class="case-title">方寸销帮</div>
+                    <div class="case-more">查看详情</div>
+                </a><a href="" class="item">
+                    <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                    <div class="case-title">农村科技服务平台</div>
+                    <div class="case-more">查看详情</div>
+                </a><a href="" class="item">
+                    <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                    <div class="case-title">微信招聘平台</div>
+                    <div class="case-more">查看详情</div>
+                </a><a href="" class="item">
+                    <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                    <div class="case-title">正在开发中……</div>
+                    <div class="case-more">查看详情</div>
+                </a>
+                    <a class="more">MORE</a>
+                </div>
+            </div>
+            <div class="index-mobile-animation">
+                <div class="index-mobile-mobile revealOnScroll" data-animation="slideInUp"  ></div>
+                <div class="index-mobile-c1 revealOnScroll" data-animation="zoomIn"  ></div>
+                <div class="index-mobile-c2 revealOnScroll" data-animation="zoomIn"  ></div>
+                <div class="index-mobile-c3 revealOnScroll" data-animation="zoomIn"  ></div>
+                <div class="index-mobile-c4 revealOnScroll" data-animation="zoomIn"  ></div>
+                <div class="index-mobile-c5 revealOnScroll" data-animation="zoomIn"  ></div>
+                <div class="index-mobile-c6 revealOnScroll" data-animation="zoomIn"  ></div>
+                <div class="index-mobile-c7 revealOnScroll" data-animation="zoomIn"  ></div>
+            </div>
+        </div>
+    </div>
+<!--首页物联网解决方案-->
+<div class="index-iot">
+    <div class="public-container clearfloat index-iot-container">
+        <div class="index-iot-animation">
+            <div class="index-iot-bg revealOnScroll" data-animation="fadeInLeft"  ></div>
+        </div>
+        <div class="index-iot-content">
+            <div class="title">物联网解决方案<span class="info">IOT solutions</span></div>
+            <div class="index-iot-case">
+                <a href="" class="item">
+                    <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                    <div class="case-title">输电线路在线监测方案</div>
+                    <div class="case-more">查看详情</div>
+                </a><a href="" class="item">
+                <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                <div class="case-title">配网故障在线监测平台</div>
+                <div class="case-more">查看详情</div>
+            </a><a href="" class="item">
+                <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                <div class="case-title">配网三相平衡解决方案</div>
+                <div class="case-more">查看详情</div>
+            </a><a href="" class="item">
+                <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                <div class="case-title">分布式馈线自动化解决方案</div>
+                <div class="case-more">查看详情</div>
+            </a><a href="" class="item">
+                <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                <div class="case-title">营业厅视频监控解决方案</div>
+                <div class="case-more">查看详情</div>
+            </a><a href="" class="item">
+                <img src="__PUBLIC__/ruipan/images/index-case-demo.jpg">
+                <div class="case-title">正在开发中……</div>
+                <div class="case-more">查看详情</div>
+            </a>
+                <a href="" class="more">MORE</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--首页关于瑞攀-->
+<div class="index-about">
+    <div class="public-container clearfloat index-about-container">
+        <div class="index-about-animation">
+            <div class="index-about-bg revealOnScroll" data-animation="pulse"  ></div>
+        </div>
+        <div class="index-about-content">
+            <div class="title">关于瑞攀<span class="info">about us</span></div>
+            <div class="index-about-detailed">
+                我们是一家专注软件产品研发的科技公司，秉承"为客户创造价值"的理念，致力于通过我们的产品及服
+                务使您的工作更简单、企业更高效、心情更愉悦！<br>
+                我们致力于新产品、新技术研发，凝聚具有开拓与创新能力的技术精英200多人， 60%技术人员拥有3
+                年以上研发工作经验。
+            </div>
+            <div class="index-about-more clearfloat">
+                <a href="aboutus.html#ab" class="item active clearfloat">
+                    <div class="manifesto-logo"></div>
+                    <div class="title">瑞攀简介<br><span class="title-en">Manifesto</span></div>
+                    <div class="more"></div>
+                </a>
+                <a href="aboutus.html#qua" class="item clearfloat">
+                    <div class="qualifications-logo"></div>
+                    <div class="title">瑞攀资质<br><span class="title-en">Qualifications</span></div>
+                    <div class="more"></div>
+                </a>
+                <a href="aboutus.html#oc" class="item clearfloat">
+                    <div class="customers-logo"></div>
+                    <div class="title">合作伙伴<br><span class="title-en">Customers</span></div>
+                    <div href="" class="more"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新闻-->
+<div class="index-news">
+    <div class="public-container clearfloat index-news-container">
+        <div class="index-news-panel index-news-item">
+            <div class="header clearfloat">
+<i class="my-news-logo"></i>
+                <div class="title"> 最新新闻</div>
+                <a href="" class="more"></a>
+            </div>
+            <div class="content clearfloat">
+                <img class="article-thumbnail" src="__PUBLIC__/ruipan/images/index-my-new-demo.jpg" alt="昆明自来水集团有限公司微信公众平台建设上线">
+                <div class="article">
+                    <h1 class="title clearfloat">昆明自来水集团有限公司微信公众平台建设上线
+                        <span class="date">04/28<span class="date-year">2017</span></span></h1>
+                    <div class="info">2015年5月18日下午，“昆明自来水集团有限公司微信公众平台建设上线总结会议”在云南瑞攀科技有限公司顺利召开。昆明自来水集团公司、通用水务公司、清源公司的领导及瑞攀科技相关人员参加了会议</div>
+                    <a href="" class="more">
+                        查看详情
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="index-news-panel index-news-item">
+            <div class="header clearfloat">
+                <i class="ids-news-logo"></i>
+                <div class="title">行业趋势</div>
+                <a href="" class="more"></a>
+            </div>
+            <div class="content">
+                <div class="article">
+                    <h1 class="title clearfloat">颠覆传统销售思维，助你成交的实用技巧
+                        <span class="date">04/28<span class="date-year">2017</span></span></h1>
+                    <div class="info">销售新手常错将客户的沉默当做接受而滔滔不绝，然而过多的陈述一方面容易引起客户的反感。再者说，不了解客户诉求，别管你说的多么好也</div>
+                    <a href="" class="more">
+                        查看详情
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--公司信息-->
+<div class="index-companyinfo">
+    <div class="public-container">
+        <ul>
+            <li>
+                <img src="__PUBLIC__/ruipan/images/index-companyinfo-ads.png" class="logo" alt="公司地址-logo">
+                <h1>公司地址</h1>
+                <p>昆明市盘龙区穿金路霖岚国际A座29楼</p>
+            </li>
+            <li>
+                <img src="__PUBLIC__/ruipan/images/index-companyinfo-tel.png" class="logo" alt="联系电话-logo">
+                <h1>联系电话</h1>
+                <p>0871-63107651 服务时间 9:00-18:00</p>
+            </li>
+            <li>
+                <img src="__PUBLIC__/ruipan/images/index-companyinfo-email.png" class="logo" alt="公司邮箱-logo">
+                <h1>公司邮箱</h1>
+                <p>ruipan@eruipan.com</p>
+            </li>
+            <li>
+                <img src="__PUBLIC__/ruipan/images/index-companyinfo-wechat.png" class="logo" alt="公司微信-logo">
+                <img src="__PUBLIC__/ruipan/images/index-companyinfo-wechat.jpg" class="index-companyinfo-wechat" alt="公司微信">
+            </li>
+        </ul>
+    </div>
+</div>
+    <!--公共尾部-->
+    <div class="public-footer">
+        <div class="public-container">
+            © 2012-2017 云南瑞攀科技有限公司 | 版权所有 | 滇ICP备12001479号
+        </div>
+    </div>
+</body>
+</html>

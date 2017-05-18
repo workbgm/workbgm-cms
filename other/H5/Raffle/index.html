@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <!--<meta name="format-detection" content="telephone=no">-->
+    <meta name="full-screen" content="true">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache,must-revalidate">
+    <title>抚仙湖家庭房车免费游活动·出发去云游第I期</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animate.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="layer/layer.js"></script>
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery.rotate.min.js"></script>
+    <script>
+        $(function() {
+            var $btn = $('.playbtn');
+            var playnum = 2; //初始次数，由后台传入
+            $('.playnum').html(playnum);
+            var isture = 0;
+            var clickfunc = function() {
+                var data = [1, 2, 3, 4, 5, 6];
+                //data为随机出来的结果，根据概率后的结果
+                data = data[Math.floor(Math.random() * data.length)];
+                switch(data) {
+                    case 1:
+                        rotateFunc(1, 0);
+                        break;
+                    case 2:
+                        rotateFunc(2, 60);
+                        break;
+                    case 3:
+                        rotateFunc(3, 120);
+                        break;
+                    case 4:
+                        rotateFunc(4, 180);
+                        break;
+                    case 5:
+                        rotateFunc(5, 240);
+                        break;
+                    case 6:
+                        rotateFunc(6, 300);
+                        break;
+                }
+            }
+            $btn.click(function() {
+//                m_alert('','活动还未开始，敬请期待！');
+//                return;
+                if(isture) return; // 如果在执行就退出
+                isture = true; // 标志为 在执行
+                //先判断是否登录,未登录则执行下面的函数
+                if(1 == 2) {
+                    $('.playnum').html('0');
+                    m_alert('云游专享平台提示您',"请先登录");
+                    isture = false;
+                } else { //登录了就执行下面
+                    if(playnum <= 0) { //当抽奖次数为0的时候执行
+                        m_alert('',"没有次数了");
+                        $('.playnum').html(0);
+                        isture = false;
+                    } else { //还有次数就执行
+                        playnum = playnum - 1; //执行转盘了则次数减1
+                        if(playnum <= 0) {
+                            playnum = 0;
+                        }
+                        $('.playnum').html(playnum);
+                        clickfunc();
+                    }
+                }
+            });
+            var rotateFunc = function(awards, angle) {
+                isture = true;
+                $btn.stopRotate();
+                $btn.rotate({
+                    angle: 0,
+                    duration: 4000, //旋转时间
+                    animateTo: angle + 1440, //让它根据得出来的结果加上1440度旋转
+                    callback: function() {
+                        isture = false; // 标志为 执行完毕
+                        switch(awards) {
+                            case 1:
+                                toPage(8,20);
+                                break;
+                            case 2:
+                                toPage(9,0);
+                                break;
+                            case 3:
+                                toPage(8,10);
+                                break;
+                            case 4:
+                                toPage(7,'家庭');
+                                break;
+                            case 5:
+                                toPage(8,5);
+                                break;
+                            case 6:
+                                toPage(7,'大床');
+                                break;
+                        }
+                    }
+                });
+            };
+        });
+    </script>
+</head>
+<body>
+<div class="left animated  infinite fadeInRight" id="left"><img src="imgs/left.png"></div>
+<div class="page animated bounceInDown" id="page1">
+    <div class="bg"></div>
+    <div id="page1_balloon" class=""></div>
+    <div id="page1_car" class=""></div>
+    <div id="page1_rob" class=""></div>
+</div>
+<div class="page animated bounceIn" id="page2">
+    <div class="bg"></div>
+    <div id="page2_title" class=""></div>
+    <div id="page2_day1" class=""></div>
+</div>
+<div class="page animated flipInX" id="page3">
+    <div class="bg"></div>
+    <div id="page3_p1" class=""></div>
+    <div id="page3_p3" class=""></div>
+    <div id="page3_p2" class=""></div>
+</div>
+<div class="page animated rotateInUpLeft" id="page4">
+    <div class="bg"></div>
+    <div class="g-lottery-box">
+        <div class="g-lottery-img">
+            <a class="playbtn" href="javascript:;" title="开始抽奖"></a>
+        </div>
+    </div>
+    <div id="page4_share"></div>
+    <div id="page4_my"></div>
+    <div id="page4_big"></div>
+    <div id="page4_gameinfo"></div>
+    <div style="display:none" id="page4_gameinfo_txt">
+        <p>
+            活动时间<br />
+            2017年3月27日-2017年4月5日（每天上午10:00开始）<br />
+            <br />
+            活动资格<br />
+            1、本次活动仅限云游华夏旅游平台（微信搜索关注“云游专享平台”）注册用户参与。<br />
+            2、活动期间内，平台普通注册用户每天登录活动页面即可获得1次抽奖机会，会员等级在普卡（达标）及以上的注册用户每日尊享2次抽奖机会(注:云游华夏旅游平台新达标用户资格需在次日生效,相应资格也将于次日更新)。另，用户每日分享活动页面至朋友圈可增加1次额外抽奖机会，即普通注册用户在活动期间内每天最多可获得2次抽奖机会，普卡（达标）及以上注册用户在活动期间内每天最多可获得3次抽奖机会。且连续登录天数越多，中奖概率越大。<br />
+            <br />
+            奖品设置及发放规则<br />
+            1、本次活动设置的奖品有：10位价值2680元“抚仙湖房车两日免费家庭游”名额（湖景家庭房车、湖景大床房车各5名）；若干云游官方商城“鸢尾图书馆”系列云南特产产品优惠券等。<br />
+            2、每个用户ID最多只能有一次“抚仙湖房车两日免费体验游”中奖机会,每个自然日至多送出1个免费游名额，活动期间至多送出10个名额，并于次日在页面公示免费游的中奖名单；其他奖品随机赠送，送完为止。<br />
+            3、“抚仙湖房车两日免费体验游”的中奖用户，请根据提示在相应页面预留联系方式，我们会在活动结束后5个工作日内与您联系，并确认出团日期，若因用户提供的联系方式有误或因用户自身原因导致云游华夏旅游平台在活动结束后7个工作日均无法与中奖用户取得联系的，云游华夏旅游平台有权视为用户自动放弃奖品。如若“抚仙湖房车两日免费体验游”的行程线路有细节变化，最终以活动当天具体行程实际为准。<br />
+            4、优惠券类的奖品，由系统以串码形式自动送出，限在云游官方商城(http://mall.yunyugroup.com/)购买“鸢尾图书馆”系列云南特产产品使用,使用期限为2017-04-01至2017-08-31。优惠券不可折现，每个券码仅可使用一次，一经使用恕不退还；其他未尽事宜详询云游官方商城客服。<br />
+            <br />
+            其他细则<br />
+            1、年满十八周岁的完全民事行为能力人可参与活动，未满十八周岁的未成年人及限制民事行为能力人应当在监护人的许可、陪同下方可参加活动。<br />
+            2、在抽奖过程中，如果出现违规行为（包括但不限于涉嫌作弊、扰乱系统、实施网络攻击等），云游华夏旅游平台有权取消用户参与活动资格，并有权收回奖品，必要时追究法律责任。<br />
+            3、如因不可抗力（包括但不限于重大灾害事件、活动受政府机关指令需要停止举办或调整、活动遭受严重网络攻击或因系统故障需要暂停举办、主办方决定停止举办比赛等）导致奖品无法如期采购，奖品发放可能会延迟或者替换发放其他等值奖品。但云游华夏旅游平台会提前告知用户。<br />
+            4、如若遇到特殊情况，云游华夏旅游平台有权以其他等值礼品替换奖品，中奖用户不得自行要求替换替他礼品或折换现金。<br />
+            5、参与用户如有疑惑可咨询相应客服:<br />
+            云游华夏旅游平台客服：400 993 4988，158 8781 6150；<br />
+            云游官方商城客服电话：138 8858 2693。<br />
+        </p>
+    </div>
+</div>
+<div class="page animated bounceIn" id="page5">
+    <div class="bg"></div>
+</div>
+<div class="page animated bounceIn" id="page6">
+    <div class="bg"></div>
+</div>
+<div class="page animated bounceIn" id="page7">
+    <div class="bg"></div>
+</div>
+<div class="page animated bounceIn" id="page8">
+    <div class="bg"></div>
+</div>
+<div class="page animated bounceIn" id="page9">
+    <div class="bg"></div>
+</div>
+</body>
+</html>
