@@ -1,0 +1,24 @@
+{
+    "name": "workbgm/workbgm",
+    "description": "a php dev framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "workbgm",
+            "email": "workbgm@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "topthink/framework": "^5.0",
+        "topthink/think-captcha": "^1.0",
+        "topthink/think": "v5.0.8"
+    },
+    "extra": {
+        "think-path": "thinkphp"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
