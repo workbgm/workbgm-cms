@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2016 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2017 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -10,9 +10,6 @@
 // +----------------------------------------------------------------------
 
 namespace think;
-
-use think\Loader;
-use think\Request;
 
 class View
 {
@@ -28,7 +25,7 @@ class View
     protected $replace = [];
 
     /**
-     * 架构函数
+     * 构造函数
      * @access public
      * @param array $engine  模板引擎参数
      * @param array $replace  字符串替换参数
@@ -47,11 +44,9 @@ class View
         $baseReplace = [
             '__ROOT__'   => $root,
             '__URL__'    => $base . '/' . $request->module() . '/' . Loader::parseName($request->controller()),
-            '__STATIC__' => $root . '/public/static',
-            '__CSS__'    => $root . '/public/static/css',
-            '__JS__'     => $root . '/public/static/js',
-            '__ZUI__'     => $root . '/public/static/zui',
-            '__PUBLIC__'     => $root . '/public',
+            '__STATIC__' => $root . '/static',
+            '__CSS__'    => $root . '/static/css',
+            '__JS__'     => $root . '/static/js',
         ];
         $this->replace = array_merge($baseReplace, (array) $replace);
     }

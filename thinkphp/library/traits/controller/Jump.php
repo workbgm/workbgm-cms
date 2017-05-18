@@ -34,7 +34,7 @@ trait Jump
      * @param array     $header 发送的Header信息
      * @return void
      */
-    protected function success($msg = '', $url = null, $data = '', $wait = 1, array $header = [])
+    protected function success($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
     {
         $code = 1;
         if (is_numeric($msg)) {
@@ -73,7 +73,7 @@ trait Jump
      * @param array     $header 发送的Header信息
      * @return void
      */
-    protected function error($msg = '', $url = null, $data = '', $wait = 1, array $header = [])
+    protected function error($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
     {
         $code = 0;
         if (is_numeric($msg)) {
@@ -131,16 +131,17 @@ trait Jump
      * @param string         $url 跳转的URL表达式
      * @param array|integer  $params 其它URL参数
      * @param integer        $code http code
+     * @param array          $with 隐式传参
      * @return void
      */
-    protected function redirect($url, $params = [], $code = 302)
+    protected function redirect($url, $params = [], $code = 302, $with = [])
     {
         $response = new Redirect($url);
         if (is_integer($params)) {
             $code   = $params;
             $params = [];
         }
-        $response->code($code)->params($params);
+        $response->code($code)->params($params)->with($with);
         throw new HttpResponseException($response);
     }
 

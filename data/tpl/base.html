@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="__ZUI__/dist/css/zui.min.css">
+    <link rel="stylesheet" href="__STATIC__/admin/zui/dist/css/zui.min.css">
     <style>
         .main > .container-fluid > .container-fluid > .container-fluid {
             padding: 20px;
@@ -43,6 +43,14 @@
             padding-top: 22px;
             text-align: center;
         }
+
+        .left-menu{
+            padding-left: 0;
+        }
+
+        .top-nav{
+            margin-bottom: 10px;
+        }
     </style>
     <!--CSS引用-->
     {block name="css"}{/block}
@@ -54,7 +62,7 @@
 <body>
 <div class="container-fluid nopadding">
     <!--头部-->
-    <nav class="navbar navbar-inverse"
+    <nav class="navbar top-nav navbar-inverse"
          role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -141,7 +149,7 @@
     <div class="container-fluid" style="padding:0">
         <!--侧边栏-->
         {if condition="$moduleType=='admin' "}
-        <div class="col-md-2 hidden-xs" >
+        <div class="col-md-2 left-menu hidden-xs" >
             <nav class="menu" data-toggle="menu">
                 <ul class="nav nav-primary">
                     {foreach name="menu2" item="vo"}
@@ -206,10 +214,10 @@
 </script>
 <!--JS引用-->
 <!-- ZUI Javascript 依赖 jQuery -->
-<script src="__ZUI__/dist/lib/jquery/jquery.js"></script>
+<script src="__STATIC__/admin/zui/dist/lib/jquery/jquery.js"></script>
 <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
-<script src="__ZUI__/dist/js/zui.min.js"></script>
-<script src="__JS__/jquery.ajaxfileupload.js"></script>
+<script src="__STATIC__/admin/zui/dist/js/zui.min.js"></script>
+<script src="__STATIC__/admin/js/jquery.ajaxfileupload.js"></script>
 <script type="text/javascript">
     $(function () {
         $('input[type="file"]').ajaxfileupload({
