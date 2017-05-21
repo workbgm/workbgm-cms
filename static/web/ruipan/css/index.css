@@ -86,20 +86,31 @@
     margin-top:-8px;
     width:100%;
     z-index:2;
+    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.index-infomation-case .item img,.index-mobile-case .item img,.index-iot-case .item img{
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: grayscale(100%);
-    filter: gray;
-}
+/*.index-infomation-case .item img,.index-mobile-case .item img,.index-iot-case .item img{*/
+    /*-webkit-filter: grayscale(100%);*/
+    /*-moz-filter: grayscale(100%);*/
+    /*-ms-filter: grayscale(100%);*/
+    /*-o-filter: grayscale(100%);*/
+    /*filter: grayscale(100%);*/
+    /*filter: gray;*/
+/*}*/
 
 .index-infomation-case .item:hover img,.index-mobile-case .item:hover img,.index-iot-case .item:hover img{
-    background-color:#12B4EC;
-    opacity: 0.8;
+    opacity: 0.1;
+}
+.index-infomation-case .item:hover,.index-mobile-case .item:hover,.index-iot-case .item:hover{
+    background-color:#00B9EF;
+}
+
+
+.item:hover .mask{
+    opacity: 0;
 }
 
 .index-infomation-case .item .case-more,.index-mobile-case .item .case-more,.index-iot-case .item .case-more{
@@ -108,12 +119,12 @@
 
 .index-infomation-case .item:hover .case-more,.index-mobile-case .item:hover .case-more
 ,.index-iot-case .item:hover .case-more{
+    position: absolute;
     font-size: 1.2rem;
     color:#fff;
     display: block;
     text-align: center;
     border: 1px solid #fff;
-    position: absolute;
     width:80px;
     padding:8px 0;
     top:86px;
@@ -144,6 +155,17 @@
     width:240px;
     height:155px;
     float:left;
+    background-color: #00B9EF;
+}
+
+.item .mask{
+    position: absolute;
+    background: #161A1D;
+    opacity: 0.6;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
 }
 
 .index-infomation-content .more,.index-mobile-content .more,.index-iot-content .more{
@@ -151,12 +173,18 @@
     font-size: 1rem;
     background-color: #fff;
     width:80px;
-    height:8px;
     margin-top:20px;
     float:right;
     text-align: center;
-    padding:12px 0;
-    line-height: 8px;
+    padding:8px 0;
+}
+
+.index-infomation-content .more:after,.index-mobile-content .more:after,.index-iot-content .more:after {
+    display:inline-block;
+    width:0;
+    height:100%;
+    vertical-align:middle;
+    content:"";
 }
 
 .index-infomation-content .more:hover,.index-mobile-content .more:hover,.index-iot-content .more:hover{
@@ -710,8 +738,9 @@
 }
 /*大分辨率PC */
 @media screen and (min-width: 1200px) and (max-width: 1899px){
-
-
+    .public-header-nav-item-content{
+        zoom:0.7;
+    }
 }
 
 @media screen and (min-width: 1900px){

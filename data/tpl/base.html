@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="__STATIC__/admin/images/logo.ico">
     <link rel="stylesheet" href="__STATIC__/admin/zui/dist/css/zui.min.css">
     <style>
         .main > .container-fluid > .container-fluid > .container-fluid {
@@ -201,27 +202,23 @@
     <!--底部-->
     <hr>
     <div class="container-fluid">
-        <div class="text-center">2016 &copy; 作者：吴渭明</div>
+        <div class="text-center">2017 &copy; 作者：吴渭明</div>
     </div>
 </div>
 
 <script>
-    // 定义全局JS变量
     var GV = {
         current_controller: "admin.php/{$controller|default=''}/",
         base_url: "__STATIC__"
     };
 </script>
-<!--JS引用-->
-<!-- ZUI Javascript 依赖 jQuery -->
 <script src="__STATIC__/admin/zui/dist/lib/jquery/jquery.js"></script>
-<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
 <script src="__STATIC__/admin/zui/dist/js/zui.min.js"></script>
 <script src="__STATIC__/admin/js/jquery.ajaxfileupload.js"></script>
 <script type="text/javascript">
     $(function () {
         $('input[type="file"]').ajaxfileupload({
-            action: '/index.php/api/upload/upload',
+            action: '__ROOT__/index.php/api/upload/upload',
             onComplete: function (d) {
                 if (d.error == 0) {
                     $('input[name="' + $(this).attr('imge') + '"]').val(d.url);
@@ -233,7 +230,6 @@
     });
 </script>
 {block name="js"}{/block}
-<!--页面JS脚本-->
 {block name="script"}{/block}
 </body>
 </html>

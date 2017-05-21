@@ -7,14 +7,14 @@
     <title>新闻中心-瑞攀科技</title>
     <meta name="Keywords" content="云南OA开发,云南工程项目管理开发,云南微信商城开发,云南门户网站开发,云南管理信息化开发,云南移动应用开发,云南微信公众平台开发,云南商城开发,云南物联网应用开发。" />
     <meta name="Description" content="云南瑞攀科技有限公司是一家专注软件研发的科技公司，于2011年11月成立。秉承“为客户创造价值”的理念，致力于通过我们的产品及服务，使客户的工作更简单、企业更高效、心情更愉悦！" />
-    <link rel="shortcut icon" href="images/logo.ico">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/news.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/banner.js"></script>
+    <link rel="shortcut icon" href="__STATIC__/web/ruipan/images/logo.ico">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/reset.css">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/animate.css">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/common.css">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/news.css">
+    <script src="__STATIC__/web/ruipan/js/jquery.min.js"></script>
+    <script src="__STATIC__/web/ruipan/js/common.js"></script>
+    <script src="__STATIC__/web/ruipan/js/banner.js"></script>
 </head>
 <body>
 <!--[if lte IE 8]>
@@ -23,17 +23,17 @@
 <!--公共头部-->
 <div class="public-header">
     <div class="public-container clearfloat">
-        <a href="" class="public-header-logo"></a>
+        <a href="{:url('ruipan/Index/index')}" class="public-header-logo"></a>
         <div class="public-header-logotext">为客户创造价值   create value for customers</div>
         <ul class="public-header-nav">
-            <li class="item"><a href="index.html">首页</a></li>
-            <li class="item active"><a href="news.html">新闻中心</a></li>
-            <li class="item"><a data-content="news" href="solution.html">解决方案</a></li>
-            <li class="item"><a href="aboutus.html">关于我们</a></li>
-            <li class="item xs-hidden"><a href="contactus.html">联系我们</a></li>
+            <li class="item"><a href="{:url('ruipan/Index/index')}">首页</a></li>
+            <li class="item active"><a href="{:url('ruipan/Index/news')}">新闻中心</a></li>
+            <li class="item"><a data-content="news" href="{:url('ruipan/Index/solution')}">解决方案</a></li>
+            <li class="item"><a href="{:url('ruipan/Index/aboutus')}">关于我们</a></li>
+            <li class="item xs-hidden"><a href="{:url('ruipan/Index/contactus')}">联系我们</a></li>
             <div id="news" class="public-header-nav-item-content" style="display: none">
                 <ul class="content-list">
-                    <h4><img src="images/public-header-content-information.png">管理信息化解决方案</h4>
+                    <h4><img src="__STATIC__/web/ruipan/images/public-header-content-information.png">管理信息化解决方案</h4>
                     <li class="content-item"><a href="">电力工程项目管理系统</a></li>
                     <li class="content-item"><a href="">银行集中放款系统</a></li>
                     <li class="content-item"><a href="">银行客户关系管理系统</a></li>
@@ -42,7 +42,7 @@
                     <li class="content-item"><a href="">小型制造企业生成管理系统</a></li>
                 </ul>
                 <ul class="content-list">
-                    <h4><img src="images/public-header-content-mobile.png">移动应用解决方案</h4>
+                    <h4><img src="__STATIC__/web/ruipan/images/public-header-content-mobile.png">移动应用解决方案</h4>
                     <li class="content-item"><a href="">乐乎旅行网</a></li>
                     <li class="content-item"><a href="">自来水微信公众服务平台</a></li>
                     <li class="content-item"><a href="">农村科技服务平台</a></li>
@@ -50,7 +50,7 @@
                     <li class="content-item"><a href="">方寸销帮</a></li>
                 </ul>
                 <ul class="content-list">
-                    <h4><img src="images/public-header-content-iot.png">物联网解决方案</h4>
+                    <h4><img src="__STATIC__/web/ruipan/images/public-header-content-iot.png">物联网解决方案</h4>
                     <li class="content-item"><a href="">输电线路在线监测方案</a></li>
                     <li class="content-item"><a href="">配网故障在线监测平台</a></li>
                     <li class="content-item"><a href="">配网三相平衡解决方案</a></li>
@@ -69,68 +69,30 @@
 <div class="news-catalog">
     <div class="public-container ">
         <ul class="news-catalog-list clearfloat">
-            <li><a href="" class="catalog-btn active">最新新闻</a></li>
-            <li><a href="" class="catalog-btn">行业趋势</a></li>
+            <li><a href="{:url('ruipan/Index/news',['classification'=>'最新新闻'])}" class="catalog-btn <?php if($classification=='最新新闻'){echo 'active';}?>">最新新闻</a></li>
+            <li><a href="{:url('ruipan/Index/news',['classification'=>'行业趋势'])}" class="catalog-btn <?php if($classification=='行业趋势'){echo 'active';}?>">行业趋势</a></li>
         </ul>
-        <div class="news-item clearfloat">
-            <div class="item-thumbnail">
-                <img class="thumbnail" src="images/solution-item-article-thumbnail-demo.jpg" alt="">
+        <?php foreach($new_list as $m){?>
+            <div class="news-item clearfloat">
+                <div class="item-thumbnail">
+                    <img class="thumbnail"  src="__ROOT__<?php echo $m['thumb'];?>" alt="<?php echo $m['title'];?>">
+                </div>
+                <div class="article">
+                    <h1 class="title">
+                        <?php echo $m['title'];?>
+                    </h1>
+                    <h2 class="catalog">
+                        <?php echo $classification;?>
+                    </h2>
+                    <p class="content">
+                        <?php echo $m['introduction'];?>
+                    </p>
+                    <a href="{:url('ruipan/Index/article',['id'=>$m.id,'classification'=>$classification,'type'=>'新闻'])}" class="more">查看详情</a>
+                </div>
             </div>
-            <div class="article">
-                <h1 class="title">
-                    电力工程项目管理系统
-                </h1>
-                <h2 class="catalog">
-                    管理信息化解决方案
-                </h2>
-                <p class="content">
-                    项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍，项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目
-                </p>
-                <a href="" class="more">查看详情</a>
-            </div>
-        </div>
-        <div class="news-item clearfloat">
-            <div class="item-thumbnail">
-                <img class="thumbnail" src="images/solution-item-article-thumbnail-demo.jpg" alt="">
-            </div>
-            <div class="article">
-                <h1 class="title">
-                    电力工程项目管理系统
-                </h1>
-                <h2 class="catalog">
-                    管理信息化解决方案
-                </h2>
-                <p class="content">
-                    项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍，项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目
-                </p>
-                <a href="" class="more">查看详情</a>
-            </div>
-        </div>
-        <div class="news-item clearfloat">
-            <img class="item-thumbnail" alt="" src="images/solution-item-article-thumbnail-demo.jpg">
-            <div class="article">
-                <h1 class="title">
-                    电力工程项目管理系统
-                </h1>
-                <h2 class="catalog">
-                    管理信息化解决方案
-                </h2>
-                <p class="content">
-                    项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍，项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目
-                </p>
-                <a href="" class="more">查看详情</a>
-            </div>
-        </div>
-        <div class="pagin clearfloat">
-            <ul>
-                <li><a href="" class="pagin-btn disable">&lt;</a></li>
-                <li><a href="" class="pagin-btn active">1</a></li>
-                <li><a href="" class="pagin-btn">2</a></li>
-                <li><a href="" class="pagin-btn">3</a></li>
-                <li><a href="" class="pagin-btn">……</a></li>
-                <li><a href="" class="pagin-btn">&gt;</a></li>
-            </ul>
-        </div>
+        <?php }?>
+        <!--分页-->
+        <div class="pagin clearfloat">{$new_list->render()}</div>
     </div>
 </div>
 <!--公共尾部-->

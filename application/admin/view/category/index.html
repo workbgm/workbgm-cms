@@ -13,7 +13,8 @@
                     <thead>
                     <tr>
                         <th>栏目名称</th>
-                        <th style="width: 30px;">排序</th>
+                        <th style="width: 60px;">排序</th>
+                        <th>ID</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -26,6 +27,7 @@
                         <?php }?>
                         <td> {$vo.name}</td>
                         <td>{$vo.sort}</td>
+                        <td>{$vo.id}</td>
                         <td>
                             <a href="{:url('admin/category/add',['pid'=>$vo['id']])}" class="btn btn-mini btn-primary">添加子栏目</a>
                             <a href="{:url('admin/category/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>

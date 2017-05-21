@@ -16,12 +16,10 @@ function banner(){
         else{
             $('.control-item:eq('+g_current_block+')').removeClass('active');
             $('.index-banner-block:eq('+g_current_block+')').css('display','none');
-            $('.index-banner-block:eq('+g_current_block+')').removeClass('animated slideInRight');
             var imgsrc=$('.index-banner-block:eq('+g_current_block+') img').attr('src');
             $('.index-banner').css('background','url("'+imgsrc+'")no-repeat');
             $(this).addClass('active');
             $('.index-banner-block:eq('+current_block+')').css('display','block');
-            $('.index-banner-block:eq('+g_current_block+')').addClass('animated slideInRight');
             g_current_block=current_block;
             interval();
         }
@@ -34,14 +32,12 @@ function interval(){
         var current_block=g_current_block;
         $('.control-item:eq('+g_current_block+')').removeClass('active');
         $('.index-banner-block:eq('+g_current_block+')').css('display','none');
-        $('.index-banner-block:eq('+g_current_block+')').removeClass('animated slideInRight');
         var imgsrc=$('.index-banner-block:eq('+g_current_block+') img').attr('src');
         $('.index-banner').css('background','url("'+imgsrc+'")no-repeat fixed 0px '+ $('.index-banner').css('padding-top'));
         g_current_block++;
         if(g_current_block==3)g_current_block=0;
         $('.control-item:eq('+g_current_block+')').addClass('active');
         $('.index-banner-block:eq('+g_current_block+')').css('display','block');
-        $('.index-banner-block:eq('+g_current_block+')').addClass('animated slideInRight');
     },g_time);
 }
 

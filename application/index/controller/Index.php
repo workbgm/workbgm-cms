@@ -13,7 +13,6 @@ class Index extends HomeBase
 	 protected function _initialize()
     {
         parent::_initialize();
-        Url::root('/index.php');
     }
 
     public function index()

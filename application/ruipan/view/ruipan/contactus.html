@@ -7,11 +7,11 @@
     <title>联系我们-瑞攀科技</title>
     <meta name="Keywords" content="云南OA开发,云南工程项目管理开发,云南微信商城开发,云南门户网站开发,云南管理信息化开发,云南移动应用开发,云南微信公众平台开发,云南商城开发,云南物联网应用开发。" />
     <meta name="Description" content="云南瑞攀科技有限公司是一家专注软件研发的科技公司，于2011年11月成立。秉承“为客户创造价值”的理念，致力于通过我们的产品及服务，使客户的工作更简单、企业更高效、心情更愉悦！" />
-    <link rel="shortcut icon" href="images/logo.ico">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/contactus.css">
+    <link rel="shortcut icon" href="__STATIC__/web/ruipan/images/logo.ico">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/reset.css">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/animate.css">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/common.css">
+    <link rel="stylesheet" href="__STATIC__/web/ruipan/css/contactus.css">
     <style>
         .my-map { width: 600px; height: 370px; }
         .my-map .icon { background: url(http://lbs.amap.com/console/public/show/marker.png) no-repeat; }
@@ -19,9 +19,9 @@
         .my-map .icon-cir-red { background-position: -11px -5px; }
         .amap-container{height: 100%;}
     </style>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/banner.js"></script>
+    <script src="__STATIC__/web/ruipan/js/jquery.min.js"></script>
+    <script src="__STATIC__/web/ruipan/js/common.js"></script>
+    <script src="__STATIC__/web/ruipan/js/banner.js"></script>
 </head>
 <body>
 <!--[if lte IE 8]>
@@ -30,41 +30,15 @@
 <!--公共头部-->
 <div class="public-header">
     <div class="public-container clearfloat">
-        <a href="" class="public-header-logo"></a>
+        <a href="{:url('ruipan/Index/index')}" class="public-header-logo"></a>
         <div class="public-header-logotext">为客户创造价值   create value for customers</div>
         <ul class="public-header-nav">
-            <li class="item"><a href="index.html">首页</a></li>
-            <li class="item"><a href="news.html">新闻中心</a></li>
-            <li class="item "><a data-content="contactus" href="contactus.html">解决方案</a></li>
-            <li class="item"><a href="aboutus.html">关于我们</a></li>
-            <li class="item active xs-hidden"><a href="contactus.html">联系我们</a></li>
-            <div id="contactus" class="public-header-nav-item-content" style="display: none">
-                <ul class="content-list">
-                    <h4><img src="images/public-header-content-information.png">管理信息化解决方案</h4>
-                    <li class="content-item"><a href="">电力工程项目管理系统</a></li>
-                    <li class="content-item"><a href="">银行集中放款系统</a></li>
-                    <li class="content-item"><a href="">银行客户关系管理系统</a></li>
-                    <li class="content-item"><a href="">创先工作管理平台</a></li>
-                    <li class="content-item"><a href="">企业在线培训、考试系统</a></li>
-                    <li class="content-item"><a href="">小型制造企业生成管理系统</a></li>
-                </ul>
-                <ul class="content-list">
-                    <h4><img src="images/public-header-content-mobile.png">移动应用解决方案</h4>
-                    <li class="content-item"><a href="">乐乎旅行网</a></li>
-                    <li class="content-item"><a href="">自来水微信公众服务平台</a></li>
-                    <li class="content-item"><a href="">农村科技服务平台</a></li>
-                    <li class="content-item"><a href="">微信招聘平台</a></li>
-                    <li class="content-item"><a href="">方寸销帮</a></li>
-                </ul>
-                <ul class="content-list">
-                    <h4><img src="images/public-header-content-iot.png">物联网解决方案</h4>
-                    <li class="content-item"><a href="">输电线路在线监测方案</a></li>
-                    <li class="content-item"><a href="">配网故障在线监测平台</a></li>
-                    <li class="content-item"><a href="">配网三相平衡解决方案</a></li>
-                    <li class="content-item"><a href="">分布式馈线自动化解决方案</a></li>
-                    <li class="content-item"><a href="">营业厅视频监控解决方案</a></li>
-                </ul>
-            </div>
+            <li class="item"><a href="{:url('ruipan/Index/index')}">首页</a></li>
+            <li class="item"><a href="{:url('ruipan/Index/news')}">新闻中心</a></li>
+            <li class="item "><a data-content="solution" href="{:url('ruipan/Index/solution')}">解决方案</a></li>
+            <li class="item"><a href="{:url('ruipan/Index/aboutus')}">关于我们</a></li>
+            <li class="item active xs-hidden"><a href="{:url('ruipan/Index/contactus')}">联系我们</a></li>
+            {include file="solution_list" /}
         </ul>
     </div>
 </div>
@@ -83,7 +57,7 @@
             <div class="article">
                 <ul>
                     <li class="clearfloat item">
-                        <img src="images/index-companyinfo-ads.png" class="logo" alt="公司地址-logo">
+                        <img src="__STATIC__/web/ruipan/images/index-companyinfo-ads.png" class="logo" alt="公司地址-logo">
                         <div class="content">
                             <h1 class="title">公司地址</h1>
                             <p>昆明市盘龙区穿金路霖岚国际A座29楼</p>
@@ -91,7 +65,7 @@
 
                     </li>
                     <li class="clearfloat item">
-                        <img src="images/index-companyinfo-tel.png" class="logo" alt="联系电话-logo">
+                        <img src="__STATIC__/web/ruipan/images/index-companyinfo-tel.png" class="logo" alt="联系电话-logo">
                         <div class="content">
                             <h1 class="title">联系电话</h1>
                             <p>0871-63107651 服务时间 9:00-18:00</p>
@@ -99,7 +73,7 @@
 
                     </li>
                     <li class="clearfloat item">
-                        <img src="images/index-companyinfo-email.png" class="logo" alt="公司邮箱-logo">
+                        <img src="__STATIC__/web/ruipan/images/index-companyinfo-email.png" class="logo" alt="公司邮箱-logo">
                         <div class="content">
                             <h1 class="title">公司邮箱</h1>
                             <p>ruipan@eruipan.com</p>
@@ -107,8 +81,8 @@
 
                     </li>
                     <li class="clearfloat item">
-                        <img src="images/index-companyinfo-wechat.png" class="logo" alt="公司微信-logo">
-                        <img src="images/index-companyinfo-wechat.jpg" class="index-companyinfo-wechat" alt="公司微信">
+                        <img src="__STATIC__/web/ruipan/images/index-companyinfo-wechat.png" class="logo" alt="公司微信-logo">
+                        <img src="__STATIC__/web/ruipan/images/index-companyinfo-wechat.jpg" class="index-companyinfo-wechat" alt="公司微信">
                     </li>
                 </ul>
             </div>

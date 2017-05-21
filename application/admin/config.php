@@ -9,4 +9,11 @@ return [
         // 模板路径
         'view_path' => APP_PATH.'admin/view/'
     ],
+
+    //分页配置
+    'paginate'               => [
+        'type' => '\\paginator\\driver\\zui',
+        'var_page'  => 'page',
+        'list_rows' => 15,
+    ],
 ];
