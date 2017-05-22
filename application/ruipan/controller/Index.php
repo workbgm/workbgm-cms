@@ -21,39 +21,6 @@ class Index extends HomeBase
         $this->assign('iot_list',$iot_list);
     }
 
-//    public function index()
-//    {
-//    	$this->assign('articles',get_articles_by_cid(2));
-//        Session::set('lst_id', 3);
-//        return $this->fetch();
-//    }
-//
-//    public function lst(){
-//        $id  = $this->request->param('nav_id');
-//        if(empty($id)){
-//            return false;
-//        }
-//        $type  = $this->request->param('type');
-//        $link  = $this->request->param('link');
-//        if($type=='cate'){
-//            $this->assign('articles',get_articles_by_cid($link));
-//        }
-//        Session::set('lst_id', $id);
-//    	return $this->fetch();
-//    }
-//
-//    public function article(){
-//    	$id  = $this->request->param('id/d');
-//    	 if (empty($id)) {
-//            return false;
-//        }
-//
-//    	$article_model  = new ArticleModel();
-//    	$article = $article_model->get($id);
-//    	$this->assign('article',$article);
-//    	return $this->fetch();
-//    }
-
     //    首页
     public function index(){
 	     return $this->fetch('/index');
