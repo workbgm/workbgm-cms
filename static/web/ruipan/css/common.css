@@ -93,12 +93,14 @@
 }
 
 .public-footer{
-    height:50px;
+    height:80px;
     background:#021425;
     text-align: center;
     color:#d3d3d3;
     font-size: 1.4rem;
-    line-height: 50px;
+    line-height: 80px;
+    overflow: hidden;
+    width:100%;
 }
 
 .index-banner{
@@ -274,6 +276,10 @@
         width: 100%;
     }
 
+    .pagin li{
+        width:20vw;
+    }
+
     .index-banner{
         width:100%;
     }
@@ -316,7 +322,8 @@
     }
 
     .public-footer{
-        margin-bottom: 300px;
+        margin-bottom: 20px;
+        height:100px;
     }
 
 

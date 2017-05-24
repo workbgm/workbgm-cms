@@ -136,9 +136,13 @@ body{
         margin: 0 auto;
     }
 
-    .article .content:last-child{
-        height: 140px !important;
+    .article .catalog,.article .content{
+        height: 200px !important;
     }
+    .article .content:last-child{
+        height: 220px !important;
+    }
+
 
 }
 
@@ -167,7 +171,6 @@ body{
     .aboutus-banner{
         width:100%;
     }
-
 }
 /*大分辨率PC */
 @media screen and (min-width: 1200px) and (max-width: 1899px){
@@ -175,6 +178,9 @@ body{
         zoom:0.7
     }
 
+    .article .content:last-child{
+        height: 120px !important;
+    }
 }
 
 @media screen and (min-width: 1900px){

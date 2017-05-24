@@ -37,6 +37,7 @@
 }
 
 .index-infomation-animation,.index-mobile-animation,.index-iot-animation,.index-about-animation{
+    position: relative;
     float:left;
     width:50%;
     height:423px;
@@ -44,9 +45,18 @@
 }
 
 .index-infomation-content,.index-mobile-content,.index-iot-content,.index-about-content{
-    float:left;
+    float:right;
     width:50%;
     zoom:0.7;
+}
+
+.index-mobile-content{
+    float:left;
+    width:50%;
+}
+
+.index-mobile-animation{
+    position: absolute;
 }
 
 .index-infomation-case,.index-mobile-case,.index-iot-case{
@@ -54,9 +64,9 @@
     width:720px;
 }
 
-.index-mobile-content{
-    width:720px;
-}
+/*.index-mobile-content{*/
+    /*width:720px;*/
+/*}*/
 
 .index-infomation-content .title,.index-mobile-content .title,.index-iot-content .title,.index-about-content .title{
     color: #fff;
@@ -207,6 +217,7 @@
     position: absolute;
     left:0;
     bottom:24px;
+    width:720px;
 }
 
 .index-about-more .item{
@@ -437,6 +448,10 @@
     background-size: 100%;
 }
 
+.index-mobile-animation{
+    float:right;
+}
+
 .index-iot-animation .index-iot-bg{
     position: absolute;
     top:-16px;
@@ -581,7 +596,7 @@
 }
 
 .index-companyinfo-wechat{
-    margin-top: 25px;
+    margin-top: 11px;
 }
 
 .index-companyinfo li h1{
@@ -605,12 +620,21 @@
         width: 76% !important;
     }
 
+    .index-about-more{
+        width:auto !important;
+    }
+
     .index-infomation-case .item img, .index-mobile-case .item img, .index-iot-case .item img {
         width: 100%;
     }
 
     .index-about{
         height:440px;
+    }
+
+    .index-companyinfo li{
+        height:211px;
+        overflow: hidden;
     }
 
 
@@ -657,7 +681,6 @@
 
     .index-companyinfo{
         height: 500px;
-        padding: 0 10%;
     }
     .index-about-detailed{
         width:90%;
