@@ -15,7 +15,8 @@
         "topthink/think-captcha": "^1.0",
         "topthink/think": "v5.0.8",
         "phpoffice/phpexcel":"1.8.1",
-        "hisune/echarts-php":"1.0.10"
+        "hisune/echarts-php":"1.0.10",
+        "houdunwang/wechat":"v1.0.18"
     },
     "extra": {
         "think-path": "thinkphp"

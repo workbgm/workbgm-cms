@@ -3,3 +3,4 @@ composer.lock
 *.log
 runtime/
 vendor/
+/composer.json
