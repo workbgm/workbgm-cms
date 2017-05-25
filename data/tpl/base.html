@@ -150,7 +150,7 @@
     <div class="container-fluid" style="padding:0">
         <!--侧边栏-->
         {if condition="$moduleType=='admin' "}
-        <div class="col-md-2 left-menu hidden-xs" >
+        <div class="col-md-2 left-menu hidden-xs <?php if(!count($menu2)){ echo 'hidden';}?>"  >
             <nav class="menu" data-toggle="menu">
                 <ul class="nav nav-primary">
                     {foreach name="menu2" item="vo"}
@@ -195,7 +195,8 @@
         {/if}
 
         <!--主体-->
-        <div class="col-md-10 col-sm-12 main" style="padding:0">
+        <div class="col-md-<?php if(!count($menu2)){ echo '12';}else {echo '10';}?> col-sm-12 main"
+        <?php if(count($menu2)){echo 'style="padding:0"';}?> >
             {block name="body"}{/block}
         </div>
     </div>

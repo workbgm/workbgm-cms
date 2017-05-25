@@ -12,14 +12,14 @@
             <div class="container-fluid">
                 <form class="form-horizontal" action="{:url('admin/auth_group/update')}" method="post">
                     <div class="form-group">
-                        <label class="col-sm-2">名称</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">名称</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="title" value="{$auth_group.title}" required  placeholder="请输入权限组名称" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">状态</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">状态</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="status" value="1"  {if condition="$auth_group.status==1"} checked="checked"{/if}>
                                启用

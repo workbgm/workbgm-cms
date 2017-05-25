@@ -8,7 +8,6 @@ use think\Cache;
 use think\Controller;
 use think\Db;
 use think\Session;
-use PHPExcel;
 
 /**
  * 后台公用基础控制器
@@ -124,21 +123,5 @@ class AdminBase extends Controller
 
             }
         }
-    }
-
-    public function excel($fields){
-        $model = D($this->modeName."View");
-        $field_keys=array();
-        $field_vals=array();
-        foreach ($fields as $k=>$v) {
-            if(!empty($k)){
-                Array_push($field_keys,$k);
-            }
-            Array_push($field_vals,$v);
-        }
-        $data[0]=$fields;
-        $list = $model->field(implode(',',$field_keys))->select();
-        $data=array_merge($data,$list);
-        EXCEL($menu['NAME'], $data,$field_keys);
     }
 }

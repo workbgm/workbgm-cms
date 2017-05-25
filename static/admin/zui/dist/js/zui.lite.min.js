@@ -1,5 +1,5 @@
 /*!
- * ZUI: Lite edition - v1.5.0 - 2017-05-19
+ * ZUI: Lite edition - v1.5.0 - 2017-05-25
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
  * Copyright (c) 2017 cnezsoft.com; Licensed MIT

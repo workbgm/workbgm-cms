@@ -11,8 +11,8 @@
             <div class="container-fluid">
                 <form class="form-horizontal" action="{:url('admin/article/save')}" method="post">
                     <div class="form-group">
-                        <label class="col-sm-2">所属栏目</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">所属栏目</label>
+                       <div class="col-md-10 col-sm-10">
                            <select class="form-control" name="cid" >
                                 {foreach name="category_level_list" item="vo"}
                                 <option value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
@@ -21,39 +21,39 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">标题</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">标题</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="title" value="" required   placeholder="请输入标题" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">作者</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">作者</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="author" value="" placeholder="（选填）请输入作者" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">简介</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">简介</label>
+                       <div class="col-md-10 col-sm-10">
                             <textarea name="introduction" placeholder="（选填）请输入简介" class="form-control" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">内容</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">内容</label>
+                       <div class="col-md-10 col-sm-10">
                             <textarea name="content" placeholder="" id="content"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">缩略图</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">缩略图</label>
+                       <div class="col-md-10 col-sm-10">
                            <input class="form-control" type="text" name="thumb"  value="" readonly>
                            <input type="file" imge="thumb" name="file" class="form-control" value="" >
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">状态</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">状态</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="status" value="1" checked="checked">
                                已审核
@@ -65,8 +65,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">置顶</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">置顶</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="is_top" value="1">
                                置顶
@@ -78,8 +78,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">推荐</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">推荐</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="is_recommend" value="1">
                                推荐
@@ -91,14 +91,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">发布时间</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">发布时间</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="publish_time" value="{:date('Y-m-d H:i:s')}" class="form-control form-date"  readonly>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">排序</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">排序</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="sort" value="0" required   class="form-control">
                         </div>
                     </div>

@@ -1,9 +1,11 @@
 {extend name="./data/tpl/base.html" /}
 {block name="body"}
-<div class="container-fluid">
     <form class="form-horizontal" id="form" method="post" action="{:\\think\\Url::build('run')}">
+        <!--表单 s-->
+        <div class="panel">
+            <div class="panel-body">
         <div class="form-group">
-            <label class="col-sm-2">生成方式：</label>
+            <label class="col-sm-2 col-md-2">生成方式：</label>
             <div class="col-sm-4">
                     <div class="col-sm-8">
                     <select class="form-control db-table">
@@ -19,7 +21,7 @@
                         </button>
                     </div>
             </div>
-            <label class="col-sm-2">生成文件：</label>
+            <label class="col-sm-2 col-md-2">生成文件：</label>
             <div class="col-sm-4">
                 <div class="select-box" style="width: 260px">
                     <select name="file" class="form-control">
@@ -44,8 +46,8 @@
         </div>
         <h2>控制器信息 ：</h2>
         <div class="form-group">
-            <label class="col-sm-2">模块：<span class="required"></span></label>
-            <div class="col-md-6 col-sm-10">
+            <label class="col-sm-2 col-md-2">模块：<span class="required"></span></label>
+            <div class="col-md-10 col-sm-10">
                 <input type="text" class="form-control" placeholder="默认为当前模块" name="module"
                        datatype="/^[a-z]+$/" nullmsg="请填写模块名称"
                        errormsg="模块名称必须是小写字母"
@@ -55,8 +57,8 @@
             <div class="col-xs-2"></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2">控制器：<span class="required"></span></label>
-            <div class="col-md-6 col-sm-10">
+            <label class="col-sm-2 col-md-2">控制器：<span class="required"></span></label>
+            <div class="col-md-10 col-sm-10">
                 <div class="col-sm-6">
                 <input type="text" class="form-control" placeholder="字母，驼峰式，例如AdminGroup，前面可加小写目录" name="controller"
                        errormsg="必须是(dir.[dir2.dir3....])?Controller的格式" value="{$controller ?? ''}"
@@ -70,8 +72,8 @@
             <div class="col-xs-2"></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2">表备注：<span class="required"></span></label>
-            <div class="col-md-6 col-sm-10">
+            <label class="col-sm-2 col-md-2">表备注：<span class="required"></span></label>
+            <div class="col-md-10 col-sm-10">
                 <input type="text" class="form-control" placeholder="表备注" name="table_comment"
                        style="width: 49%">
             </div>
@@ -176,11 +178,17 @@
             </tr>
             </tbody>
         </table>
+            </div>
+        </div>
+        <!--表单 e-->
 
+        <!--数据库  s-->
+        <div class="panel">
+            <div class="panel-body">
         {if condition="!$Request.param.table"}
         <h2>数据表信息 ：</h2>
         <div class="form-group">
-            <label class="col-sm-2">数据表：</label>
+            <label class="col-sm-2 col-md-2">数据表：</label>
             <div class="col-md-6 col-sm-10 ">
                 <div class="radio-box" title="会在数据库自动创建相应模型的数据表">
                     <input type="checkbox" name="create_table" value="1" checked>
@@ -197,14 +205,14 @@
             <div class="col-xs-3"></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2"></label>
-            <div class="col-md-6 col-sm-10">
+            <label class="col-sm-2 col-md-2"></label>
+            <div class="col-md-10 col-sm-10">
                 <span class="required">勾选强制建表后无论表是否存在都会删除原表强制创建新表，不勾选只在表不存在时才创建新表，慎重选择</span>
             </div>
             <div class="col-xs-3"></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2"></label>
+            <label class="col-sm-2 col-md-2"></label>
             <div class="col-md-6 col-sm-10 ">
                 <div class="select-box" style="width: 150px">
                     <select name="table_engine" class="form-control">
@@ -272,7 +280,7 @@
         </table>
         {/if}
         <div class="form-group hide">
-            <label class="col-sm-2">首页菜单：</label>
+            <label class="col-sm-2 col-md-2">首页菜单：</label>
             <div class="col-md-6 col-sm-10 ">
                 <div class="radio-box">
                     <input type="checkbox" name="menu[]" id="radio-0" value="add" checked>
@@ -302,7 +310,7 @@
             <div class="col-xs-3"></div>
         </div>
         <div class="form-group hide">
-            <label class="col-sm-2">创建模型：</label>
+            <label class="col-sm-2 col-md-2">创建模型：</label>
             <div class="col-md-6 col-sm-10 ">
                 <div class="radio-box">
                     <input type="checkbox" name="model" value="1" checked>
@@ -316,7 +324,7 @@
             <div class="col-xs-3"></div>
         </div>
         <div class="form-group hide">
-            <label class="col-sm-2">验证器：</label>
+            <label class="col-sm-2 col-md-2">验证器：</label>
             <div class="col-md-6 col-sm-10 ">
                 <div class="radio-box">
                     <input type="checkbox" name="validate" value="1" checked>
@@ -327,7 +335,7 @@
         </div>
 
         <div class="form-group hide">
-            <label class="col-sm-2">删除代码：</label>
+            <label class="col-sm-2 col-md-2">删除代码：</label>
             <div class="col-md-6 col-sm-10 ">
                 <div class="radio-box">
                     <input type="checkbox" name="delete_file" value="1">
@@ -341,8 +349,10 @@
                 <button type="submit" class="btn btn-primary radius">确认创建</button>
             </div>
         </div>
+            </div>
+        </div>
+                <!--数据库 e-->
     </form>
-</div>
 {/block}
 {block name="script"}
 <script>

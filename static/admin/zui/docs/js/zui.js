@@ -1,5 +1,5 @@
 /*!
- * ZUI: ZUI for official website - v1.5.0 - 2017-05-19
+ * ZUI: ZUI for official website - v1.5.0 - 2017-05-25
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
  * Copyright (c) 2017 cnezsoft.com; Licensed MIT
@@ -10146,7 +10146,7 @@ MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md
 
 
 /*!
- * ZUI: Generated from less code - v1.5.0 - 2017-05-19
+ * ZUI: Generated from less code - v1.5.0 - 2017-05-25
  * http://zui.sexy
  * GitHub: https://github.com/easysoft/zui.git 
  * Copyright (c) 2017 cnezsoft.com; Licensed MIT
@@ -10158,8 +10158,8 @@ MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md
     var presetColors = ['primary', 'red', 'yellow', 'green', 'blue', 'purple', 'brown', 'dark'];
 
     var colorset = {
-        primary: '#666',
-        secondary: '#666',
+        primary: '#1D7AD9',
+        secondary: '#1D7AD9',
         pale: '#f5eeff',
         fore: '#353535',
         back: '#fff',

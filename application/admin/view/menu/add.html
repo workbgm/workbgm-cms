@@ -11,8 +11,8 @@
             <div class="container-fluid">
                 <form class="form-horizontal" action="{:url('admin/menu/save')}" method="post">
                     <div class="form-group">
-                        <label class="col-sm-2">上级菜单</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">上级菜单</label>
+                       <div class="col-md-10 col-sm-10">
                            <select class="form-control" name="pid" >
                                 <option value="0">一级菜单</option>
                                 {foreach name="admin_menu_level_list" item="vo"}
@@ -22,27 +22,27 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">菜单名称</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">菜单名称</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="title" value="" required   placeholder="请输入菜单名称" class="form-control">
                         </div>
                     </div>
                     <?php echo m_select('类型','type',map('admin-menu-type'),true,'','id="type"','type-item'); ?>
                     <div class="form-group">
-                        <label class="col-sm-2">链接/控制器方法</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">链接/控制器方法</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="name" value="" required   placeholder="请输入控制器方法 如：admin/Index/index" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">图标</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">图标</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="icon" value="" placeholder="（选填）如：icon icon-arrow-right" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">状态</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">状态</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="status" value="1"  checked="checked">
                                显示
@@ -54,8 +54,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">排序</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">排序</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="sort" value="0" required   class="form-control">
                         </div>
                     </div>

@@ -12,8 +12,8 @@
             <div class="container-fluid">
                 <form class="form-horizontal" action="{:url('admin/nav/update')}" method="post">
                     <div class="form-group">
-                        <label class="col-sm-2">上级导航</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">上级导航</label>
+                       <div class="col-md-10 col-sm-10">
                            <select class="form-control" name="pid" required >
                                 <option value="0">一级导航</option>
                                 {foreach name="nav_level_list" item="vo"}
@@ -23,29 +23,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">导航名称</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">导航名称</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="name" value="{$nav.name}" required   placeholder="请输入导航名称" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">别名</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">别名</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="alias" value="{$nav.alias}" placeholder="（选填）请输入导航别名" class="form-control">
                         </div>
                     </div>
                     <?php echo m_select('类型','type',map('admin-nav-type'),true,$nav['type'],'id="type"','type-item'); ?>
                     <?php if($nav['type']=='url'){?>
                     <div class="form-group" id="url">
-                        <label class="col-sm-2">链接</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">链接</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="link" value="{$nav.link}" placeholder="（选填）请输入导航链接" class="form-control">
                         </div>
                     </div>
                     <?php }else if($nav['type']=='cate'){?>
                     <div class="form-group" id="cate">
-                        <label class="col-sm-2">文章类目</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">文章类目</label>
+                       <div class="col-md-10 col-sm-10">
                            <select class="form-control" name="link" >
                                 {foreach name="category_level_list" item="vo"}
                                 <option  {if condition="$nav.link==$vo.id"} selected="selected"{/if} value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
@@ -55,14 +55,14 @@
                     </div>
                     <?php }?>
                     <div class="form-group">
-                        <label class="col-sm-2">图标</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">图标</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="icon" value="{$nav.icon}" placeholder="（选填）如：fa fa-home" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">状态</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">状态</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="status" value="1"  {if condition="$nav.status==1"} checked="checked"{/if}>
                                显示
@@ -74,8 +74,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">打开方式</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">打开方式</label>
+                       <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">
                             <input type="radio" name="target" value="_self"  {if condition="$nav.target=='_self'"} checked="checked"{/if}>
                                默认
@@ -87,8 +87,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">排序</label>
-                       <div class="col-md-6 col-sm-10">
+                        <label class="col-sm-2 col-md-2">排序</label>
+                       <div class="col-md-10 col-sm-10">
                             <input type="text" name="sort" value="{$nav.sort}" required   class="form-control">
                         </div>
                     </div>
@@ -103,15 +103,15 @@
 
 <div class="hide" id="formhide">
     <div class="form-group" id="url-hide">
-        <label class="col-sm-2">链接</label>
-       <div class="col-md-6 col-sm-10">
+        <label class="col-sm-2 col-md-2">链接</label>
+       <div class="col-md-10 col-sm-10">
             <input type="text" name="link" value="{$nav.link}" placeholder="（选填）请输入链接" class="form-control">
         </div>
     </div>
 
     <div class="form-group" id="cate-hide">
-        <label class="col-sm-2">文章类目</label>
-       <div class="col-md-6 col-sm-10">
+        <label class="col-sm-2 col-md-2">文章类目</label>
+       <div class="col-md-10 col-sm-10">
            <select class="form-control" name="link" >
                 {foreach name="category_level_list" item="vo"}
                 <option  {if condition="$nav.link==$vo.id"} selected="selected"{/if} value="{$vo.id}">{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
