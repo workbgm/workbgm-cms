@@ -1426,3 +1426,5 @@ function EXCEL($fileName, $data, $head) {
     $objWriter->save('php://output'); //文件通过浏览器下载
     exit;
 }
+
+include EXTEND_PATH ."data/Data.php";

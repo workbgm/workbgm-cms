@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-05-21 22:23:09
+Date: 2017-05-26 15:02:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,7 @@ CREATE TABLE `think_admin_user` (
 -- ----------------------------
 -- Records of think_admin_user
 -- ----------------------------
-INSERT INTO `think_admin_user` VALUES ('1', 'admin', 'edf928bd7ceb77a5f3dc5a4c3651a1cb', '1', '2016-10-18 15:28:37', '2017-05-21 22:04:27', '0.0.0.0');
+INSERT INTO `think_admin_user` VALUES ('1', 'admin', 'edf928bd7ceb77a5f3dc5a4c3651a1cb', '1', '2016-10-18 15:28:37', '2017-05-26 08:51:10', '0.0.0.0');
 INSERT INTO `think_admin_user` VALUES ('2', 'test', '7b79e788e94c1c41b6d4e1b1280c4bdb', '1', '2017-03-30 14:44:52', '2017-03-30 14:45:01', '0.0.0.0');
 
 -- ----------------------------
@@ -81,7 +81,7 @@ INSERT INTO `think_article` VALUES ('23', '9', '配网三相平衡解决方案',
 INSERT INTO `think_article` VALUES ('24', '9', '分布式馈线自动化解决方案', '', '', 'admin', '1', '0', '/public/uploads/20170519/4c198ef847143288ecd6609a67def42c.png', null, '0', '0', '2017-05-18 16:18:08', '2017-05-18 16:17:53');
 INSERT INTO `think_article` VALUES ('25', '9', '营业厅视频监控解决方案', '', '', 'admin', '1', '0', '/public/uploads/20170519/88451adca1b93b275818edab9ed0d538.png', null, '0', '0', '2017-05-18 16:18:28', '2017-05-18 16:18:11');
 INSERT INTO `think_article` VALUES ('26', '10', '瑞攀官网后台操作说明', '', '<p><strong>解决方案：</strong></p><p><strong>1.必须上传缩略图（尺寸488*323px）；</strong></p><p><strong>最新新闻和行业趋势：</strong></p><p><strong>1.必须上传缩略图（尺寸488*323px）；</strong></p><p><strong>2.必须填简介。</strong></p>', 'admin', '1', '0', '', null, '0', '0', '2017-05-19 11:12:47', '2017-05-19 11:11:15');
-INSERT INTO `think_article` VALUES ('27', '5', '最新新闻测试', '—记瑞攀第一届亲子活动 盼望着，盼望着，5月23日来了，骚动的心沸腾了。为促进员工家庭亲子关系、体现公司大家庭', '<p style=\"margin-top: 0px; margin-bottom: 14px; padding: 0px; -webkit-tap-highlight-color: transparent; color: rgb(34, 34, 34); font-family: \">生成的<span class=\"e-search-highlight\" style=\"margin: 0px; padding: 0px; -webkit-tap-highlight-color: transparent; outline: 0px; background-color: rgb(254, 231, 47) !important;\">URL</span>地址为：</p><pre style=\"margin-top: 0px; margin-bottom: 14px; padding: 16px; -webkit-tap-highlight-color: transparent; overflow: auto; font-size: 13.6px; line-height: 1.45; background-color: rgb(247, 247, 247); border: 1px solid silver; border-radius: 3px; font-family: Consolas, \">http://blog.thinkphp.cn/read/id/5.html#anchor</pre><h2 style=\"margin: 0px 0px 14px; padding: 0px 0px 0.3em; -webkit-tap-highlight-color: transparent; font-size: 1.75em; font-weight: 200; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(34, 34, 34); font-family: \">隐藏或者加上入口文件</h2><p style=\"margin-top: 0px; margin-bottom: 14px; padding: 0px; -webkit-tap-highlight-color: transparent; color: rgb(34, 34, 34); font-family: \">有时候我们生成的<span class=\"e-search-highlight\" style=\"margin: 0px; padding: 0px; -webkit-tap-highlight-color: transparent; outline: 0px; background-color: rgb(254, 231, 47) !important;\">URL</span>地址可能需要加上<code style=\"font-family: Consolas, \">index.php</code>或者去掉<code style=\"font-family: Consolas, \">index.php</code>，大多数时候系统会自动判断，如果发现自动生成的地址有问题，可以直接在调用<code style=\"font-family: Consolas, \">build</code>方法之前调用<code style=\"font-family: Consolas, \">root</code>方法，例如加上<code style=\"font-family: Consolas, \">index.php</code>：</p><pre style=\"margin-top: 0px; margin-bottom: 14px; padding: 16px; -webkit-tap-highlight-color: transparent; overflow: auto; font-size: 13.6px; line-height: 1.45; background-color: rgb(247, 247, 247); border: 1px solid silver; border-radius: 3px; font-family: Consolas, \">Url::root(&#39;/index.php&#39;);Url::build(&#39;index/blog/read&#39;,&#39;id=5&#39;);</pre><p style=\"margin-top: 0px; margin-bottom: 14px; padding: 0px; -webkit-tap-highlight-color: transparent; color: rgb(34, 34, 34); font-family: \">或者隐藏<code style=\"font-family: Consolas, \">index.php</code>：</p><pre style=\"margin-top: 0px; margin-bottom: 14px; padding: 16px; -webkit-tap-highlight-color: transparent; overflow: auto; font-size: 13.6px; line-height: 1.45; background-color: rgb(247, 247, 247); border: 1px solid silver; border-radius: 3px; font-family: Consolas, \">Url::root(&#39;/&#39;);</pre><p><br/></p>', 'admin', '1', '0', '/public/uploads/20170521/6c54f26a5dcc52680e9a56ec04ccd585.jpg', null, '0', '0', '2017-05-19 15:49:05', '2017-05-19 15:48:59');
+INSERT INTO `think_article` VALUES ('27', '5', '最新新闻测试', '—记瑞攀第一届亲子活动 盼望着，盼望着，5月23日来了，骚动的心沸腾了。为促进员工家庭亲子关系、体现公司大家庭', '<p style=\"margin-top: 0px; margin-bottom: 14px; padding: 0px; -webkit-tap-highlight-color: transparent; color: rgb(34, 34, 34); font-family: \">生成的<span class=\"e-search-highlight\" style=\"margin: 0px; padding: 0px; -webkit-tap-highlight-color: transparent; outline: 0px; background-color: rgb(254, 231, 47) !important;\">URL</span>地址为：</p><pre style=\"margin-top: 0px; margin-bottom: 14px; padding: 16px; -webkit-tap-highlight-color: transparent; overflow: auto; font-size: 13.6px; line-height: 1.45; background-color: rgb(247, 247, 247); border: 1px solid silver; border-radius: 3px; font-family: Consolas, \">http://blog.thinkphp.cn/read/id/5.html#anchor</pre><h2 style=\"margin: 0px 0px 14px; padding: 0px 0px 0.3em; -webkit-tap-highlight-color: transparent; font-size: 1.75em; font-weight: 200; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(34, 34, 34); font-family: \">隐藏或者加上入口文件<img src=\"/public/uploads/image/20170525/1495694844454587.jpg\" title=\"1495694844454587.jpg\" alt=\"38b26477e608c0193f848d69544d4da3ca8c34e12e4ff-LKLfNb_fw658.jpg\"/></h2><p style=\"margin-top: 0px; margin-bottom: 14px; padding: 0px; -webkit-tap-highlight-color: transparent; color: rgb(34, 34, 34); font-family: \">有时候我们生成的<span class=\"e-search-highlight\" style=\"margin: 0px; padding: 0px; -webkit-tap-highlight-color: transparent; outline: 0px; background-color: rgb(254, 231, 47) !important;\">URL</span>地址可能需要加上<code style=\"font-family: Consolas, \">index.php</code>或者去掉<code style=\"font-family: Consolas, \">index.php</code>，大多数时候系统会自动判断，如果发现自动生成的地址有问题，可以直接在调用<code style=\"font-family: Consolas, \">build</code>方法之前调用<code style=\"font-family: Consolas, \">root</code>方法，例如加上<code style=\"font-family: Consolas, \">index.php</code>：</p><pre style=\"margin-top: 0px; margin-bottom: 14px; padding: 16px; -webkit-tap-highlight-color: transparent; overflow: auto; font-size: 13.6px; line-height: 1.45; background-color: rgb(247, 247, 247); border: 1px solid silver; border-radius: 3px; font-family: Consolas, \">Url::root(&#39;/index.php&#39;);Url::build(&#39;index/blog/read&#39;,&#39;id=5&#39;);</pre><p style=\"margin-top: 0px; margin-bottom: 14px; padding: 0px; -webkit-tap-highlight-color: transparent; color: rgb(34, 34, 34); font-family: \">或者隐藏<code style=\"font-family: Consolas, \">index.php</code>：</p><pre style=\"margin-top: 0px; margin-bottom: 14px; padding: 16px; -webkit-tap-highlight-color: transparent; overflow: auto; font-size: 13.6px; line-height: 1.45; background-color: rgb(247, 247, 247); border: 1px solid silver; border-radius: 3px; font-family: Consolas, \">Url::root(&#39;/&#39;);</pre><p><br/></p>', 'admin', '1', '0', '/public/uploads/20170521/6c54f26a5dcc52680e9a56ec04ccd585.jpg', null, '0', '0', '2017-05-19 15:49:05', '2017-05-19 15:48:59');
 
 -- ----------------------------
 -- Table structure for think_auth_group
@@ -135,7 +135,7 @@ CREATE TABLE `think_auth_rule` (
   `condition` char(100) DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COMMENT='规则表';
+) ENGINE=MyISAM AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COMMENT='规则表';
 
 -- ----------------------------
 -- Records of think_auth_rule
@@ -217,8 +217,8 @@ INSERT INTO `think_auth_rule` VALUES ('86', 'http://www.kancloud.cn/manual/think
 INSERT INTO `think_auth_rule` VALUES ('85', 'http://localhost:88/workbgm/static/admin/zui/index.html', 'ZUI', '2', '1', '84', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('84', 'admin/Dev/index', '开发文档', '1', '1', '0', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('82', 'admin/Plugin/index', '插件管理', '1', '1', '75', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('88', 'admin/Index/index', '首页', '1', '1', '81', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('81', 'admin/index/default', '首页', '1', '1', '0', '', '10', '');
+INSERT INTO `think_auth_rule` VALUES ('89', 'http://www.kancloud.cn/houdunwang/wechat/232825', '微信SDK', '2', '1', '84', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('81', 'admin/Index/index', '首页', '1', '1', '0', '', '10', '');
 
 -- ----------------------------
 -- Table structure for think_category

@@ -12,26 +12,28 @@
 return [
     // 数据库类型
     'type'           => 'mysql',
-     // 服务器地址
-     'hostname'       => '127.0.0.1',
-     // 数据库名
-     'database'       => 'app_d1rj',
-     // 用户名
-     'username'       => 'root',
-     // 密码
-     'password'       => 'root',
-     // 端口
-     'hostport'       => '',
-    //     // 服务器地址
-//    'hostname'       => SAE_MYSQL_HOST_M,
-//    // 数据库名
-//    'database'       => SAE_MYSQL_DB,
-//    // 用户名
-//    'username'       => SAE_MYSQL_USER,
-//    // 密码
-//    'password'       => SAE_MYSQL_PASS,
-//    // 端口
-//    'hostport'       => SAE_MYSQL_PORT,
+    //本地
+//     // 服务器地址
+//     'hostname'       => '127.0.0.1',
+//     // 数据库名
+//     'database'       => 'app_d1rj',
+//     // 用户名
+//     'username'       => 'root',
+//     // 密码
+//     'password'       => 'root',
+//     // 端口
+//     'hostport'       => '',
+//    远程
+    // 服务器地址
+    'hostname'       => 'w.rdc.sae.sina.com.cn',
+    // 数据库名
+    'database'       => 'app_workcloud',
+    // 用户名
+    'username'       => 'mzkwlyyyjn',
+    // 密码
+    'password'       => 'hxlz3k3545mj0z1xyk35h2515i2xlyw431xkwllx',
+    // 端口
+    'hostport'       => '3306',
     // 连接dsn
     'dsn'            => '',
     // 数据库连接参数

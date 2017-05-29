@@ -803,7 +803,7 @@ class Generate
             . " DEFAULT CHARSET=utf8 COMMENT '{$this->data['title']}'";
 
         // 写入执行的SQL到日志中，如果不是想要的表结构，请到日志中搜索BUILD_SQL，找到执行的SQL到数据库GUI软件中修改执行，修改表结构
-        Log::write("BUILD_SQL：\n{$sql_drop};\n{$sql_create};", Log::SQL);
+//        Log::write("BUILD_SQL：\n{$sql_drop};\n{$sql_create};", Log::SQL);
         // execute和query方法都不支持传入分号 (;)，不支持一次执行多条 SQL
         try {
             Db::execute($sql_drop);
@@ -1043,16 +1043,14 @@ class Generate
                         case "textarea":
                             // 默认生成的textarea加入了输入字符长度实时统计，H-ui.admin官方的textarealength方法有问题，请使用 tpadmin 框架修改后的源码，也可拷贝 H-ui.js 里相应的方法
                             // 如果不需要字符长度实时统计，请在生成代码中删除textarea上的onKeyUp事件和下面p标签那行
-                            $editField .= tab(4) . '<textarea class="textarea" placeholder="" name="' . $form['name'] . '" '
-                                . 'onKeyUp="textarealength(this, 100)"' . $validateForm . '>'
+                            $editField .= tab(4) . '<textarea class="form-control"  rows="3"placeholder="" name="' . $form['name'] . '" '
+                                . $validateForm . '>'
                                 . '{$vo.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}'
-                                . '</textarea>' . "\n"
-                                . tab(4) . '<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>' . "\n";
-                            $addField .= tab(4) . '<textarea class="textarea" placeholder="" name="' . $form['name'] . '" '
-                                . 'onKeyUp="textarealength(this, 100)"' . $validateForm . '>'
+                                . '</textarea>' . "\n";
+                            $addField .= tab(4) . '<textarea class="form-control" placeholder="" name="' . $form['name'] . '" '
+                                .  $validateForm . '>'
                                 . '{$vo.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}'
-                                . '</textarea>' . "\n"
-                                . tab(4) . '<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>' . "\n";
+                                . '</textarea>' . "\n";
                             break;
                         case "date":
                             $editField .= tab(4) . '<input type="text" class="form-control Wdate" '

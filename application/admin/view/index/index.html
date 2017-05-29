@@ -7,42 +7,71 @@
             <li class="active"><a>网站概览</a></li>
         </ul>
         <div class="container-fluid">
-            <div class="container-fluid">
-                <hr><div class="table-responsive">  <table class="table table-hover table-bordered">
-                    <tr>
-                        <td style="width: 400px;">网站域名</td>
-                        <td>{$config.url}</td>
-                    </tr>
-                    <tr>
-                        <td>网站目录</td>
-                        <td>{$config.document_root}</td>
-                    </tr>
-                    <tr>
-                        <td>服务器操作系统</td>
-                        <td>{$config.server_os}</td>
-                    </tr>
-                    <tr>
-                        <td>服务器端口</td>
-                        <td>{$config.server_port}</td>
-                    </tr>
-                    <tr>
-                        <td>服务器环境</td>
-                        <td>{$config.server_soft}</td>
-                    </tr>
-                    <tr>
-                        <td>PHP版本</td>
-                        <td>{$config.php_version}</td>
-                    </tr>
-                    <tr>
-                        <td>MySQL版本</td>
-                        <td>{$config.mysql_version}</td>
-                    </tr>
-                    <tr>
-                        <td>最大上传限制</td>
-                        <td>{$config.max_upload_size}</td>
-                    </tr>
-                </table></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <td style="width: 400px;">网站域名</td>
+                                <td>{$config.url}</td>
+                            </tr>
+                            <tr>
+                                <td>网站目录</td>
+                                <td>{$config.document_root}</td>
+                            </tr>
+                            <tr>
+                                <td>服务器操作系统</td>
+                                <td>{$config.server_os}</td>
+                            </tr>
+                            <tr>
+                                <td>服务器端口</td>
+                                <td>{$config.server_port}</td>
+                            </tr>
+                            <tr>
+                                <td>服务器环境</td>
+                                <td>{$config.server_soft}</td>
+                            </tr>
+                            <tr>
+                                <td>PHP版本</td>
+                                <td>{$config.php_version}</td>
+                            </tr>
+                            <tr>
+                                <td>MySQL版本</td>
+                                <td>{$config.mysql_version}</td>
+                            </tr>
+                            <tr>
+                                <td>最大上传限制</td>
+                                <td>{$config.max_upload_size}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="list">
+                        <header>
+                            <h3><i class="icon-list-ul"></i> 开发日志</h3>
+                        </header>
+                        <?php $devlog_list=Data::get_table_data_paged('devlog');?>
+                        <?php foreach($devlog_list as $m){?>
+                        <div class="items items-hover">
+                            <div class="item">
+                                <div class="item-heading">
+                                    <div class="pull-right"><span class="text-muted"><?php echo unixTo($m['update_time']);?></span></div>
+                                    <h4><?php echo $m['title'];?></h4>
+                                </div>
+                                <div class="item-content">
+                                    <div class="text">
+                                        <?php echo $m['content'];?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php }?>
+                        <?php $devlog_list->render();?>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

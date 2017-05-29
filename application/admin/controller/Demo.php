@@ -65,8 +65,9 @@ class Demo extends AdminBase
             'type' => 'bar',
             'data' => array(5, 20, 40, 10, 10, 20)
         );
-        $char=$chart->render('simple-custom-id');
-        $this->assign('echarts',$char);
-        return $this->fetch();
+        return $chart->render('simple-custom-id');
+//        $char=$chart->render('simple-custom-id');
+//        $this->assign('echarts',$char);
+//        return $this->fetch();
     }
 }

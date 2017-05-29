@@ -26,7 +26,7 @@ class Plugin extends AdminBase
     {
         //模块数据
         $actionsData = [];
-        foreach (glob('Addons/*') as $v) {
+        foreach (glob('addons/*') as $v) {
             //存在文件说明是合法的模块
             if (is_file($v . '/maintest.php')) {
                 $actionsData[] = include $v . '/maintest.php';
@@ -36,7 +36,6 @@ class Plugin extends AdminBase
         //查找所有已经安装了的模块(判断安装或者卸载)
         $has =(new Module())->column('name');
         $this->assign('has', $has);
-
         $this->assign('actionData', $actionsData);
         return $this->fetch();
     }
@@ -46,7 +45,7 @@ class Plugin extends AdminBase
     {
         if ($this->request->isPost()) {
             $this->name = $_POST['name'];
-            if (is_dir('Addons/' . $this->name)) {
+            if (is_dir('addons/' . $this->name)) {
                 $this->error($this->name . '模块已存在');
                 die;
             } else {
@@ -81,8 +80,8 @@ class Plugin extends AdminBase
         $_POST['name'] = $_POST['name'];
         $_POST['actions'] = $actionsData;
         //创建目录 //(0755线上的是linux环境权限不同)
-        mkdir('Addons/' . $this->name . '/view', 0755, true);
-        file_put_contents('Addons/' . $this->name . '/maintest.php', '<?php return ' . var_export($_POST, true) . ' ;?>');
+        mkdir('addons/' . $this->name . '/view', 0755, true);
+        file_put_contents('addons/' . $this->name . '/maintest.php', '<?php return ' . var_export($_POST, true) . ' ;?>');
     }
 
     //2.创建模块基本文件(前台控制器,后台控制器文件)
@@ -95,7 +94,7 @@ class Plugin extends AdminBase
             //替换命名空间
             $content = str_replace('{NAME}', $this->name, $content);
             //压入到模块里去 生成后台、前台控制器文件
-            file_put_contents('Addons/' . $this->name . '/' . basename($v), $content);
+            file_put_contents('addons/' . $this->name . '/' . basename($v), $content);
         }
 
         foreach (glob('data/module/*.html') as $v) {
@@ -112,7 +111,7 @@ class Plugin extends AdminBase
     public function install()
     {
         $name = input('name');
-        $data = include 'Addons/' . $name . '/maintest.php';
+        $data = include 'addons/' . $name . '/maintest.php';
         $data['actions'] = json_encode($data['actions'], JSON_UNESCAPED_UNICODE);
         $module= new Module();
         $validate_result = $this->validate($data, 'Module');
@@ -143,7 +142,7 @@ class Plugin extends AdminBase
     public function  delete(){
         $name = input('name');
         if(empty($name)) return $this->error('删除失败，非法的模块', 'index');;
-        $path='Addons/' . $name;
+        $path='addons/' . $name;
         $this->deleteAll($path);
         return $this->success('删除成功', 'index');
     }
