@@ -1,6 +1,6 @@
 .idea
-composer.lock
 *.log
 runtime/
 vendor/
-/composer.json
+application/database.php
+

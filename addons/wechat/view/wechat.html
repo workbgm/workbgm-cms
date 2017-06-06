@@ -1,0 +1,50 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>微信管理</a></li>
+            <li><a href="{:site_url('wechat.wechatAdd')}">添加新微信</a></li>
+        </ul>
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <hr><div class="table-responsive">  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">ID</th>
+                        <th>appid</th>
+                        <th>appsecret</th>
+                        <th>token</th>
+                        <th>备注</th>
+                        <th>url</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <?php $vo['wechat']=unserialize($vo['wechat']);?>
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.wechat.appid}</td>
+                        <td>{$vo.wechat.appsecret}</td>
+                        <td>{$vo.wechat.token}</td>
+                        <td>{$vo.remark}</td>
+                        <td>{:site_url('wechat.handler',['id'=>$vo['id']])}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>
+                            <a href="{:site_url('wechat.wechatEdit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                            <a href="{:site_url('wechat.wechatDel',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}

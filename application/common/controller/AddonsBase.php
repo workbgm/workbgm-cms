@@ -103,7 +103,7 @@ class AddonsBase extends  AdminBase
         //模块数据
     public function getModules(){
         $actionsData = [];
-        foreach (glob('Addons/*') as $v) {
+        foreach (glob('addons/*') as $v) {
             //存在文件说明是合法的模块
             if (is_file($v . '/maintest.php')) {
                 $actionsData[] = include $v . '/maintest.php';

@@ -5,8 +5,8 @@
   array (
     0 => 
     array (
-      'title' => '测试',
-      'name' => 'Test',
+      'title' => '微信托管',
+      'name' => 'wechat',
       'icon' => '',
     ),
   ),

@@ -16,7 +16,7 @@
         "topthink/think": "v5.0.8",
         "phpoffice/phpexcel":"1.8.1",
         "hisune/echarts-php":"1.0.10",
-        "houdunwang/wechat":"v1.0.18"
+        "overtrue/wechat":"3.3.2"
     },
     "extra": {
         "think-path": "thinkphp"

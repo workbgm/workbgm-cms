@@ -17,7 +17,7 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
     'app_trace'              => true,
     // 应用模式状态
@@ -196,7 +196,7 @@ return [
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
-    'exception_handle'       => '',
+    'exception_handle'       => '\\app\\common\\exception\\ExceptionHandler',
 
     // +----------------------------------------------------------------------
     // | 日志设置
@@ -204,13 +204,12 @@ return [
 
     'log'                    => [
         // 日志记录方式，内置 file socket 支持扩展
-        'type'  => 'File',
+        'type'  => 'test', //关闭日志
         // 日志保存目录
         'path'  => LOG_PATH,
         // 日志记录级别
         'level' => [],
     ],
-
     // +----------------------------------------------------------------------
     // | Trace设置 开启 app_trace 后 有效
     // +----------------------------------------------------------------------

@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\AdminBase;
-use app\common\model\Test1 as Test1Model;
+use app\common\model\Wechat as Test1Model;
 
 class Test1 extends AdminBase
 {

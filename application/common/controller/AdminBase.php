@@ -54,13 +54,17 @@ class AdminBase extends Controller
     protected function checkAuth()
     {
 
-        if (!Session::has('admin_id')) {
-            $this->redirect('admin/login/index');
-        }
-
         $module     = $this->request->module();
         $controller = $this->request->controller();
         $action     = $this->request->action();
+
+        if($action=='handler'){
+            return false;
+        }
+
+        if (!Session::has('admin_id')) {
+            $this->redirect('admin/login/index');
+        }
 
         // 排除权限
         $not_check = ['admin/Index/index', 'admin/AuthGroup/getjson', 'admin/System/clear'];
@@ -122,6 +126,140 @@ class AdminBase extends Controller
                 }
 
             }
+        }
+    }
+
+    /**
+     * 列出model的list
+     * $m:模型
+     * $tpl:要跳转的模板
+     * @return mixed
+     */
+    public function m_index($page = 1,$m,$tpl)
+    {
+        $list   = $m->where('isdelete',0)->order(['id' => 'ASC'])->paginate(15, false, ['page' => $page]);
+        $this->assign('list',$list);
+        return $this->fetch($tpl);
+    }
+
+    /**
+     * 跳转到add页面
+     * $tpl:要跳转的模板
+     */
+    public function m_add($tpl)
+    {
+        return $this->fetch($tpl);
+    }
+
+    /**
+     * 保存
+     * $v:验证器名字
+     * $m:模型
+     */
+    public function m_save($v,$m,$tpl)
+    {
+        if ($this->request->isPost()) {
+            $data            = $this->request->post();
+            foreach ($data as $key => $value){
+                if( is_array($data[$key]) ){
+                    $data[$key]=serialize($data[$key]);
+                }
+            }
+            $validate_result = $this->validate($data, $v);
+
+            if ($validate_result !== true) {
+                $this->error($validate_result);
+            } else {
+                if ($m->save($data)) {
+                    $this->success('保存成功');
+                } else {
+                    $this->error('保存失败');
+                }
+            }
+        }
+    }
+
+    /**
+     * 编辑
+     * $m:模型
+     * $tpl:要跳转的模板
+     * @param $id
+     * @return mixed
+     */
+    public function m_edit($id,$m,$tpl)
+    {
+        $obj = $m->find($id);
+        $this->assign('obj',$obj);
+        return $this->fetch($tpl);
+    }
+
+    /**
+     * 更新
+     * $v:验证器名字
+     * $m:模型
+     * @param $id
+     */
+    public function m_update($id,$v,$m)
+    {
+        if ($this->request->isPost()) {
+            $data            = $this->request->post();
+            foreach ($data as $key => $value){
+                if( is_array($data[$key]) ){
+                    $data[$key]=serialize($data[$key]);
+                }
+            }
+            $validate_result = $this->validate($data, $v);
+
+            if ($validate_result !== true) {
+                $this->error($validate_result);
+            } else {
+                if ($m->save($data, $id) !== false) {
+                    $this->success('更新成功');
+                } else {
+                    $this->error('更新失败');
+                }
+            }
+        }
+    }
+
+    /**
+     * 删除
+     * $m:模型
+     * @param $id
+     */
+    public function m_delete($id,$m)
+    {
+        if ($m->where('id',$id)->setField('isdelete',1)) {
+            $this->success('删除成功');
+        } else {
+            $this->error('删除失败');
+        }
+    }
+
+    /**
+     * 恢复
+     * $m:模型
+     * @param $id
+     */
+    public function m_recycle($id,$m)
+    {
+        if ($m->where('id',$id)->setField('isdelete',0)) {
+            $this->success('恢复成功');
+        } else {
+            $this->error('恢复失败');
+        }
+    }
+    /**
+     * 永久删除
+     * $m:模型
+     * @param $id
+     */
+    public function m_deleteForever($id,$m)
+    {
+        if ($m->destroy($id)) {
+            $this->success('删除成功');
+        } else {
+            $this->error('删除失败');
         }
     }
 }

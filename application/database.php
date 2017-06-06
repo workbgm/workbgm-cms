@@ -16,22 +16,22 @@ return [
 //     // 服务器地址
 //     'hostname'       => '127.0.0.1',
 //     // 数据库名
-//     'database'       => 'app_d1rj',
+//     'database'       => 'app_workcloud',
 //     // 用户名
 //     'username'       => 'root',
 //     // 密码
 //     'password'       => 'root',
 //     // 端口
-//     'hostport'       => '',
+//     'hostport'       => '3306',
 //    远程
     // 服务器地址
-    'hostname'       => 'w.rdc.sae.sina.com.cn',
+    'hostname'       => '119.29.188.241',
     // 数据库名
     'database'       => 'app_workcloud',
     // 用户名
-    'username'       => 'mzkwlyyyjn',
+    'username'       => 'root',
     // 密码
-    'password'       => 'hxlz3k3545mj0z1xyk35h2515i2xlyw431xkwllx',
+    'password'       => '7e7f2d5',
     // 端口
     'hostport'       => '3306',
     // 连接dsn
