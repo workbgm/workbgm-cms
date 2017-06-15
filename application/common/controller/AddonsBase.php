@@ -7,7 +7,7 @@ use org\Auth;
 use think\Db;
 
 /**
- *  M-PHP开发框架
+ *  WORKBGM开发框架
  * User: 吴渭明
  * Date: 2017/4/1
  * Time: 16:50

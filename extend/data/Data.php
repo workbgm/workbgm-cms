@@ -3,7 +3,7 @@ use think\Db;
 use think\Config;
 use think\Loader;
 /**
- *  M-PHP开发框架
+ *  WORKBGM开发框架
  * User: 吴渭明
  * Date: 2017/5/27
  * Time: 14:34

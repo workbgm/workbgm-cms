@@ -1,6 +1,6 @@
 <?php
 /**
- *  M-PHP开发框架
+ *  WORKBGM开发框架
  * User: 吴渭明
  * Date: 2017/6/3
  * Time: 下午9:23

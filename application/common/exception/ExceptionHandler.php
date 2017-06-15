@@ -1,6 +1,6 @@
 <?php
 /**
- *  M-PHP开发框架
+ *  WORKBGM开发框架
  * User: 吴渭明
  * Date: 2017/6/5
  * Time: 下午3:43
@@ -22,7 +22,7 @@ class ExceptionHandler extends Handle
     private $msg;
     private $errorCode;
 
-    public function render(Exception $e)
+    public function render(\Exception $e)
     {
         if($e instanceof  BaseException){
             //如果是自定义的异常
@@ -48,7 +48,7 @@ class ExceptionHandler extends Handle
         return json($result,$this->errorCode);
     }
 
-    private function recordErrorLog(\think\Exception $e){
+    private function recordErrorLog(\Exception $e){
         Log::init([
             'type'=>'File',
             'path'=>LOG_PATH,

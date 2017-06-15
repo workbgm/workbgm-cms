@@ -1,7 +1,7 @@
 <?php
 namespace  app;
 /**
- *  M-PHP开发框架
+ *  WORKBGM开发框架
  * User: 吴渭明
  * Date: 2017/5/31
  * Time: 上午8:27

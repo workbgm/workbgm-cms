@@ -4,7 +4,7 @@ use app\common\controller\AddonsBase;
 use EasyWeChat\Foundation\Application;
 use app\Zui;
 /**
- *  M-PHP开发框架
+ *  WORKBGM开发框架
  * User: 吴渭明
  * Date: 2017/4/1
  * Time: 16:48
