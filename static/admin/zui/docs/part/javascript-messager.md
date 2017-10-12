@@ -106,7 +106,7 @@ new $.zui.Messager('你的邮件已成功发送。', {
 
 `actions` 参数为一个包含若干个操作定义对象，每个操作定义对象可取的属性值如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性</th>
@@ -300,7 +300,7 @@ setTimeout(function() {
 }, 5000);
 ```
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr><th>方法</th><th>参数</th><th>定义</th></tr>
   </thead>
@@ -364,7 +364,7 @@ var msg = $.zui.messager.show('消息内容', {placement: 'bottom'});
 
 ### 选项
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>

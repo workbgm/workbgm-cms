@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="public/meta" /}
+    <link rel="stylesheet" href="{$W_CSS}/aboutus.css">
+</head>
+<body>
+{include file="public/browserupgrade" /}
+{include file="public/header" /}
+<!--banner-->
+<div class="banner">
+    <img src="{$W_IMG}/banner/banner6.jpg">
+</div>
+<div class="content">
+    <div class="public-container w-center-block w-clear" style="position: relative">
+        <!--menu-->
+        <div class="menu-header w-m-hide w-t-hide"><img src="{$W_IMG}/menu/solutions.png"></div>
+        <div class="x-menu">
+            <ul>
+                <li><a
+                        href="{:url('ybd/Index/eadvisory')}"
+                        {$Think.session.w_current_menu_2=='eadvisory'?'class="active"':''}
+                ><span class="title">电力咨询</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/edesign')}"
+                        {$Think.session.w_current_menu_2=='edesign'?'class="active"':''}
+                ><span class="title">电力设计</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/eproject')}"
+                        {$Think.session.w_current_menu_2=='eproject'?'class="active"':''}
+                ><span class="title">电力工程</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/emanagement')}"
+                        {$Think.session.w_current_menu_2=='emanagement'?'class="active"':''}
+                ><span class="title">智慧能源管理</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/etrusteeship')}"
+                        {$Think.session.w_current_menu_2=='etrusteeship'?'class="active"':''}
+                ><span class="title">电力运维托管</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/ebusiness')}"
+                        {$Think.session.w_current_menu_2=='ebusiness'?'class="active"':''}
+                ><span class="title">购电售电</span></a></li>
+            </ul>
+        </div>
+        <!--article-->
+        <div class="article">
+            <div class="title">{$article.title}</div>
+            <div class="content_">{$article.content}</div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+</body>
+</html>

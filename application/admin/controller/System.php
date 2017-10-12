@@ -50,10 +50,11 @@ class System extends AdminBase
      */
     public function clear()
     {
+
         if (delete_dir_file(CACHE_PATH) || delete_dir_file(TEMP_PATH)) {
-            $this->success('清除缓存成功');
+            return $this->success('清除缓存成功');
         } else {
-            $this->error('清除缓存失败');
+            return $this->error('清除缓存失败');
         }
     }
 }

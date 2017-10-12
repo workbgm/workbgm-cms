@@ -1,0 +1,15 @@
+<import src="../tpls/products/products-tpl.wxml"/>
+<import src="../tpls/cart/cart-tpl.wxml"/>
+<view class="container theme-container" hidden="{{!loadingHidden}}">
+<template is="cart" data="{{cartTotalCounts:cartTotalCounts}}"/>
+    <view class="theme-header">
+        <image src="{{themeInfo.head_img.url}}" mode="aspectFill" />
+    </view>
+    <view class="theme-main">
+        <!--单品-->
+        <template is="products" data="{{productsArr:themeInfo.products}}"/>
+    </view>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>

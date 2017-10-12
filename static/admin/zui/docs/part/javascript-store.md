@@ -56,7 +56,7 @@ ZUI中提供了一系列方法用于读写本地存储数据。
 
 以下列出store对象提供的属性和方法：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性或方法</th>
@@ -192,7 +192,7 @@ $.zui.store.clear();                                     // 清空所有本地�
 
 很多时候，不同页面相同名称的条目的值需要分别保存。`store`对象提供了一系列方法和属性来读写同一页面（相同路径）的条目。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性或方法</th>

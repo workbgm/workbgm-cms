@@ -340,7 +340,7 @@ $('#tree').tree(options);
 
 可用参数如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>
@@ -540,7 +540,7 @@ var myTreeData = myTree.toData(function(item, $li) {
 
 ### 事件
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件</th>
@@ -602,7 +602,7 @@ function afterPageLoad() {
 
 节点对象中可能包含的属性如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 90px">属性</th>

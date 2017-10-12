@@ -28,7 +28,7 @@ ZUI中的大多数界面元素都有不同的子类型、状态及参数。关�
 
 常用通用状态如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 80px">名称</th>
@@ -82,7 +82,7 @@ ZUI中的大多数界面元素都有不同的子类型、状态及参数。关�
 
 常见的通用参数如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 80px">名称</th>

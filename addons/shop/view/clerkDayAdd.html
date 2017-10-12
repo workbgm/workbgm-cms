@@ -1,0 +1,39 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        {$wui}
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    $(function(){
+        getClerkByScheduling($("select[name='schedulingid']").val());
+        $("select[name='schedulingid']").change(function(){
+            getClerkByScheduling($(this).val());
+        });
+    });
+
+    function getClerkByScheduling(id) {
+        $.ajax({
+            type: 'GET',
+            url: "{:site_url('shop.getClerkByScheduling')}id=" + id,
+            success: function (data) {
+                var opts = $("select[name='clerkid'] option");
+                var clerk = $("select[name='clerkid']");
+                opts.remove();
+                if (data.length == 0) {
+                    workbgm.alert("该店铺下没有员工", null);
+                }
+                $(data).each(function (i, obj) {
+                    var value = obj.id;
+                    var text = obj.name;
+                    clerk.append("<option value='" + value + "'>" + text + "</option>");
+                });
+            }
+        });
+    }
+</script>
+{/block}

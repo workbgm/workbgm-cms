@@ -11,7 +11,7 @@ filter: xiangyingshibuju xysbj
 
 在ZUI中提供针对 4 中不同尺寸的设备屏幕进行分别控制。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>屏幕</th>
@@ -45,7 +45,7 @@ filter: xiangyingshibuju xysbj
 
 针对 4 种屏幕类型各定义两种辅助类来在不同的设备上显示或隐藏内容。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th></th>

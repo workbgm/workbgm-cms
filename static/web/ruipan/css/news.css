@@ -42,9 +42,8 @@ body{
 }
 
 .news-catalog-list{
-    width:568px;
+    width:300px;
     margin:0 auto;
-    /*padding-bottom: 80px;*/
 }
 
 .news-item{
@@ -54,14 +53,15 @@ body{
 }
 
 .item-thumbnail,.article{
-    float:left;
-    width:720px;
+    float: left;
+    width: 620px;
+    padding-right: 100px;
 }
 
 .item-thumbnail{
     width:488px;
     height:323px;
-    margin-right: 120px;
+    margin-right: 0px;
 }
 
 .article .title{

@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
-var baseUrl ="http://work.eruipan.com/api.php/v1";
+var baseUrl ="http://well.zipscloud.com/api.php/v1";
 Page({
   data: {
     motto: 'Hello World',

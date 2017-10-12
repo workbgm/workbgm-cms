@@ -42,6 +42,19 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 col-md-2">模块类型</label>
+                        <div class="col-md-10 col-sm-10">
+                            <label class="radio-inline">
+                                <input type="radio" name="systype" value="0" {if condition="$admin_menu.systype==0"} checked="checked"{/if}>
+                                自身模块
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="systype" value="1"  {if condition="$admin_menu.systype==1"} checked="checked"{/if}>
+                                插件模块
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 col-md-2">状态</label>
                        <div class="col-md-10 col-sm-10">
                            <label class="radio-inline">

@@ -1,6 +1,7 @@
 <?php
 namespace  app\api\service;
 use app\api\model\ShopUser as ShopUserModel;
+use app\common\enum\ScopeEnum;
 use app\common\exception\TokenException;
 
 /**
@@ -75,7 +76,8 @@ class ShopUserToken extends Token
     private function prepareCachedValue($wxResult,$uid){
         $cachedValue = $wxResult;
         $cachedValue['uid'] = $uid;
-        $cachedValue['scope'] = 16;
+        //scope=16 代表App用户的权限数值,scope=32 为管理员
+        $cachedValue['scope'] = ScopeEnum::User;
         return $cachedValue;
     }
 

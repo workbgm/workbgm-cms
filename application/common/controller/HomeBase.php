@@ -2,12 +2,12 @@
 namespace app\common\controller;
 
 use think\Cache;
+use think\Config;
 use think\Controller;
 use think\Db;
 
 class HomeBase extends Controller
 {
-
     protected function _initialize()
     {
         parent::_initialize();
@@ -63,5 +63,20 @@ class HomeBase extends Controller
         }
 
         $this->assign('slide', $slide);
+    }
+
+    /**
+     * 设置资源路径的访问变量
+     */
+    protected  function setResources(){
+        $modulePath = Config::get('resources_path');
+        $marinUrl= "http://".$_SERVER['HTTP_HOST'];
+        if($modulePath){
+            $this->assign('W_IMG',$marinUrl.'/static/web/'.$modulePath.'/images');
+            $this->assign('W_CSS',$marinUrl.'/static/web/'.$modulePath.'/css');
+            $this->assign('W_JS',$marinUrl.'/static/web/'.$modulePath.'/js');
+            $this->assign('W_PLUGIN',$marinUrl.'/static/web/common/plugin');
+            $this->assign('W_C_CSS',$marinUrl.'/static/web/common/css');
+        }
     }
 }

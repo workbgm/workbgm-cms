@@ -445,7 +445,7 @@
 
         var $view = self.$monthView;
         if(!$view.length) {
-            $view = $('<div class="calendar-view month"><table class="table table-bordered"><thead><tr class="week-head"></tr></thead><tbody class="month-days"></tbody></table></div>');
+            $view = $('<div class="calendar-view month"><table class="table table-bordered table-hover"><thead><tr class="week-head"></tr></thead><tbody class="month-days"></tbody></table></div>');
 
             var $weekHead = $view.find('.week-head'),
                 $monthDays = $view.find('.month-days'),

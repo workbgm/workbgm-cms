@@ -1,0 +1,22 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        {$wui}
+    </div>
+</div>
+{/block}
+{block name="css"}
+<link rel="stylesheet" href="__STATIC__/admin/js/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+{/block}
+
+{block name="js"}
+<script src="__STATIC__/admin/js/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+{/block}
+
+{block name="script"}
+<script>
+    $(function(){SyntaxHighlighter.all();});
+</script>
+{/block}

@@ -179,7 +179,7 @@ filter: zhedie zd
 
 其中 `options` 参数为可以选的，用于指定初始化的选项，可用选项如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>选项</th>
@@ -235,7 +235,7 @@ $('#myCollapseContent').collapse('show')
 
 当折叠内容显示或隐藏时会在折叠内容元素上触发以下事件：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件</th>

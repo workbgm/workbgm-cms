@@ -172,7 +172,7 @@ filter: biaoge bg table-bordered table-borderless table-auto table-striped table
 `.table-bordered`
 
 <div class="example">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-hover">
     <thead>
       <tr>
         <th>#</th>

@@ -1,0 +1,55 @@
+$toolbar-size : 81px;
+.toolbar {
+	position: fixed;
+	left: 50%;
+	bottom: 5px;
+	margin-left: -$toolbar-size / 2;
+	top: 30%;
+ }
+.toolbar-item, .toolbar-layer {
+	background-image: url(../img/sprites.png);
+	background-repeat: no-repeat;
+}
+.toolbar-item {
+	position: relative;
+	display: block;
+	width: $toolbar-size;
+	height: $toolbar-size;
+}
+.toolbar-item-weixin {
+	background-position: 0 0;
+	&:hover {
+		background-position: -81px 0;
+		.toolbar-layer {
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolbar-item-app {
+	background-position: -162px 0;
+	&:hover {
+		background-position: 0 -81px;
+		.toolbar-layer {
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolbar-item-top {
+	background-position: -162px -81px;
+	&:hover {
+		background-position: -81px -81px;
+	}
+}
+.toolbar-layer {
+	position: absolute;
+	width: 81px;
+	height: 81px;
+	left: -81px;
+	background-position: -162px 0px;
+	@include transform-origin(right bottom);
+	@include scale(0.01);
+	@include opacity(0);
+	@include transition(all 0.5s);
+}

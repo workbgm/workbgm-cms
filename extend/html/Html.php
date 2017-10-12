@@ -297,12 +297,12 @@ class Html
      * @access public
      * @return string
      */
-    static public function input($name, $value = "", $attrib = "")
+    static public function input($name, $value = "", $attrib = "",$placeholder="")
     {
         $id = "id='$name'";
         if(strpos($attrib, 'id=') !== false) $id = '';
         $value = str_replace("'", '&#039;', $value);
-        return "<input type='text' class=\"form-control\" name='$name' {$id} value='$value' $attrib />\n";
+        return "<input type='text' placeholder='".$placeholder."' class=\"form-control\" name='$name' {$id} value='$value' $attrib />\n";
     }
 
     /**
@@ -365,7 +365,7 @@ class Html
      */
     static public function file($name, $attrib = "")
     {
-        return "<input type='file' name='$name' id='$name' $attrib />\n";
+        return "<input type='file' name='$name'  $attrib />\n";
     }
 
     /**

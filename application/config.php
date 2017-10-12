@@ -208,7 +208,7 @@ return [
         // 日志保存目录
         'path'  => LOG_PATH,
         // 日志记录级别
-        'level' => [],
+        'level' => ["error"],
     ],
     // +----------------------------------------------------------------------
     // | Trace设置 开启 app_trace 后 有效
@@ -275,6 +275,4 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
-    //前台页面链接
-    'web_url'=>'http://d1rj.applinzi.com/',
 ];

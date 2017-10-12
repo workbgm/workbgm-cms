@@ -1,0 +1,133 @@
+.toolbar {
+  position: fixed;
+  right: -1px;
+  bottom: 5px;
+  top: 30%;
+  z-index:100;
+  background-color: #fff;
+  height:160px;
+  z-index:1000;
+}
+
+.toolbar-item-block {
+  background-image: url(../img/toolbar.png);
+  background-repeat: no-repeat;
+}
+
+.toolbar-item {
+  position: relative;
+  display: block;
+  width: 40px;
+  padding:0 10px;
+  height: 40px;
+}
+
+.toolbar-item-block{
+  width: 40px;
+  height:40px;
+}
+
+.toolbar-item-weixin {
+  background-position:0 -120px;
+}
+.toolbar-item-weixin:hover {
+  background-position:0 -80px;
+}
+.toolbar-item-weixin:hover .toolbar-layer {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  width: 80px;
+  height: 80px;
+  left: -100px;
+}
+
+.toolbar-item:hover{
+  background-color: #00b9ef;
+}
+
+.toolbar-item-qq {
+  background-position: 0 -40px;
+}
+.toolbar-item-qq:hover {
+  background-position:0 0;
+}
+
+.toolbar-item-mail {
+  background-position:0 -160px;
+}
+.toolbar-item-mail:hover {
+  background-position:0 -200px;
+}
+
+.toolbar-item-mail:hover .toolbar-layer,.toolbar-item-qq:hover .toolbar-layer,.toolbar-item-mobile:hover .toolbar-layer{
+  background-color: #fff;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  font-size: 18px;
+  width:200px;
+  height:40px;
+  left: -220px;
+  line-height: 40px;
+  padding-left:4px;
+}
+
+.toolbar-layer .tra-right{
+  display: none;
+}
+
+.toolbar-item:hover .tra-right{
+  display: block;
+  position: absolute;
+  top:10px;
+  right:-10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #fff;
+}
+
+
+.toolbar-item-mobile {
+  background-position:0 -280px;
+}
+.toolbar-item-mobile:hover {
+  background-position:0 -240px;
+}
+
+.toolbar-layer a,.toolbar-layer object{
+  color:#656565;
+}
+.toolbar-layer {
+  position: absolute;
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: scale(0.01);
+  -moz-transform: scale(0.01);
+  -ms-transform: scale(0.01);
+  -o-transform: scale(0.01);
+  transform: scale(0.01);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#YSF-CUSTOM-ENTRY-2{
+  display: none;
+}
+

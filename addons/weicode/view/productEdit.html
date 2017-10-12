@@ -1,0 +1,32 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        {$wui}
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    $(function(){
+        $('#addPropertyBtn').click(function(){
+            $add_index=$('.form-group','#protInfo').length-2;
+            $delBtn= $('.form-group','#protInfo').eq(2).clone();
+            $('#del',$delBtn).removeAttr('action').click(function(){
+                $add_index=$('.form-group','#protInfo').length-2;
+                $('.form-group','#protInfo').eq($add_index).remove();
+                $('.form-group','#protInfo').eq($add_index-1).remove();
+                $('.form-group','#protInfo').eq($add_index-2).remove();
+            });
+            $delBtn.insertAfter( $('.form-group','#protInfo').eq($add_index));
+            $detail= $('.form-group','#protInfo').eq(1).clone();
+            $('textarea[name="detail[]"]',$detail).val('').text('');
+            $detail.insertAfter( $('.form-group','#protInfo').eq($add_index));
+            $name=$('.form-group','#protInfo').eq(0).clone();
+            $('input[name="name[]"]',$name).val('').text('');
+            $name.insertAfter( $('.form-group','#protInfo').eq($add_index));
+        });
+    });
+</script>
+{/block}

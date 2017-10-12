@@ -1,0 +1,63 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        {$wui}
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    $(function(){
+        $("select[name='companyid']").change(function(){
+            getShopsBYCompanyID($(this).val());
+        });
+        $("select[name='shopid']").change(function(){
+            getClerksBYShopID($(this).val());
+        });
+    });
+
+    function getShopsBYCompanyID(id) {
+        $.ajax({
+            type: 'GET',
+            url: "{:site_url('shop.getShopsByCompanyID')}id=" + id,
+            success: function (data) {
+                var opts = $("select[name='shopid'] option");
+                var shop = $("select[name='shopid']");
+                opts.remove();
+                if (data.length == 0) {
+                    workbgm.alert("该公司下没有店铺", null);
+                }
+                $(data).each(function (i, obj) {
+                    var value = obj.id;
+                    var text = obj.name;
+                    shop.append("<option value='" + value + "'>" + text + "</option>");
+                    if(i==0){
+                        getClerksBYShopID(value);
+                    }
+                });
+            }
+        });
+    }
+    function getClerksBYShopID(id) {
+        $.ajax({
+            type: 'GET',
+            url: "{:site_url('shop.getClerksByShopID')}id=" + id,
+            success: function (data) {
+                var opts = $("select[name='clerkid[]'] option");
+                var clerk = $("select[name='clerkid[]']");
+                opts.remove();
+                if (data.length == 0) {
+                    workbgm.alert("该店铺下没有员工", null);
+                }
+                $(data).each(function (i, obj) {
+                    var value = obj.id;
+                    var text = obj.name;
+                    clerk.append("<option value='" + value + "'>" + text + "</option>");
+                });
+            }
+        });
+    }
+</script>
+{/block}

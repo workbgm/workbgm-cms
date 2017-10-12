@@ -77,7 +77,7 @@ $('select.chosen-select').chosen({
 
 ### 选项
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>
@@ -211,7 +211,7 @@ $('select.chosen-select').chosen({
 
 Chosen的事件绑定在原始`<select>`上，使用jQuery方法来监听事件。目前可以使用以下事件：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件</th>
@@ -263,7 +263,7 @@ $('select.chosen-select').trigger('chosen:updated');
 
 所有可以通过事件触发的方法有：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>触发事件</th>

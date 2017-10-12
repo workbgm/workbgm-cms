@@ -42,9 +42,8 @@ body{
 }
 
 .solution-catalog-list{
-    width:568px;
+    width:450px;
     margin:0 auto;
-    /*padding-bottom: 80px;*/
 }
 
 .solution-item{

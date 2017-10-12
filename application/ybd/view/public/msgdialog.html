@@ -1,0 +1,158 @@
+<html>
+<head>
+    <script src="{$W_JS}/jquery.min.js"></script>
+    <style>
+        *{
+            font-family:"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei", Tahoma, Helvetica, Arial, SimSun;
+        }
+        ol,ul,li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            display: inline-block;
+        }
+        .dia{
+            height:450px;
+            width:650px;
+        }
+        input,textarea{
+            border:1px solid #999;
+            height:36px;
+            line-height: 36px;
+            font-size: 14px;
+            padding:0 10px;
+            color:#8a8a8a;
+            outline:none;
+            -webkit-appearance:none;
+        }
+        input:focus,textarea:focus{
+            border:1px solid #FE7108;
+        }
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #999;
+        }
+        input:-moz-placeholder, textarea:-moz-placeholder {
+            color: #999;
+        }
+        input::-moz-placeholder, textarea::-moz-placeholder {
+            color: #999;
+        }
+        input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+            color: #999;
+        }
+        .clear:before,
+        .clear:after {
+            content: " ";
+            display: table;
+        }
+
+        .clear:after {
+            clear: both;
+        }
+        form{
+            display: block;
+            width:90%;
+            margin:0 auto;
+        }
+        .col-5{
+            display: inline-block;
+            width:calc( 50% - 10px);
+            box-sizing: border-box;
+            float:left;
+        }
+        .col-10{
+            display: block;
+            width:100%;
+        }
+        label{
+            font-size: 14px;
+            color:#8a8a8a;
+        }
+        ul{
+            padding-left:0;
+            margin: 0px;
+        }
+        li{
+            float:left;
+            margin-right:10px;
+            margin-bottom: 10px;
+        }
+        li a{
+            color:#fff;
+            font-size: 12px;
+            background-color: #999;
+            padding:0 20px;
+            height:30px;
+            line-height: 30px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .active{
+            color:#fff;
+            background-color: #FE7108;
+        }
+        .submit{
+            width:200px;
+            color:#fff;
+            background-color: #FE7108;
+            text-align: center;
+            display:block;
+            margin:30px auto 40px auto;
+            font-size: 14px;
+            height:48px;
+            line-height: 48px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+    <script>
+        function getSolution(){
+            var vText='';
+            $('.active').each(function(){
+                vText+=$(this).text()+",";
+            });
+            if(vText){
+                vText = vText.substring(0, vText.lastIndexOf(','));
+            }
+            $('input[name="solutions"]').val(vText);
+        }
+        $(function(){
+            $('li a').click(function(){
+                if($(this).hasClass('active')){
+                    $(this).removeClass('active');
+                }else{
+                    $(this).addClass('active');
+                }
+                getSolution();
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="dia">
+    <form action="{:url('ybd/Index/message')}" method="post">
+        <div class="clear">
+            <input type="text" name="name" placeholder="姓名" class="col-5" style="margin-right:10px">
+            <input type="number" name="phone" placeholder="联系电话" class="col-5" style="margin-left:10px">
+        </div>
+        <input type="text" name="companyname" placeholder="公司名称" class="col-10" style=" margin-top: 20px;">
+        <div class="clear" style=" margin-top: 20px; margin-bottom: 10px">
+            <label style="margin-bottom: 10px;display: block;">选择您需要的解决方案（可多选）</label>
+            <input type="hidden" name="solutions" >
+            <ul class="clear">
+                <li><a>电力咨询</a></li>
+                <li><a>电力设计</a></li>
+                <li><a>电力工程</a></li>
+                <li><a>电力能源管理</a></li>
+                <li><a>电力运维托管</a></li>
+                <li><a>购电售电</a></li>
+            </ul>
+        </div>
+        <textarea style="width:100%;height:80px;" rows="3" name="need" placeholder="请简单描述您的需求，以便我们更好的为您服务。"></textarea>
+        <input type="submit" class="submit" value="提交"></input>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="public/meta" /}
+    <link rel="stylesheet" href="{$W_CSS}/aboutus.css">
+</head>
+<body>
+{include file="public/browserupgrade" /}
+{include file="public/header" /}
+<!--banner-->
+<div class="banner">
+    <img src="{$W_IMG}/banner/banner5.jpg">
+</div>
+<div class="content">
+    <div class="public-container w-center-block w-clear" style="position: relative">
+        <!--menu-->
+        <div class="menu-header w-m-hide w-t-hide"><img src="{$W_IMG}/menu/aboutus.png"></div>
+        <div class="x-menu">
+            <ul>
+                <li><a
+                        href="{:url('ybd/Index/companyintroduction')}"
+                        {$Think.session.w_current_menu_2=='companyintroduction'?'class="active"':''}
+                ><span class="title"> 公司简介</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/companycultural')}"
+                        {$Think.session.w_current_menu_2=='companycultural'?'class="active"':''}
+                ><span class="title"> 企业文化</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/companyqua')}"
+                        {$Think.session.w_current_menu_2=='companyqua'?'class="active"':''}
+                ><span class="title"> 企业资质</span></a></li>
+                <li><a
+                        href="{:url('ybd/Index/companymou')}"
+                        {$Think.session.w_current_menu_2=='companymou'?'class="active"':''}
+                ><span class="title"> 组织架构</span></a></li>
+            </ul>
+        </div>
+        <!--article-->
+        <div class="article">
+            <div class="title">{$article.title}</div>
+            <div class="content_">{$article.content}</div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+</body>
+</html>

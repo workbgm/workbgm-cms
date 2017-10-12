@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <form action="" method="post" class="ajax-form">
                 <div class="container-fluid">
-                    <div class="table-responsive">  <table class="table table-bordered">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 [TH]

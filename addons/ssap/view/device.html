@@ -1,0 +1,43 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li><a href="{:site_url('ssap.ssap')}">采样小组</a></li>
+            <li class="active"><a>设备状态</a></li>
+        </ul>
+        <!--搜索start-->
+        <!--搜索end-->
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">ID</th>
+                        <th>IMEI</th>
+                        <th>最后心跳时间</th>
+                        <th>第一次上线时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.imei}</td>
+                        <td>{$vo.update_time}</td>
+                        <td>{$vo.create_time}</td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+{/block}
+

@@ -1,0 +1,174 @@
+<!--public header-->
+<div class="public-header">
+    <div class="public-header-toolbar w-m-hide">
+        <div class="public-container w-center-block">
+            <span class="w-m-center-block w-m-text-center">欢迎访问云南耀邦达电力工程有限公司官方网站</span>
+            <span class="w-m-center-block w-m-text-center"><i class="fa fa-phone-square" style="margin:0 0.06rem"></i><a
+                    href="tel:0871-65656498">  0871-65656498</a></span>
+            <ul class="w-pull-right w-m-hide">
+                <li><a href="">登录</a></li>
+                <li><a href="">内部系统入口</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="public-header-nav">
+        <div class="public-container w-center-block w-clear">
+            <img src="{$W_IMG}/public/logo.png" alt="{$site_title}" class="w-m-hide" >
+            <img src="{$W_IMG}/public/logo_s.png" alt="{$site_title}" class="w-t-hide w-d-hide w-pull-left" style="margin-left:0.2rem;width:2rem;">
+            <i id="m_menu_btn" class="icon iconfont icon-yaobangdadaohang w-t-hide w-d-hide w-pull-right menu" style="margin-right:0.2rem;"></i>
+            <ul class="w-pull-right w-m-hide public-menu">
+                <li><a href="{:url('ybd/Index/index')}"
+                      {$Think.session.w_current_menu=='index'?'class="active"':''}
+                >首页
+                    <i class="tra-up"></i>
+                </a>
+                </li>
+                <li><a href="{:url('ybd/Index/companyintroduction')}"
+                       {$Think.session.w_current_menu=='aboutus'?'class="active"':''}
+                >公司介绍
+                    <i class="tra-up"></i>
+                </a>
+                    <div class="tab-links">
+                        <ul>
+                            <li><a href="{:url('ybd/Index/companyintroduction')}"
+                                   {$Think.session.w_current_menu_2=='companyintroduction'?'class="active"':''}
+                            >公司简介</a></li>
+                            <li><a href="{:url('ybd/Index/companycultural')}"
+                                   {$Think.session.w_current_menu_2=='companycultural'?'class="active"':''}
+                            >企业文化</a></li>
+                            <li><a href="{:url('ybd/Index/companyqua')}"
+                                   {$Think.session.w_current_menu_2=='companyqua'?'class="active"':''}
+                            >企业资质</a></li>
+                            <li><a href="{:url('ybd/Index/companymou')}"
+                                   {$Think.session.w_current_menu_2=='companymou'?'class="active"':''}
+                            >组织架构</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a
+                        {$Think.session.w_current_menu=='news'?'class="active"':''}
+                >新闻公告
+                    <i class="tra-up"></i>
+                </a>
+                    <div class="tab-links">
+                        <ul>
+                            <li><a href="{:url('ybd/Index/companynews')}"
+                                   {$Think.session.w_current_menu_2=='companynews'?'class="active"':''}
+                            >公司动态</a></li>
+                            <li><a href="{:url('ybd/Index/industrynews')}"
+                                   {$Think.session.w_current_menu_2=='industrynews'?'class="active"':''}
+                            >行业资讯</a></li>
+                            <li><a href="{:url('ybd/Index/safenews')}"
+                                   {$Think.session.w_current_menu_2=='safenews'?'class="active"':''}
+                            >安全资讯</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a {$Think.session.w_current_menu=='solutions'?'class="active"':''}
+                >解决方案
+                    <i class="tra-up"></i>
+                </a>
+                    <div class="tab-links">
+                        <ul>
+                            <li><a
+                                    href="{:url('ybd/Index/eadvisory')}"
+                                    {$Think.session.w_current_menu_2=='eadvisory'?'class="active"':''}
+                            >电力咨询</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/edesign')}"
+                                    {$Think.session.w_current_menu_2=='edesign'?'class="active"':''}
+                            >电力设计</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/eproject')}"
+                                    {$Think.session.w_current_menu_2=='eproject'?'class="active"':''}
+                            >电力工程</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/emanagement')}"
+                                    {$Think.session.w_current_menu_2=='emanagement'?'class="active"':''}
+                            >智慧能源管理</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/etrusteeship')}"
+                                    {$Think.session.w_current_menu_2=='etrusteeship'?'class="active"':''}
+                            >电力运维托管</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/ebusiness')}"
+                                    {$Think.session.w_current_menu_2=='ebusiness'?'class="active"':''}
+                            >购电售电</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a
+                        href="{:url('ybd/Index/cases')}"
+                        {$Think.session.w_current_menu=='cases'?'class="active"':''}
+                >经典案例
+                    <i class="tra-up"></i>
+                </a></li>
+                <li><a
+                        href="{:url('ybd/Index/jobsinfo')}"
+                        {$Think.session.w_current_menu=='jobs'?'class="active"':''}
+                >人才招聘
+                    <i class="tra-up"></i>
+                </a>
+                    <div class="tab-links">
+                        <ul>
+                            <li><a
+                                    href="{:url('ybd/Index/jobsinfo')}"
+                                    {$Think.session.w_current_menu_2=='jobsinfo'?'class="active"':''}
+                            >招聘信息</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/jobscir')}"
+                                    {$Think.session.w_current_menu_2=='jobscir'?'class="active"':''}
+                            >应聘流程</a></li>
+                            <li><a
+                                    href="{:url('ybd/Index/jobsguide')}"
+                                    {$Think.session.w_current_menu_2=='jobsguide'?'class="active"':''}
+                            >入职指南</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a
+                        href="{:url('ybd/Index/contactus')}"
+                        {$Think.session.w_current_menu=='contactus'?'class="active"':''}
+                >联系我们
+                    <i class="tra-up"></i>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="w-hide w-t-hide w-d-hide public-header-mobile-nav" id="m_menu">
+    <ul>
+    <li><a href="{:url('ybd/Index/index')}"
+           {$Think.session.w_current_menu=='index'?'class="active"':''}
+    >首页
+    </a></li>
+    <li><a href="{:url('ybd/Index/companyintroduction')}"
+           {$Think.session.w_current_menu=='aboutus'?'class="active"':''}
+    >公司介绍
+    </a></li>
+    <li><a href="{:url('ybd/Index/companynews')}"
+           {$Think.session.w_current_menu_2=='companynews'?'class="active"':''>新闻公告
+    </a></li>
+    <li><a  href="{:url('ybd/Index/eadvisory')}"
+            {$Think.session.w_current_menu_2=='eadvisory'?'class="active"':''}
+    >解决方案
+    </a></li>
+    <li><a
+            href="{:url('ybd/Index/cases')}"
+            {$Think.session.w_current_menu=='cases'?'class="active"':''}
+    >经典案例
+    </a></li>
+    <li><a
+            href="{:url('ybd/Index/jobsinfo')}"
+            {$Think.session.w_current_menu=='jobs'?'class="active"':''}
+    >人才招聘
+    </a></li>
+    <li><a
+            href="{:url('ybd/Index/contactus')}"
+            {$Think.session.w_current_menu=='contactus'?'class="active"':''}
+    >联系我们
+    </a></li>
+    </ul>
+</div>
+{include file="public/mtoolbar" /}
+{include file="public/toolbar" /}

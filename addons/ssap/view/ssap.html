@@ -1,0 +1,52 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>采样小组</a></li>
+            <li><a href="{:site_url('ssap.device')}">设备状态</a></li>
+        </ul>
+        <!--搜索start-->
+        <!--搜索end-->
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">NODE_ID</th>
+                        <th>采样地点</th>
+                        <th>经纬度</th>
+                        <th>采样项</th>
+                        <th>采样小组</th>
+                        <th>采样任务状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.NODE_ID}</td>
+                        <td>{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}</td>
+                        <td>{$vo.LATITUDE},{$vo.LONGITUDE}</td>
+                        <td>{$vo.PLAN_QUALITY_CONTROL}</td>
+                        <td>{$vo.group.GROUP_NAME}</td>
+                        <td>{$vo.STATE|getNodeState}</td>
+                        <td>
+                            <button data-size="fullscreen" data-title="{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}" data-iframe="{:site_url('ssap.show',['NODE_ID'=>$vo['NODE_ID']])}" data-toggle="modal" class="btn btn-mini btn-primary">查看采样数据</button>
+                            <a target="_blank" href="{:site_url('ssap.excel',['NODE_ID'=>$vo['NODE_ID']])}" class="btn btn-mini btn-success">导出Excel</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+{/block}
+

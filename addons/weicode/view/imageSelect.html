@@ -1,0 +1,30 @@
+{extend name="./data/tpl/dialog.html" /}
+{block name="body"}
+        <div class="container-fluid">
+            <div class="cards">
+                {foreach name="list" item="vo"}
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img data-toggle="lightbox"  src="{$vo.url}" alt="{$vo.description}">
+                        <div class="card-heading"><strong>ID:{$vo.id}</strong></div>
+                        <div class="card-content text-muted">{$vo.description}</div>
+                        <div class="card-actions">
+                            <span class="label label-warning">{$vo.from==1?'本地':'网络'}</span>
+                            <button name="sel" action="{$vo.id}" class="pull-right btn btn-mini  btn-success">选择</button>
+                        </div>
+                    </a>
+                </div>
+                {/foreach}
+            </div>
+            <!--分页-->
+            {$list->render()}
+        </div>
+    </div>
+{/block}
+{block name="js"}
+$('button[name="sel"]').click(function(){
+    var action = $(this).attr('action');
+    $('input[name="{$name}"]', window.parent.document).val(action);
+    window.close();
+});
+{/block}

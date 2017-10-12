@@ -59,7 +59,7 @@ $('#imgCutter').imgCutter(options);
 
 ## 选项
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>
@@ -221,7 +221,7 @@ var myImgCutterData = myImgCutter.getData();
 
 ## 事件
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件</th>

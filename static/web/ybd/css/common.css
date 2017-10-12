@@ -1,0 +1,390 @@
+/*Mobile*/
+@media screen and (min-width: 320px) and (max-width: 767px){
+    .public-container{
+        width:100% !important;
+    }
+
+    .public-footer-contactinfo {
+        padding: 0.2rem 0 !important;
+    }
+
+    .public-footer-contactinfo .footer-info{
+        text-align: center !important;
+        float: none !important;
+    }
+
+    .footer-wechat{
+        margin-top: 0.2rem;
+        text-align: center !important;
+        float: none !important;
+    }
+    .public-footer-copyright{
+        height:auto !important;
+        line-height: 0.2rem !important;
+    }
+    .public-header-nav>.public-container{
+        height:0.59rem !important;
+    }
+    .public-header-nav>.public-container img {
+        margin-top: -16px !important;
+    }
+    .public-header-nav>.public-container .menu{
+        font-size: 0.3rem;
+        color: #484848;
+        line-height: 0.59rem;
+    }
+}
+
+/*Mobile 640px-767px*/
+@media screen and (min-width: 640px) and (max-width: 767px){
+    .public-container{
+        width:90% !important;
+    }
+    .public-pc-toolbar{
+        position: fixed;
+        right:calc( 5% - 0.64rem);
+        bottom: 5px;
+        top: 70%;
+        height:160px;
+        z-index:1000;
+    }
+}
+/*Table 768px-1199px*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .public-container{
+        width:90% !important;
+    }
+    .public-pc-toolbar{
+        position: fixed;
+        /*right:calc( 5% - 0.64rem);*/
+        right: calc( 5% - 0.34rem);
+        bottom: 5px;
+        top: 70%;
+        height:160px;
+        z-index:1000;
+    }
+    .public-header-nav>.public-container .public-menu>li>a {
+        margin: 0 0.1rem !important;
+    }
+}
+
+/*Desktop 1200px-*/
+@media screen and (min-width: 1200px) and (max-width: 1439px){
+    .public-container{
+        width:90% !important;
+    }
+
+    .public-pc-toolbar{
+        position: fixed;
+        right:calc( 5% - 0.64rem);
+        bottom: 5px;
+        top: 70%;
+        height:160px;
+        z-index:1000;
+    }
+}
+
+/*Desktop 1440px-*/
+@media screen and (min-width: 1440px){
+    .public-container{
+        width:68% !important;
+    }
+
+    .public-pc-toolbar{
+        position: fixed;
+        right:calc( 16% - 0.64rem);
+        bottom: 5px;
+        top: 70%;
+        height:160px;
+        z-index:1000;
+    }
+}
+
+/** public-header-toolbar**/
+.public-header-toolbar{
+    background-color:#484848;
+}
+.public-header-toolbar>.public-container span,.public-header-toolbar>.public-container ul{
+    display: inline-block;
+    height: 0.3rem;
+    line-height: 0.3rem;
+}
+.public-header-toolbar>.public-container li a{
+    padding:0 0.1rem;
+    text-align: center;
+    line-height: 0.2rem;
+}
+.public-header-toolbar>.public-container li:first-child a{
+    border-right: 1px solid #fff;
+}
+
+.public-header-toolbar>.public-container li{
+    float:left;
+    position: relative;
+}
+/** public-header-nav**/
+.public-header-nav>.public-container{
+    height:0.89rem;
+    background-color: #fff;
+    position: relative;
+}
+
+.public-header-nav>.public-container img{
+    top:50%;
+    margin-top: -25px;
+    position: absolute;
+}
+
+.public-header-nav>.public-container .public-menu>ul{
+    display: inline-block;
+    height: 0.89rem;
+    line-height: 0.89rem;
+}
+.public-header-nav>.public-container .public-menu>li{
+    position: relative;
+}
+
+.public-header-nav>.public-container .public-menu>li>a{
+    margin:0 0.2rem;
+    text-align: center;
+    font-size: 0.14rem;
+    line-height: 0.87rem;
+    height:0.87rem;
+    color:#484848;
+}
+
+.public-header-nav>.public-container .public-menu>li{
+    float:left;
+}
+
+.public-header-nav .active{
+    color:#fe7108 !important;
+    border-bottom: 0.02rem solid #fe7108;
+}
+
+.public-header-nav>.public-container .public-menu>li>a:hover{
+    color:#fe7108 !important;
+    border-bottom: 0.02rem solid #fe7108;
+}
+
+.public-header-nav{
+    border-bottom: 0.01rem solid #fe7108;
+}
+
+.public-header-nav .tra-up{
+    display: none;
+}
+
+.public-header-nav li .active .tra-up{
+    display: block;
+    position: absolute;
+    margin-left:0.2rem;
+    top:0.84rem;
+    border-left: 0.06rem solid transparent;
+    border-right: 0.06rem solid transparent;
+    border-bottom: 0.06rem solid #fe7108;
+}
+
+.public-header-nav li:first-child .active .tra-up{
+    margin-left:0.08rem !important;
+}
+
+
+/**public**/
+.public-container{
+    width:90%;
+}
+
+/**public-footer**/
+.public-footer{
+    border-top:0.01rem solid #fe7108;
+}
+
+.public-footer-contactinfo{
+    padding:0.5rem 0;
+}
+.public-footer .footer-info li{
+    float:left;
+}
+
+.public-footer .footer-info i{
+    margin:0 0.1rem;
+    color:#484848;
+    font-size: 0.12rem;
+}
+
+.public-footer .footer-info a{
+    color:#484848;
+    font-size: 0.12rem;
+}
+
+.public-footer .footer-info img{
+    width:2.75rem;
+    height:0.38rem;
+    margin-bottom: 0.2rem;
+}
+
+.public-footer-copyright{
+    height:0.4rem;
+    background-color: #484848;
+    line-height: 0.4rem;
+}
+.public-header{
+    position: relative;
+}
+.public-header-mobile-nav{
+    position: absolute;
+    top:0.6rem;
+    right:0;
+    background-color: rgba(255,255,255,1);
+    z-index: 100;
+    width:100%;
+    height:100%;
+    font-size: 0.14rem;
+}
+
+.public-header-mobile-nav a{
+    display: inline-block;
+    height:0.5rem;
+    width:100%;
+    line-height: 0.5rem;
+    border-bottom: 0.5px solid #eee;
+    text-align: center;
+    color:#484848;
+}
+
+.menu-out{
+    transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* Internet Explorer */
+    -moz-transform:rotate(0deg); /* Firefox */
+    -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+    -o-transform:rotate(0deg); /* Opera */
+}
+
+.menu-in{
+    transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg); /* Internet Explorer */
+    -moz-transform:rotate(-90deg); /* Firefox */
+    -webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+    -o-transform:rotate(-90deg); /* Opera */
+}
+
+.public-header .tab-links{
+    display: none;
+    position: absolute;
+    top: 0.874rem;
+    z-index:10;
+    background-color: #fff;
+}
+
+.public-header .tab-links a{
+    color:#484848;
+    width:1rem;
+    box-sizing: border-box;
+    padding: 0.1rem 0.12rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.public-header .tab-links a:hover{
+    background-color: #ededed;
+    color:#fe7108 !important;
+}
+
+.public-header-nav>.public-container .public-menu>li a:hover +.tab-links,.public-header .tab-links:hover{
+    display: block;
+    border-top: 0.02rem solid #fe7108;
+}
+
+.public-mobile-toolbar{
+    position: fixed;
+    bottom: 0.4rem;
+    display: inline-block;
+    width:70%;
+    margin-left:15%;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    border-radius: 0.8rem;
+    height: 0.4rem;
+    z-index: 100;
+}
+
+.public-mobile-toolbar li{
+    width: 33.333%;
+    height: 100%;
+    line-height: 0.4rem;
+    text-align: center;
+    font-size: 0.18rem;
+    float:left;
+}
+.public-mobile-toolbar li a{
+    width:100%;
+    color:#fe7108;
+}
+
+.public-pc-toolbar li a{
+    font-size: 0.12rem;
+    padding:0.1rem;
+    width:0.48rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.public-pc-toolbar .back{
+    background-color: #d7d7d7;
+    margin-top: 0.1rem;
+    color:#fff;
+    line-height: 0.26rem;
+    cursor: pointer;
+}
+
+.public-pc-toolbar .back:hover{
+    color:#484848;
+}
+
+.public-pc-toolbar .message{
+    background-color: #fe7108;
+    color:#fff;
+    padding:0.1rem !important;
+    line-height: 0.14rem;
+    cursor: pointer;
+}
+    /*msgdialog   */
+.dialog-box-title{
+    text-align: center;
+    height:0.8rem;
+    position: relative;
+}
+
+.dialog-box-title h3{
+    float:none!important;
+    font-size: 0.24rem !important;
+    color:#484848!important;
+    line-height: 0.8rem !important;
+    font-weight: normal !important;
+}
+
+.dialog-box-close{
+    float:none !important;
+    color:#fff !important;
+    position: absolute;
+    right:-0.4rem;
+    top:0.1rem;
+    font-size: 0.4rem !important;
+}
+
+.dialog-box-content{
+    padding: 0 !important;
+}
+
+#dialog-box-mask{
+    opacity: 0.4 !important;
+}
+
+.dialog-box-content{
+    margin:0 auto;
+}
+
+.dialog-box-container{
+    border-radius: 0 !important;
+}

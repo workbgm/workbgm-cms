@@ -11,17 +11,22 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "topthink/framework": "^5.0",
+        "topthink/framework": "v5.0.8",
         "topthink/think-captcha": "^1.0",
         "topthink/think": "v5.0.8",
         "phpoffice/phpexcel":"1.8.1",
-        "hisune/echarts-php":"1.0.10",
-        "overtrue/wechat":"3.3.2"
+        "hisune/echarts-php":"1.0.10"
     },
     "extra": {
         "think-path": "thinkphp"
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
     }
 }

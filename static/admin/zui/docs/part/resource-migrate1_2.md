@@ -19,7 +19,7 @@ filter: cong1.2banbenshengjizhinan c1.2bbsjzn
 
 为避免全局变量污染，ZUI在1.3中移除了之前在`window`和`jQuery`实例上的对象绑定。现在所有共享对象方法全部绑定在`$.zui`对象上。如果你在代码中用到了如下对象方法，则需要更改您的代码（代码）或者使用兼容插件。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>1.2版本之前的用法</th>

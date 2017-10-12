@@ -1,0 +1,147 @@
+/**
+ create by wuweiming  2017-8-23
+ */
+
+
+/** reset **/
+html{
+    font-size: 625%;
+}
+
+html,body{overflow:hidden;overflow-y:auto;}
+
+body{
+    line-height: 1.5;
+    font-size:0.12rem;
+    color:#fff;
+    font-family:"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei", Tahoma, Helvetica, Arial, SimSun;
+}
+
+body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,input,form,a,p,textarea{
+    margin:0;
+    padding:0;
+}
+
+ol,ul,li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+    color:#fff;
+}
+
+img{
+    border:none;
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+/** tools **/
+.w-center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.w-pull-right {
+    float: right !important;
+}
+
+.w-pull-left {
+    float: left !important;
+}
+
+.w-text-right {
+    text-align: right !important;
+}
+
+.w-text-left {
+    text-align: left !important;
+}
+
+.w-text-center {
+    text-align: center !important;
+}
+
+.w-hide {
+    display: none !important;
+}
+
+.w-show {
+    display: block !important;
+}
+
+.w-text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.w-clear:before,
+.w-clear:after {
+    content: " ";
+    display: table;
+}
+
+.w-clear:after {
+    clear: both;
+}
+
+.w-ellipsis{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
+
+.w-browserupgrade {
+    margin: 0;
+    padding: 1rem;
+    background: #ccc;
+}
+
+/*Mobile*/
+@media screen and (min-width: 320px) and (max-width: 767px){
+    .w-m-hide {
+        display: none !important;
+    }
+
+    .w-m-center-block {
+        display: block !important;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .w-m-text-center {
+        text-align: center !important;
+    }
+
+    .w-m-col-12{
+        width:100% !important;
+    }
+}
+
+/*Table 768px-1199px*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .w-t-hide {
+        display: none !important;
+    }
+
+    .w-t-col-12{
+        width:100% !important;
+    }
+}
+
+/*Desktop 1200px-*/
+@media screen and (min-width: 1200px){
+    .w-d-hide {
+        display: none !important;
+    }
+
+    .w-d-col-12{
+        width:100% !important;
+    }
+}

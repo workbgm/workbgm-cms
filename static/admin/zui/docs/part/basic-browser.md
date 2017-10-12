@@ -38,7 +38,7 @@ filter: shouzhichidipingtai szcdpt
 
 可能使用的辅助类含义如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>类名</th>
@@ -89,7 +89,7 @@ filter: shouzhichidipingtai szcdpt
 
 ZUI提供`$.zui.browser`对象来检测IE版本。此对象包含以下方法和属性：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <tbody>
     <tr>
       <td>`$.zui.browser.ie`</td>

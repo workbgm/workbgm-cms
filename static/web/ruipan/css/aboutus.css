@@ -42,7 +42,7 @@ body{
 }
 
 .aboutus-catalog-list{
-    width:568px;
+    width:450px;
     margin:0 auto;
     padding-bottom: 30px;
 }
@@ -141,6 +141,10 @@ body{
     }
     .article .content:last-child{
         height: 220px !important;
+    }
+
+    .xyz{
+        height:140px !important;
     }
 
 

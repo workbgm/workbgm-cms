@@ -23,14 +23,14 @@
 <!--公共头部-->
 <div class="public-header">
     <div class="public-container clearfloat">
-        <a href="{:url('ruipan/Index/index')}" class="public-header-logo"></a>
+        <a href="{:url('index/Index/index')}" class="public-header-logo"></a>
         <div class="public-header-logotext">为客户创造价值   create value for customers</div>
         <ul class="public-header-nav">
-            <li class="item"><a href="{:url('ruipan/Index/index')}">首页</a></li>
-            <li class="item active"><a href="{:url('ruipan/Index/news')}">新闻中心</a></li>
-            <li class="item"><a data-content="solution" href="{:url('ruipan/Index/solution')}">解决方案</a></li>
-            <li class="item"><a href="{:url('ruipan/Index/aboutus')}">关于我们</a></li>
-            <li class="item xs-hidden"><a href="{:url('ruipan/Index/contactus')}">联系我们</a></li>
+            <li class="item"><a href="{:url('index/Index/index')}">首页</a></li>
+            <li class="item active"><a href="{:url('index/Index/news')}">新闻中心</a></li>
+            <li class="item"><a data-content="solution" href="{:url('index/Index/solution')}">解决方案</a></li>
+            <li class="item"><a href="{:url('index/Index/aboutus')}">关于我们</a></li>
+            <li class="item xs-hidden"><a href="{:url('index/Index/contactus')}">联系我们</a></li>
             {include file="solution_list" /}
         </ul>
     </div>
@@ -43,8 +43,8 @@
 <div class="news-catalog">
     <div class="public-container ">
         <ul class="news-catalog-list clearfloat">
-            <li><a href="{:url('ruipan/Index/news',['classification'=>'最新新闻'])}" class="catalog-btn <?php if($classification=='最新新闻'){echo 'active';}?>">最新新闻</a></li>
-            <li><a href="{:url('ruipan/Index/news',['classification'=>'行业趋势'])}" class="catalog-btn <?php if($classification=='行业趋势'){echo 'active';}?>">行业趋势</a></li>
+            <li><a href="{:url('index/Index/news',['classification'=>'最新新闻'])}" class="catalog-btn <?php if($classification=='最新新闻'){echo 'active';}?>">最新新闻</a></li>
+            <li><a href="{:url('index/Index/news',['classification'=>'行业趋势'])}" class="catalog-btn <?php if($classification=='行业趋势'){echo 'active';}?>">行业趋势</a></li>
         </ul>
         <?php foreach($new_list as $m){?>
             <div class="news-item clearfloat">
@@ -61,7 +61,7 @@
                     <p class="content">
                         <?php echo $m['introduction'];?>
                     </p>
-                    <a href="{:url('ruipan/Index/article',['id'=>$m.id,'classification'=>$classification,'type'=>'新闻'])}" class="more">查看详情</a>
+                    <a href="{:url('index/Index/article',['id'=>$m.id,'classification'=>$classification,'type'=>'新闻'])}" class="more">查看详情</a>
                 </div>
             </div>
         <?php }?>

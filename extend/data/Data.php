@@ -31,7 +31,7 @@ class Data
         $map = array_merge([], (array)$where);
         $sort = array_merge([], (array)$order);
 
-        $data_list = Db::name($table_name)->where($map)->field($fileds)->order($sort)->paginate($page_size);
+        $data_list = Db::name($table_name)->where('isdelete',0)->where($map)->field($fileds)->order($sort)->paginate($page_size);
 
         return $data_list;
     }

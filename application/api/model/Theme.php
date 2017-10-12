@@ -29,8 +29,14 @@ class Theme extends BaseModel
      * @return array|false|\PDOStatement|string|\think\Model
      * @throws ThemeMissException
      */
+    //,'headImg','topicImg'
     public static function  getThemeWidthProducts($id){
-        $theme = self::with('products,headImg,topicImg')->find($id);
+        $theme = self::with(['products'=>['image']])->with('headImg')->with('topicImg')->find($id);
+//        $theme = self::with([
+//            'products'=>function($query)
+//            {
+//                $query->with(['image'])->order('order', 'asc');
+//            }])->find($id);
         if(!$theme){
             throw  new ProductMissException();
         }

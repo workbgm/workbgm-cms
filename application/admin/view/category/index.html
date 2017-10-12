@@ -9,7 +9,7 @@
         </ul>
         <div class="container-fluid">
             <div class="container-fluid">
-                <hr><div class="table-responsive">  <table class="table table-bordered tree">
+                <div class="table-responsive">  <table class="table table-bordered tree">
                     <thead>
                     <tr>
                         <th>栏目名称</th>
@@ -31,7 +31,7 @@
                         <td>
                             <a href="{:url('admin/category/add',['pid'=>$vo['id']])}" class="btn btn-mini btn-primary">添加子栏目</a>
                             <a href="{:url('admin/category/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
-                            <a href="{:url('admin/category/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                            <button name="del" action="{:url('admin/category/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</button>
                         </td>
                     </tr>
                     {/foreach}

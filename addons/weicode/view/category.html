@@ -1,0 +1,43 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>分类管理</a></li>
+            <li><a href="{:site_url('weicode.categoryAdd')}">添加新分类</a></li>
+        </ul>
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">ID</th>
+                        <th>分类名</th>
+                        <th>备注</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.description}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>
+                            <a href="{:site_url('weicode.categoryEdit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                            <button name="del" action="{:site_url('weicode.categoryDel',['id'=>$vo['id']])}" class="btn btn-mini  btn-danger">删除</button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}

@@ -111,18 +111,3 @@
 </div>
 {/block}
 
-{block name="js"}
-<script type="text/javascript">
- var form = layui.form();
-    form.on('select(type)',function (data) {
-            $('#url').remove();
-            $('#cate').remove();
-           if(data.value=='url'){
-                $('#url-hide').clone(true).attr('id','url').insertAfter( $('#type-item'));
-           }else if(data.value=='cate'){
-                $('#cate-hide').clone(true).attr('id','cate').insertAfter( $('#type-item'));
-                form.render('select'); 
-           }
-        });
-</script>
-{/block}

@@ -8,5 +8,6 @@
  */
 
 return [
-    'token_salt' => 'Xxdfgjkdfj45'
+    'token_salt' => 'Xxdfgjkdfj45',
+    'pay_back_url' => 'https://well.zipscloud.com/api.php/v1/pay/notify'
 ];

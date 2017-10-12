@@ -1,0 +1,112 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>排班管理</a></li>
+            <li><a href="{:site_url('shop.schedulingAdd')}">添加新排班</a></li>
+        </ul>
+        <!--搜索start-->
+                    {$search}
+        <!--搜索end-->
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">ID</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>值班人员</th>
+                        <th>公司</th>
+                        <th>店铺</th>
+                        <th>最后更新时间</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.stime}</td>
+                        <td>{$vo.etime}</td>
+                        <td>
+                            {foreach $vo.schedulingClerk as $sc}
+                            <span class="label label-badge label-success">{$sc.clerk.name}</span>
+                            {/foreach}
+                        </td>
+                        <td>{$vo.company.name}</td>
+                        <td>{$vo.shop.name}</td>
+                        <td>{$vo.update_time}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>
+                            <a href="{:site_url('shop.schedulingEdit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                            <button name="del" action="{:site_url('shop.schedulingDel',['id'=>$vo['id']])}" class="btn btn-mini  btn-danger">删除</button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    $(function(){
+        var companyid = {$companyid};
+        var shopid = {$shopid};
+        if(companyid>0){$("select[name='companyid']").val(companyid);}
+        getShopsBYCompanyID($("select[name='companyid']").val());
+        if(shopid>0){$("select[name='shopid']").val(shopid);}
+        $("select[name='companyid']").change(function(){
+            getShopsBYCompanyID($(this).val());
+        });
+    });
+
+    function getShopsBYCompanyID(id) {
+        $.ajax({
+            type: 'GET',
+            async:false,
+            url: "{:site_url('shop.getShopsByCompanyID')}id=" + id,
+            success: function (data) {
+                var opts = $("select[name='shopid'] option");
+                var shop = $("select[name='shopid']");
+                opts.remove();
+                if (data.length == 0) {
+                    workbgm.alert("该公司下没有店铺", null);
+                }
+                $(data).each(function (i, obj) {
+                    var value = obj.id;
+                    var text = obj.name;
+                    shop.append("<option value='" + value + "'>" + text + "</option>");
+                });
+            }
+        });
+    }
+    function getClerksBYShopID(id) {
+        $.ajax({
+            type: 'GET',
+            url: "{:site_url('shop.getClerksByShopID')}id=" + id,
+            success: function (data) {
+                var opts = $("select[name='clerkid[]'] option");
+                var clerk = $("select[name='clerkid[]']");
+                opts.remove();
+                if (data.length == 0) {
+                    workbgm.alert("该店铺下没有员工", null);
+                }
+                $(data).each(function (i, obj) {
+                    var value = obj.id;
+                    var text = obj.name;
+                    clerk.append("<option value='" + value + "'>" + text + "</option>");
+                });
+            }
+        });
+    }
+</script>
+{/block}

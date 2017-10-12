@@ -9,7 +9,7 @@
         </ul>
         <div class="container-fluid">
             <div class="container-fluid">
-                <hr><div class="table-responsive">  <table class="table table-bordered">
+                <div class="table-responsive">  <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
                         <th style="width: 60px;">ID</th>
@@ -30,7 +30,7 @@
                         <td>{$vo.last_login_ip}</td>
                         <td>
                             <a href="{:url('admin/admin_user/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
-                            <a href="{:url('admin/admin_user/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                            <button name="del" action="{:url('admin/admin_user/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</button>
                         </td>
                     </tr>
                     {/foreach}

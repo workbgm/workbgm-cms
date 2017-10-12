@@ -1,0 +1,78 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>订单管理</a></li>
+        </ul>
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">ID</th>
+                        <th>订单编号</th>
+                        <th>总数</th>
+                        <th>总价</th>
+                        <th>快照</th>
+                        <th>客户地址</th>
+                        <th>状态</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.order_no}</td>
+                        <td>{$vo.total_count}</td>
+                        <td>{$vo.total_price}</td>
+                        <td>{$vo.snap_items|WeiCode::getOrderItems}</td>
+                        <td>{$vo.snap_address|WeiCode::getOrderAddress}</td>
+                        <td>{$vo.status|WeiCode::getOrderStatus}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>
+                            <button name="delivery" action="{:site_url('weicode.orderDelivery',['id'=>$vo['id']])}" class="btn btn-mini  btn-warning <?php if($vo['status']!=2){echo 'disabled';}?>">发货</button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    //删除
+    $('button[name="delivery"]').click(function(){
+        var action = $(this).attr('action');
+        bootbox.confirm({
+            message: "您确认已发货吗?",
+            buttons: {
+                confirm: {
+                    label: '确认',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: '取消',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                    $.get(action, function(d){
+                        //bootbox.alert(d.msg);
+                       // location.reload();
+                    });
+                }
+            }
+        });
+    });
+</script>
+{/block}

@@ -2,19 +2,19 @@
     <ul class="content-list">
         <h4><img src="__STATIC__/web/ruipan/images/public-header-content-information.png">管理信息化解决方案</h4>
         <?php foreach($infomation_list as $m){?>
-            <li class="content-item"><a href="{:url('ruipan/Index/article',['id'=>$m.id,'classification'=>'信息化','type'=>'解决方案'])}"><?php echo $m['title'];?></a></li>
+            <li class="content-item"><a href="{:url('index/Index/article',['id'=>$m.id,'classification'=>'信息化','type'=>'解决方案'])}"><?php echo $m['title'];?></a></li>
        <?php }?>
     </ul>
     <ul class="content-list">
         <h4><img src="__STATIC__/web/ruipan/images/public-header-content-mobile.png">移动应用解决方案</h4>
         <?php foreach($mobile_list as $m){?>
-        <li class="content-item"><a href="{:url('ruipan/Index/article',['id'=>$m.id,'classification'=>'移动应用','type'=>'解决方案'])}"><?php echo $m['title'];?></a></li>
+        <li class="content-item"><a href="{:url('index/Index/article',['id'=>$m.id,'classification'=>'移动应用','type'=>'解决方案'])}"><?php echo $m['title'];?></a></li>
         <?php }?>
     </ul>
     <ul class="content-list">
         <h4><img src="__STATIC__/web/ruipan/images/public-header-content-iot.png">物联网解决方案</h4>
         <?php foreach($iot_list as $m){?>
-        <li class="content-item"><a href="{:url('ruipan/Index/article',['id'=>$m.id,'classification'=>'物联网','type'=>'解决方案'])}"><?php echo $m['title'];?></a></li>
+        <li class="content-item"><a href="{:url('index/Index/article',['id'=>$m.id,'classification'=>'物联网','type'=>'解决方案'])}"><?php echo $m['title'];?></a></li>
         <?php }?>
     </ul>
 </div>

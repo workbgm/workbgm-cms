@@ -8,6 +8,9 @@
  */
 
 return [
-    'img_prefix' => 'http://work.eruipan.com/static/api/images',
+    'domain' => 'zipscloud.com',
+    'rewrite_map' =>'C:/wamp/vhosts/vhost.map',
+    'www' =>'C:/wamp/www/',
+    'img_prefix' => 'http://yn.zipscloud.com',
     'token_expire_in' => 7200
 ];

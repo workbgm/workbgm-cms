@@ -115,7 +115,7 @@ Gulp 构建在nodejs 之上。在安装 Gulp 之前需要首先[下载并安装 
 
 完成上述步骤就可以进行编译了。只需要进入ZUI中使用命令行输入对应的命令就可以启动编译任务。内置的`build`命令可以完成大部分编译任务。以下为ZUI内置的一些常用任务命令。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 200px">命令</th>

@@ -169,7 +169,7 @@ $('#myBoards').boards({
 
 在进行初始化时允许传入一个对象参数作为初始化选项。可以使用的选项如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>选项</th>

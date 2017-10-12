@@ -213,7 +213,7 @@ $('#myModal').modal(options)
 
 可用的参数如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>
@@ -328,7 +328,7 @@ $('#myModal').modal('ajustPosition', 'fit')
 
 对话框提供了一系列事件用于监听对话框运行状态，便于在合适的时机运行你自己的代码。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
    <tr>
      <th style="width: 80px;">事件</th>

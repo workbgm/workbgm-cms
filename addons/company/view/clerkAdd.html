@@ -1,0 +1,42 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        {$wui}
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+<script>
+    $(function(){
+        getShopsBYCompanyID($("select[name='companyid']").val());
+        $("select[name='companyid']").change(function(){
+            getShopsBYCompanyID($(this).val());
+        });
+
+    });
+
+    function getShopsBYCompanyID(id){
+        $.ajax({
+            type:'GET',
+            url:"{:site_url('company.getShopsByCompanyID')}id="+id,
+            success:function(data){
+               var opts = $("select[name='shopid'] option");
+               var shop = $("select[name='shopid']");
+               opts.remove();
+               if(data.length==0){
+                   workbgm.alert("该公司下没有店铺",null);
+               }
+               $(data).each(function(i,obj){
+                   var value = obj.id;
+                   var text = obj.name;
+                   shop.append("<option value='"+value+"'>"+text+"</option>");
+               });
+            }
+        });
+    }
+</script>
+{/block}
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__STATIC__/admin/zui/dist/css/zui.min.css">
+    <!--CSS引用-->
+    {block name="css"}{/block}
+    <!--[if lt IE 9]>
+    <script src="__CSS__/html5shiv.min.js"></script>
+    <script src="__CSS__/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid nopadding">
+    {block name="body"}{/block}
+</div>
+
+<script>
+    var GV = {
+        current_controller: "admin.php/{$controller|default=''}/",
+        base_url: "__STATIC__"
+    };
+</script>
+<script src="__STATIC__/admin/zui/dist/lib/jquery/jquery.js"></script>
+<script src="__STATIC__/admin/zui/dist/js/zui.min.js"></script>
+<script src="__STATIC__/admin/js/jquery.ajaxfileupload.js"></script>
+<script src="__STATIC__/admin/js/bootbox.min.js"></script>
+<script type="text/javascript">
+    {block name="js"}{/block}
+</script>
+
+{block name="script"}{/block}
+</body>
+</html>

@@ -33,6 +33,26 @@ class BaseValidate extends  Validate
         }
     }
 
+    public function webCheck(){
+        $request=Request::instance();
+        $params=$request->param();
+        $result=$this->batch()->check($params);
+        if(!$result){
+            $error=$this->getError();
+            return $this->arrayKeyToString(array_values($error));
+        }else{
+            return true;
+        }
+    }
+
+    public function arrayKeyToString($arr=[]){
+        $str='';
+        for ($i=0;$i<count($arr);$i++){
+            $str.=$arr[$i].'|';
+        }
+        return $str;
+    }
+
     protected  function isPositiveInteger($value,$rule='',
                                           $data='',$field='')
     {

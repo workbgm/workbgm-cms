@@ -394,7 +394,7 @@ filter: xialacaidan xlcd
   <div class="dropdown open">
     <button class="btn" type="button" data-toggle="dropdown">自定义下拉菜单 <span class="caret"></span></button>
     <div class="dropdown-menu dropdown-menu-table">
-      <table class="table table-bordered">
+      <table class="table table-bordered table-hover">
         <thead>
           <tr>
             <th>常用操作</th>
@@ -452,7 +452,7 @@ filter: xialacaidan xlcd
 <div class="dropdown">
   <button class="btn" type="button" data-toggle="dropdown">自定义下拉菜单 <span class="caret"></span></button>
   <div class="dropdown-menu dropdown-menu-table">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>常用操作</th>

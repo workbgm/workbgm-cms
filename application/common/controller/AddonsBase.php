@@ -66,8 +66,9 @@ class AddonsBase extends  AdminBase
         $menu     = [];
         $admin_id = Session::get('admin_id');
         $auth     = new Auth();
-
-        $auth_rule_list = Db::name('auth_rule')->where('status', 1)->order(['sort' => 'DESC', 'id' => 'ASC'])->select();
+        $map['status'] = 1;
+        $map['systype'] = 0;
+        $auth_rule_list = Db::name('auth_rule')->where($map)->order(['sort' => 'DESC', 'id' => 'ASC'])->select();
 
         foreach ($auth_rule_list as $value) {
             if ($auth->check($value['name'], $admin_id) || $admin_id == 1) {
@@ -88,14 +89,37 @@ class AddonsBase extends  AdminBase
     }
 
     protected  function  getMenu2($menus,$name){
-        foreach ($menus as $menu){
-            if($menu['name']==$name){
-                if(isset($menu['actions'])){
-                    return $menu['actions'];
-                }else{
-                    return null;
-                }
+        $name=strtolower($name);
+        $admin_id = Session::get('admin_id');
+        if($admin_id==1){
+            foreach ($menus as $menu){
+                if($menu['name']==$name){
+                    if(isset($menu['actions'])){
+                        return $menu['actions'];
+                    }else{
+                        return null;
+                    }
 
+                }
+            }
+        }else{
+            $authList = $this->getAddonsByAuth(Session::get('admin_id'));
+            foreach ($menus as $menu){
+                if($menu['name']==$name){
+                    if(isset($menu['actions'])){
+                        $actions =  $menu['actions'];
+                        foreach ($actions as $ki =>$action){
+                            $ac = strtolower($name.'/'.$action['name']);
+                            if(!in_array($ac,$authList)){
+                                unset($actions[$ki]);
+                            }
+                        }
+                        return array_values($actions);
+                    }else{
+                        return null;
+                    }
+
+                }
             }
         }
     }
@@ -110,6 +134,37 @@ class AddonsBase extends  AdminBase
             }
         }
         return $actionsData;
+    }
+
+    protected function getFormData()
+    {
+        $data = $this->request->param();
+        unset($data['file']);
+        unset($data['m']);
+        unset($data['ac']);
+        unset($data['t']);
+       // $data = $this->formDataToString($data);
+        return $data;
+    }
+
+    private function formDataToString($data){
+        foreach ( $data as $key => $val ){
+            if( is_array($data[$key]) ){
+                $data[$key] = $this->arrayKeyToString($data[$key]);
+            }
+        }
+        return $data;
+    }
+
+
+
+    private function arrayKeyToString($arr=[]){
+        $str='';
+        for ($i=0;$i<count($arr);$i++){
+            $str.=$arr[$i].',';
+        }
+        $str = rtrim($str,",");
+        return $str;
     }
 
 }

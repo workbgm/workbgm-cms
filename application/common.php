@@ -36,7 +36,8 @@ function site_index(){
  */
 function site_url($url,$args=[]){
     $info=explode('.',$url);
-    return site_index().'/entry/handler?m='.$info[0].'&ac='.$info[1].'&t=admin&'.http_build_query($args);
+    return site_index().'/entry/handler/m/'.$info[0].'/ac/'.$info[1].'/t/admin?'.http_build_query($args);
+//    return site_index().'/entry/handler?m='.$info[0].'&ac='.$info[1].'&t=admin&'.http_build_query($args);
 }
 
 /**
@@ -47,7 +48,8 @@ function site_url($url,$args=[]){
  */
 function web_url($url,$args=[]){
     $info=explode('.',$url);
-    return site_index().'/module/entry/handler?m='.$info[0].'&ac='.$info[1].'&t=web&'.http_build_query($args);
+    return site_index().'/module/entry/handler/m/'.$info[0].'/ac/'.$info[1].'/t/web?'.http_build_query($args);
+//    return site_index().'/module/entry/handler?m='.$info[0].'&ac='.$info[1].'&t=web&'.http_build_query($args);
 }
 
 /**
@@ -77,10 +79,11 @@ function get_status($status)
  * @return false|string
  */
 function unixTo($u,$f='Y-m-d H:i:s'){
-    return date($f,$u);
+    return date($f,(int)$u);
 }
 
 /**
+ * 获取字段备注
  * @param $tablename 表名
  * @param $columnname 字段名
  */
@@ -95,6 +98,12 @@ function getFieldComment($tablename,$columnname,$database=null)
     return Db::query($sql_str)[0]['COLUMN_COMMENT'];
 }
 
+/**
+ * 获取表备注
+ * @param $tablename
+ * @param null $database
+ * @return mixed
+ */
 function getTableComment($tablename,$database=null){
     if(empty($database)){
         $database=Config::get('database.database');
@@ -102,93 +111,6 @@ function getTableComment($tablename,$database=null){
     $sql_str = "show table status where name='"
         . $tablename . "'";
     return Db::query($sql_str)[0]['Comment'];
-}
-/**
- * 获取分类所有子分类
- * @param int $cid 分类ID
- * @return array|bool
- */
-function get_category_children($cid)
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    $children = Db::name('category')->where(['path' => ['like', "%,{$cid},%"]])->select();
-
-    return array2tree($children);
-}
-
-/**
- * 获取导航一级菜单
- * @return [array] [id,name]
- */
-function get_category_children_1_level()
-{
-    return Db::name('category')->where(['pid' => ['eq', "0"]])->select();
-}
-
-function get_category_bycid($cid)
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    return Db::name('category')->find($cid);
-}
-
-/**
- * 根据分类ID获取文章列表（包括子分类）
- * @param int $cid 分类ID
- * @param int $limit 显示条数
- * @param array $where 查询条件
- * @param array $order 排序
- * @param array $filed 查询字段
- * @return bool|false|PDOStatement|string|\think\Collection
- */
-function get_articles_by_cid($cid, $limit = 10, $where = [], $order = [], $filed = [])
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    $ids = Db::name('category')->where(['path' => ['like', "%,{$cid},%"]])->column('id');
-    $ids = (!empty($ids) && is_array($ids)) ? implode(',', $ids) . ',' . $cid : $cid;
-
-    $fileds = array_merge(['id', 'cid', 'title', 'author', 'introduction', 'thumb', 'reading', 'publish_time'], (array)$filed);
-    $map = array_merge(['cid' => ['IN', $ids], 'status' => 1, 'publish_time' => ['<= time', date('Y-m-d H:i:s')]], (array)$where);
-    $sort = array_merge(['is_top' => 'DESC', 'sort' => 'DESC', 'publish_time' => 'DESC'], (array)$order);
-
-    $article_list = Db::name('article')->where($map)->field($fileds)->order($sort)->limit($limit)->select();
-
-    return $article_list;
-}
-
-/**
- * 根据分类ID获取文章列表，带分页（包括子分类）
- * @param int $cid 分类ID
- * @param int $page_size 每页显示条数
- * @param array $where 查询条件
- * @param array $order 排序
- * @param array $filed 查询字段
- * @return bool|\think\paginator\Collection
- */
-function get_articles_by_cid_paged($cid, $page_size = 15, $where = [], $order = [], $filed = [])
-{
-    if (empty($cid)) {
-        return false;
-    }
-
-    $ids = Db::name('category')->where(['path' => ['like', "%,{$cid},%"]])->column('id');
-    $ids = (!empty($ids) && is_array($ids)) ? implode(',', $ids) . ',' . $cid : $cid;
-
-    $fileds = array_merge(['id', 'cid', 'title', 'introduction', 'thumb', 'reading', 'publish_time'], (array)$filed);
-    $map = array_merge(['cid' => ['IN', $ids], 'status' => 1, 'publish_time' => ['<= time', date('Y-m-d H:i:s')]], (array)$where);
-    $sort = array_merge(['is_top' => 'DESC', 'sort' => 'DESC', 'publish_time' => 'DESC'], (array)$order);
-
-    $article_list = Db::name('article')->where($map)->field($fileds)->order($sort)->paginate($page_size);
-
-    return $article_list;
 }
 
 /**
@@ -360,6 +282,7 @@ function check_mobile_number($mobile)
 /**
  * [返回字典组列表]
  * @param [type] $group [组值]
+ * @return select所需要的值
  */
 function map($group)
 {
@@ -367,11 +290,23 @@ function map($group)
     return $options;
 }
 
-//function hook($hook, $fun)
-//{
-//    $hook = 'app\\plugins\\' . $hook;
-//    \app\common\Hook::call($hook, $fun);
-//}
+/**
+ * 专门给select用的数据源整理
+ * @param $list  数据库查出来的表记录
+ * @param string $name  对应的name
+ * @param string $value  对应的value
+ * @return array
+ */
+function toSelectOptions($list,$name="name",$value="value"){
+    $arr = [];
+    foreach ($list as $vo){
+        $item['name'] = $vo[$name];
+        $item['value'] = $vo[$value];
+        array_push($arr,$item);
+    }
+    return $arr;
+}
+
 
 function help_sub($text, $length)
 {
@@ -420,7 +355,7 @@ function m_select($label, $name, $options, $isrequired = false, $value = "", $at
 {
     $require_html = '';
     if ($isrequired) {
-        $require_html = 'lay-verify="required"';
+        $require_html = 'required';
     }
     $options_html = '';
     foreach ($options as $option) {
@@ -482,11 +417,11 @@ function EXCEL($fileName, $data, $head) {
 }
 
 /**
- * @param string $url post请求地址
+ * @param string $url post/put
  * @param array $params
  * @return mixed
  */
-function curl_post($url, array $params = array())
+function curl_p($url, array $params = array(),$method='post')
 {
     $data_string = json_encode($params);
     $ch = curl_init();
@@ -494,7 +429,13 @@ function curl_post($url, array $params = array())
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_POST, 1);
+    $method = strtolower(trim($method));
+    if($method=='post'){
+        curl_setopt($ch, CURLOPT_POST, 1);
+    }else if($method=='put'){
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "put");
+    }
+
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt(
@@ -575,9 +516,74 @@ function fromArrayToModel($m , $array)
     return $m;
 }
 
+/**
+ * 显示状态
+ * @param //-1 被撤回 1已采样  2 已上传  待采样
+ * @return string
+ */
+function getNodeState($status)
+{
+    switch ($status) {
+        case -1:
+            $showText = '被撤回';
+            break;
+        case 1 :
+            $showText = '已采样';
+            break;
+        case 2 :
+            $showText = '已上传';
+            break;
+        default :
+            $showText = '待采样';
+    }
+    return  $showText;
+}
 
+
+function getDirectionState($status)
+{
+//居民点、厂矿、耕地、林地、草地、水域、其他
+    $showText='';
+    $len = strlen($status);
+    if($len!=7){
+        $showText='<span class="with-padding bg-danger">数据不合法</span>';
+        return $showText;
+    }else{
+        for($i=0;$i<$len;$i++){
+            if($status[$i]){
+                switch ($i){
+                    case 0:
+                        $showText.='<span class="with-padding bg-primary">居民点</span>';
+                        break;
+                    case 1:
+                        $showText.='<span class="with-padding bg-primary">厂矿</span>';
+                        break;
+                    case 2:
+                        $showText.='<span class="with-padding bg-primary">耕地</span>';
+                        break;
+                    case 3:
+                        $showText.='<span class="with-padding bg-primary">林地</span>';
+                        break;
+                    case 4:
+                        $showText.='<span class="with-padding bg-primary">草地</span>';
+                        break;
+                    case 5:
+                        $showText.='<span class="with-padding bg-primary">水域</span>';
+                        break;
+                    case 6:
+                        $showText.='<span class="with-padding bg-primary">其他</span>';
+                        break;
+                }
+            }
+        }
+    }
+    return $showText;
+}
+
+include EXTEND_PATH ."cms/Cms.php";
 include EXTEND_PATH ."data/Data.php";
 include EXTEND_PATH ."html/Html.php";
 include EXTEND_PATH ."html/Css.php";
 include EXTEND_PATH ."html/Js.php";
-include EXTEND_PATH ."html/Zui.php";
+include EXTEND_PATH ."html/WUI.php";
+include EXTEND_PATH ."weicode/WeiCode.php";

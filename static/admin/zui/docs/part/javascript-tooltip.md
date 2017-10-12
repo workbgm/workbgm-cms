@@ -46,7 +46,7 @@ $('[data-toggle="tooltip"]').tooltip();
 
 可以将选项通过 `[data-*]` 属性或 JavaScript 对象指定。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 100px;">名称</th>
@@ -158,7 +158,7 @@ $('#element').tooltip('destroy');
 
 ## 事件
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 150px;">事件类型</th>

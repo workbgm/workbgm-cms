@@ -1,0 +1,270 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>采样小组</a></li>
+        </ul>
+        <!--搜索start-->
+        <!--搜索end-->
+        <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px;">NODE_ID</th>
+                        <th>采样地点</th>
+                        <th>经纬度</th>
+                        <th>采样项</th>
+                        <th>采样小组</th>
+                        <th>采样任务状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.NODE_ID}</td>
+                        <td>{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}</td>
+                        <td>{$vo.LATITUDE},{$vo.LONGITUDE}</td>
+                        <td>{$vo.PLAN_QUALITY_CONTROL}</td>
+                        <td>{$vo.group.GROUP_NAME}</td>
+                        <td>{$vo.STATE|getNodeState}</td>
+                        <td>
+                            <button data-size="fullscreen" data-title="{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}" data-iframe="{:site_url('ssap.show',['NODE_ID'=>$vo['NODE_ID']])}" data-toggle="modal" class="btn btn-primary">查看采样数据</button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    $(function(){
+        $('button[name="show"]').click(function(){
+            var action = $(this).attr('action');
+           $.ajax({
+               url:action,
+               type:'get',
+               success:function(data){
+                   show(data['title'],buildHtml(data));
+               }
+           });
+        });
+    });
+
+    function buildHtml(data){
+        var html='<ul class="nav nav-tabs">\n' +
+            '  <li class="active"><a data-tab href="#fhdcdw">复合调查点位</a></li>\n' +
+            '  <li><a data-tab href="#ncp">农产品</a></li>\n' +
+            '  <li><a data-tab href="#bctr">表层土壤</a></li>\n' +
+            '  <li><a data-tab href="#sctr">深层土壤</a></li>\n' +
+            '</ul>\n' +
+            '<div class="tab-content di">\n' +
+            '  <div class="tab-pane active" id="fhdcdw">\n' +
+            fhdcdw(data) +
+            '  </div>\n' +
+            '  <div class="tab-pane" id="ncp">\n' +
+            ncp(data) +
+            '  </div>\n' +
+            '  <div class="tab-pane" id="bctr">\n' +
+            bctr(data) +
+            '  </div>\n' +
+            '  <div class="tab-pane" id="sctr">\n' +
+            sctr(data) +
+            '  </div>\n' +
+            '</div>';
+        return html;
+    }
+
+    function fhdcdw(data){
+       var data = data['fhdcdw'];
+        var html=fhdcdw_imgs(data)+'<div class="table-responsive"><table class="table table-striped table-hover table-bordered"><tbody>'+
+                '<tr><td>样点编码</td><td>'+data['NODE_CODE']+'</td><td>布点网格大小</td><td>'+data['grid_size']['OPTION_NAME']+'</td><td>样品所在区域</td><td>'+data['site_region']['OPTION_NAME']+'</td><td>计划经纬度</td><td>'+data['PLAN_LATITUDE']+','+data['PLAN_LONGITUDE']+'</td></tr>'+
+            '<tr><td>样点类型</td><td>'+data['spec_type']['OPTION_NAME']+'</td><td>计划采样地点</td><td>'+data['PLAN_NODE_ADDRESS']+'</td><td>海拔高度(m)</td><td>'+data['ELEVATION']+'</td><td>土壤发生分类1</td><td>'+data['soil_type_code']['OPTION_NAME']+'</td></tr>'+
+            '<tr><td>土壤发生分类2</td><td>'+data['soil_type_code2']['OPTION_NAME']+'</td><td>土壤系统分类1</td><td>'+data['soil_sys_code']['OPTION_NAME']+'</td><td>土壤系统分类2</td><td>'+data['soil_sys_code2']['OPTION_NAME']+'</td><td>土壤系统分类3</td><td>'+data['soil_sys_code3']['OPTION_NAME']+'</td></tr>'+
+            '<tr><td>土地利用方式</td><td>'+data['soil_use_type']['OPTION_NAME']+'</td><td>耕作方式</td><td>'+data['tillage_fashion']['OPTION_NAME']+'</td><td>灌溉方式</td><td>'+data['irrigate_fashion']['OPTION_NAME']+'</td><td>灌溉水类型</td><td>'+data['parent_rock_type']['OPTION_NAME']+'</td></tr>'+
+            '<tr><td>地形类型</td><td>'+data['landform_type']['OPTION_NAME']+'</td><td></td><td></td><td>正东(多选)</td><td>'+getDirectionState(data['DUE_EAST'])+'</td><td>正东其它</td><td>'+data['DUE_EASTOTHER']+'</td></tr>'+
+            '<tr><td>正南(多选)</td><td>'+getDirectionState(data['DUE_SOUTH'])+'</td><td>正南其它</td><td>'+data['DUE_SOUTH_OTHER']+'</td><td>正西(多选)</td><td>'+getDirectionState(data['DUE_WEST'])+'</td><td>正西其它</td><td>'+data['DUE_WEST_OTHER']+'</td></tr>'+
+            '<tr><td>正北(多选)</td><td>'+getDirectionState(data['DUE_NORTH'])+'</td><td>正北其它</td><td>'+data['DUE_NORTH_OTHER']+'</td><td>天气情况</td><td>'+data['weather_type_code']['OPTION_NAME']+'</td><td>周边潜在污染源</td><td>'+data['POLLUTION_INFO']+'</td></tr>'+
+            '<tr><td>污染源距离(m)</td><td>'+data['POLLUTION_DISTANCES']+'</td><td>采样日期</td><td>'+data['ADD_TIME']+'</td><td></td><td></td></tr>'+
+            '</tbody></table></div>';
+        return html;
+    }
+
+
+    //样品说明有问题
+    function ncp(data){
+       var data = data['ncp'];
+        var html=all_imgs(data)+'<div class="table-responsive"><table class="table table-striped table-hover table-bordered"><tbody>'+
+            '<tr><td>样点编码</td><td>'+data['SPECIMEN_CODE']+'</td><td>实际经纬度</td><td>'+data['LATITUDE']+','+data['LONGITUDE']+'<span class="label label-danger">偏移距离:'+data['LNG_DISTANCE']+'m</span></td></tr>'+
+            '<tr><td>样点变更说明</td><td>'+data['DEPTH_INFO']+'</td><td>农产品类型</td><td>'+G(data,'farm_sample_type','OPTION_NAME')+'</td></tr>'+
+            '<tr><td>农产品名称</td><td>'+G(data,'farm_produce_name','OPTION_NAME')+'</td><td>采样部位</td><td>'+G(data,'sampling_site','OPTION_NAME')+'</td></tr>'+
+            '<tr><td>是否质控样品</td><td>'+G(data,'is_quality_control','OPTION_NAME')+'</td><td>样品质量(g)</td><td>'+data['WEIGHT']+'</td></tr>'+
+            '<tr><td>作物栽培季节</td><td>'+G(data,'crop_season','OPTION_NAME')+'</td><td>当季产量</td><td>'+data['SINGLE_SEASON_YIELD']+'</td></tr>'+
+            '<tr><td>施肥情况</td><td>'+G(data,'fertilization_condition','OPTION_NAME')+'</td><td>亩施肥量(kg)</td><td>'+data['MU_FERTILIZATION']+'</td></tr>'+
+            '<tr><td>施用农药情况</td><td>'+G(data,'pesticide_condition','OPTION_NAME')+'</td><td>施用农药情况(其它)</td><td>'+data['PESTICIDE_CONDITION_OTHER']+'</td></tr>'+
+            '<tr><td>亩均用量(g)</td><td>'+data['MU_DOSAGE']+'</td><td>作物品种</td><td>'+data['CROP_TYPE']+'</td></tr>'+
+            '<tr><td>样品说明</td><td></td><td></td></tr>'+
+            '</tbody></table></div>';
+        return html;
+    }
+
+    function bctr(data){
+       var data = data['bctr'];
+        var html=all_imgs(data)+'<div class="table-responsive"><table class="table table-striped table-hover table-bordered"><tbody>'+
+            '<tr><td>样点编码</td><td>'+data['SPECIMEN_CODE']+'</td><td>实际经纬度</td><td>'+data['LATITUDE']+','+data['LONGITUDE']+'<span class="label label-danger">偏移距离:'+data['LNG_DISTANCE']+'m</span></td></tr>'+
+            '<tr><td>采样深度备注</td><td>'+data['DEPTH_INFO']+'</td><td>采样深度(cm)</td><td>'+data['DEPTH_START']+'-'+data['DEPTH_END']+'</td></tr>'+
+            '<tr><td>是否质控样品</td><td>'+data['is_quality_control']['OPTION_NAME']+'</td><td>样品质量(g)</td><td>'+data['WEIGHT']+'</td></tr>'+
+            '<tr><td>土壤质地</td><td>'+G(data,'soil_type_code','OPTION_NAME')+'</td><td>三角土壤颜色</td><td>'+G(data,'soil_colour','OPTION_NAME')+'</td></tr>'+
+            '</tbody></table></div>';
+        return html;
+    }
+
+    function sctr(data){
+      var  data = data['sctr'];
+        var html=all_imgs(data)+'<div class="table-responsive"><table class="table table-striped table-hover table-bordered"><tbody>'+
+            '<tr><td>样点编码</td><td>'+data['SPECIMEN_CODE']+'</td><td>实际经纬度</td><td>'+data['LATITUDE']+','+data['LONGITUDE']+'<span class="label label-danger">偏移距离:'+data['LNG_DISTANCE']+'m</span></td></tr>'+
+            '<tr><td>采样深度备注</td><td>'+data['DEPTH_INFO']+'</td><td>采样深度(cm)</td><td>'+data['DEPTH_START']+'-'+data['DEPTH_END']+'</td></tr>'+
+            '<tr><td>是否质控样品</td><td>'+data['is_quality_control']['OPTION_NAME']+'</td><td>样品质量(g)</td><td>'+data['WEIGHT']+'</td></tr>'+
+            '<tr><td>土壤质地</td><td>'+G(data,'soil_type_code','OPTION_NAME')+'</td><td>三角土壤颜色</td><td>'+G(data,'soil_colour','OPTION_NAME')+'</td></tr>'+
+            '</tbody></table></div>';
+        return html;
+    }
+
+    function fhdcdw_imgs(data){
+        var html='<div class="container-fluid">\n' +
+            '            <div class="cards">\n' +
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path1','path')+'" >\n' +
+            '                        <div class="card-content text-muted">样点东侧</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path2','path')+'" >\n' +
+            '                        <div class="card-content text-muted">样点南侧</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path3','path')+'" >\n' +
+            '                        <div class="card-content text-muted">样点西侧</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path4','path')+'" >\n' +
+            '                        <div class="card-content text-muted">样点北侧</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                </div>'+
+            '            </div>';
+        return html;
+    }
+
+    function all_imgs(data){
+        var html='<div class="container-fluid">\n' +
+            '            <div class="cards">\n' +
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path1','path')+'" >\n' +
+            '                        <div class="card-content text-muted">GPS屏显</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path2','path')+'" >\n' +
+            '                        <div class="card-content text-muted">采样工作过程</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path3','path')+'" >\n' +
+            '                        <div class="card-content text-muted">采样负责人</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                <div class="col-md-4 col-sm-6 col-lg-3">\n' +
+            '                    <a class="card" href="###">\n' +
+            '                        <img class="lightbox"  src="'+G(data,'img_path4','path')+'" >\n' +
+            '                        <div class="card-content text-muted">样点变更图片</div>\n' +
+            '                    </a>\n' +
+            '                </div>'+
+            '                </div>'+
+            '            </div>';
+        return html;
+    }
+
+    function G(data,name1,name2){
+        if(data[name1]!=null){
+            return data[name1][name2];
+        }
+        return '';
+    }
+
+    function show(title,html){
+        bootbox.dialog({
+            title: title,
+            message: html,
+            size: "large"
+        });
+        $('.lightbox').lightbox();
+    }
+
+    function getDirectionState(status)
+    {
+//居民点、厂矿、耕地、林地、草地、水域、其他
+        var showText='';
+        var len = status.length;
+        if(len!=7){
+            showText='<span class="with-padding bg-danger">数据不合法</span>';
+            return showText;
+        }else{
+            for(var i=0;i<len;i++){
+                if(status.charAt(i)=='1'){
+                    switch (i){
+                        case 0:
+                            showText+='<span class="label label-primary">居民点</span>';
+                            break;
+                        case 1:
+                            showText+='<span class="label label-primary">厂矿</span>';
+                            break;
+                        case 2:
+                            showText+='<span class="label label-primary">耕地</span>';
+                            break;
+                        case 3:
+                            showText+='<span class="label label-primary">林地</span>';
+                            break;
+                        case 4:
+                            showText+='<span class="label label-primary">草地</span>';
+                            break;
+                        case 5:
+                            showText+='<span class="label label-primary">水域</span>';
+                            break;
+                        case 6:
+                            showText+='<span class="label label-primary">其他</span>';
+                            break;
+                    }
+                }
+            }
+        }
+        return showText;
+    }
+</script>
+{/block}
+
+{block name="css"}
+    <style>
+        .di table tr td:nth-child(odd){
+            color:blue;
+        }
+    </style>
+{/block}

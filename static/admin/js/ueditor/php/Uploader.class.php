@@ -332,7 +332,7 @@ class Uploader
             $fullname = '/' . $fullname;
         }
 
-        return $rootPath . $fullname;
+        return $rootPath .$this->config['domain_path']. $fullname;
     }
 
     /**

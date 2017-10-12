@@ -15,6 +15,7 @@
                         <th>菜单名称</th>
                         <th style="width: 60px;">排序</th>
                         <th>链接/控制器方法</th>
+                        <th>模块类型</th>
                         <th>状态</th>
                         <th>操作</th>
                     </tr>
@@ -29,11 +30,12 @@
                         <td>{$vo.title}</td>
                         <td>{$vo.sort}</td>
                         <td>{$vo.name}</td>
+                        <td>{php}echo $vo['systype']==0 ? '<span class="label label-success">自身模块</span>' : '<span class="label label-warning">插件模块</span>';{/php}</td>
                         <td>{php}echo $vo['status']==1 ? '<span class="label label-success">显示</span>' : '<span class="label">隐藏</span>';{/php}</td>
                         <td>
                             <a href="{:url('admin/menu/add',['pid'=>$vo['id']])}" class="btn btn-mini btn-primary">添加子菜单</a>
                             <a href="{:url('admin/menu/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
-                            <a href="{:url('admin/menu/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                            <button name="del" action="{:url('admin/menu/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</button>
                         </td>
                     </tr>
                     {/foreach}

@@ -124,7 +124,7 @@ $(function() {
 
 所有可用的初始化选项：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 100px">选项</th>
@@ -241,7 +241,7 @@ $('#myColor').on('change', function() {
 
 可用的方法：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>方法</th>

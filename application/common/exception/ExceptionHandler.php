@@ -27,12 +27,13 @@ class ExceptionHandler extends Handle
         if($e instanceof  BaseException){
             //如果是自定义的异常
             $this->code =$e->code;
-            $this->msg=$e->msg;
+            $this->msg=$e->getMessage();
             $this->errorCode=$e->errorCode;
         }else{
             if(!config('app_debug')){
                 $this->code = 500;
-                $this->msg = '服务器内部错误';
+//                $this->msg = '服务器内部错误';
+                $this->msg = $e;
                 $this->errorCode = 999;
                 $this->recordErrorLog($e);
             }else{

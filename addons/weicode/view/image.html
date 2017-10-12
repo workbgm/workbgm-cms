@@ -1,0 +1,32 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>图片管理</a></li>
+            <li><a href="{:site_url('weicode.imageAdd')}">添加新图片</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="cards">
+                {foreach name="list" item="vo"}
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img data-toggle="lightbox"  src="{$vo.url}" alt="{$vo.description}">
+                        <div class="card-heading"><strong>ID:{$vo.id}</strong></div>
+                        <div class="card-content text-muted">{$vo.description}</div>
+                        <div class="card-actions">
+                            <span class="label label-warning">{$vo.from==1?'本地':'网络'}</span>
+                            <button  name="del" action="{:site_url('weicode.imageDel',['id'=>$vo.id])}" class="btn  btn-danger btn-mini pull-right">删除</button>
+                        </div>
+                    </a>
+                </div>
+                {/foreach}
+            </div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+        </div>
+    </div>
+</div>
+{/block}

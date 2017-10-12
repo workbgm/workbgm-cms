@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="public/meta" /}
+    <link rel="stylesheet" href="{$W_C_CSS}/animate.css">
+    <link rel="stylesheet" href="{$W_PLUGIN}/OwlCarousel2-2.2.1/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{$W_CSS}/owl.theme.orange.css">
+    <link rel="stylesheet" href="{$W_CSS}/index.css">
+</head>
+<body>
+{include file="public/browserupgrade" /}
+{include file="public/header" /}
+<!--index banner-->
+<div class="index-banner" style="z-index: 100">
+    <div class="owl-carousel owl-theme" id="index_banner">
+        <div class="item">
+            <picture>
+                <source srcset="{$W_IMG}/home/banner1-l.jpg" media="(min-width: 50em)">
+                <source srcset="{$W_IMG}/home/banner1-m.jpg" media="(min-width: 30em)">
+                <img srcset="{$W_IMG}/home/banner1-s.jpg">
+            </picture>
+        </div>
+        <div class="item">
+            <picture>
+                <source srcset="{$W_IMG}/home/banner2-l.jpg" media="(min-width: 50em)">
+                <source srcset="{$W_IMG}/home/banner2-m.jpg" media="(min-width: 30em)">
+                <img srcset="{$W_IMG}/home/banner2-s.jpg">
+            </picture>
+        </div>
+        <div class="item">
+            <picture>
+                <source srcset="{$W_IMG}/home/banner3-l.jpg" media="(min-width: 50em)">
+                <source srcset="{$W_IMG}/home/banner3-m.jpg" media="(min-width: 30em)">
+                <img srcset="{$W_IMG}/home/banner3-s.jpg">
+            </picture>
+        </div>
+        <div class="item">
+            <picture>
+                <source srcset="{$W_IMG}/home/banner4-l.jpg" media="(min-width: 50em)">
+                <source srcset="{$W_IMG}/home/banner4-m.jpg" media="(min-width: 30em)">
+                <img srcset="{$W_IMG}/home/banner4-s.jpg">
+            </picture>
+        </div>
+    </div>
+</div>
+<!--index service-->
+<div class="index-service">
+    <div class="public-container w-center-block">
+        <div class="title w-text-center w-m-hide">
+            <h2>公司业务</h2>
+            <span>service</span>
+        </div>
+        <div class="services">
+            <a class="item w-text-center anim-top" href="{:url('ybd/Index/emanagement')}">
+                <img src="{$W_IMG}/home/智慧能源.svg" alt="">
+                <h3>智慧能源管理</h3>
+                <p class="w-m-hide">
+                    互联网+大数据+节能专业分析模型，为用户提供全面的可视化能效监测、节能诊断、用能分析，个性化的节能方案和建议
+                </p>
+            </a>
+            <a class="item w-text-center anim-top" href="{:url('ybd/Index/etrusteeship')}">
+                <img src="{$W_IMG}/home/运维托管.svg" alt="">
+                <h3>电力运维托管</h3>
+                <p class="w-m-hide">
+                    基于大数据平台，集约运维、降低成本。为用户提供变配电维护、线路维护、设备巡检、预防性试验、应急故障抢修等管家式服务
+                </p>
+            </a>
+            <a class="item w-text-center anim-top" href="{:url('ybd/Index/eadvisory')}">
+                <img src="{$W_IMG}/home/电力咨询.svg" alt="">
+                <h3>电力咨询</h3>
+                <p class="w-m-hide">
+                    多年经验积累，多专业协作，为用户提供用电、节电咨询方案
+                    <br><br>
+                </p>
+            </a>
+            <a class="item w-text-center anim-top" href="{:url('ybd/Index/edesign')}">
+                <img src="{$W_IMG}/home/电力设计.svg" alt="">
+                <h3>电力设计</h3>
+                <p class="w-m-hide">
+                    多年经验积累，多专业协作，为用户提供用电、节电咨询方案
+                </p>
+            </a>
+            <a class="item w-text-center anim-top" href="{:url('ybd/Index/eproject')}">
+                <img src="{$W_IMG}/home/电力工程.svg" alt="">
+                <h3>电力工程</h3>
+                <p class="w-m-hide">
+                    急客户所急，精心策划，用心组织，打造安全与质量并举的优质工程
+                </p>
+            </a>
+            <a class="item w-text-center anim-top" href="{:url('ybd/Index/ebusiness')}">
+                <img src="{$W_IMG}/home/购电售电.svg" alt="">
+                <h3>购电售电</h3>
+                <p class="w-m-hide">
+                    智慧大数据平台实时监测用电负荷，精准申报购电数据，控制偏差罚款，节约成本
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+<!--index about us-->
+<div class="index-aboutus">
+    <div class="public-container w-center-block">
+        <div class="title w-text-center">
+            <h2>关于耀邦达</h2>
+            <span>about us</span>
+        </div>
+        <div class="content w-clear">
+            <div class="body w-m-hide">
+                公司成立于2007年，注册资本5000万元，专注于电力咨询、设计、施工和运维领域，打造了数十个高水平的精品工程和项目，在业内享有较高的声誉。2016年，引入战略投资者南京新联电子（股票代码：002546），双方优势互补，以电能云平台为基础，大数据分析为手段，结合公司在电力行业10余年的经验积累，强势转型，力求成为一流的综合电力服务提供商。公司拥有全业务链高级资质和牌照，是云南第一家获得工业领域需求侧管理服务资质的公司，也是云南首批获得售电牌照的独立售电商。公司依托电能云大数据平台，为客户提供电力咨询、电力设计、电力施工、电力运维、购电售电、节能降耗等全产业链服务。
+                公司现有员工280人， 大专及以上学历超80% ，专业技术人员70%以上，具有丰富的专业能力和管理经验。
+                凡用电事宜，一站搞定。
+            </div>
+            <div class="tab">
+                <a href="{:url('ybd/Index/companyintroduction')}" class="button active"><i class="fa fa-file-text-o"></i>公司简介</a>
+                <a href="{:url('ybd/Index/companycultural')}" class="button"><i class="fa fa-map-signs"></i>企业文化</a>
+                <a href="{:url('ybd/Index/companyqua')}" class="button"><i class="fa fa-trophy"></i>企业资质</a>
+                <a href="{:url('ybd/Index/companymou')}" class="button"><i class="fa fa-sitemap"></i>组织架构</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--index cases-->
+<div class="index-cases" >
+    <div class="title w-text-center">
+        <h2>经典案例</h2>
+        <span>case</span>
+    </div>
+    <div class="public-container w-center-block">
+    <div class="owl-carousel owl-theme banner" id="index_case_banner">
+        <?php foreach($case_list as $m){?>
+            <a class="item" style="display: block" href="{:url('ybd/Index/cases',['id'=>$m.id])}">
+                <img src="__ROOT__<?php echo $m['thumb'];?>" alt="<?php echo $m['title'];?>">
+                <span class="w-ellipsis"><?php echo $m['title'];?></span>
+            </a>
+        <?php }?>
+    </div>
+    </div>
+</div>
+<!--index news-->
+<div class="index-news">
+    <div class="public-container w-center-block">
+        <div class="title w-text-center">
+            <h2>新闻公告</h2>
+            <span>news</span>
+        </div>
+    <div class="news">
+        <div class="news-tab">
+            <a class="item" href="{:url('ybd/Index/companynews')}">公司动态</a><a class="item" href="{:url('ybd/Index/industrynews')}">行业资讯</a><a class="item" href="{:url('ybd/Index/safenews')}">安全资讯</a>
+        </div>
+        <div class="news-content">
+            <ul class="news-items" style="margin-right:0.2rem;">
+                <?php  foreach($new_list as $key=>$m){  if($key%2==0){?>
+                <?php if($key==0){?>
+                <li class="news-item">
+                    <a href="{:url('ybd/Index/companynews',['id'=>$m.id])}" style="background-color: #fff;">
+                        <span class="title w-ellipsis" style=" padding-left:0.2rem;"><?php echo $m['title'];?></span><span class="date" style=" padding-right:0.2rem;">[<?php echo explode(" ",$m['publish_time'])[0];?>]</span>
+                        <div class="content">
+                            <img class="thumbnail"  src="__ROOT__<?php echo $m['thumb'];?>" alt="<?php echo $m['title'];?>">
+                            <div class="summary-panel">
+                                <p class="summary">
+                                    <?php echo $m['introduction'];?>
+                                   </p>
+                            </div>
+                            <div class="readmore">了解更多+</div>
+                        </div>
+                    </a>
+                </li>
+                <?php }else{?>
+                <li class="news-item"><a href="{:url('ybd/Index/companynews',['id'=>$m.id])}"><span class="title w-ellipsis"><?php echo $m['title'];?></span><span class="date">[<?php echo explode(" ",$m['publish_time'])[0];?>]</span></a></li>
+                <?php }?>
+                <?php }}?>
+            </ul>
+            <ul class="news-items w-m-hide" style="margin-right:0.2rem;">
+                <?php  foreach($new_list as $key=>$m){  if($key%2!=0){?>
+                <?php if($key==1){?>
+                <li class="news-item">
+                    <a href="{:url('ybd/Index/companynews',['id'=>$m.id])}" style="background-color: #fff;">
+                        <span class="title w-ellipsis" style=" padding-left:0.2rem;"><?php echo $m['title'];?></span><span class="date" style=" padding-right:0.2rem;">[<?php echo explode(" ",$m['publish_time'])[0];?>]</span>
+                        <div class="content">
+                            <img class="thumbnail"  src="__ROOT__<?php echo $m['thumb'];?>" alt="<?php echo $m['title'];?>">
+                            <div class="summary-panel">
+                                <p class="summary">
+                                    <?php echo $m['introduction'];?>
+                                </p>
+                            </div>
+                            <div class="readmore">了解更多+</div>
+                        </div>
+                    </a>
+                </li>
+                <?php }else{?>
+                <li class="news-item"><a href="{:url('ybd/Index/companynews',['id'=>$m.id])}"><span class="title w-ellipsis"><?php echo $m['title'];?></span><span class="date">[<?php echo explode(" ",$m['publish_time'])[0];?>]</span></a></li>
+                <?php }?>
+                <?php }}?>
+               </ul>
+        </div>
+    </div>
+    </div>
+</div>
+{include file="public/footer" /}
+<script src="{$W_PLUGIN}/OwlCarousel2-2.2.1/dist/owl.carousel.min.js"></script>
+<script>
+    $(function () {
+        $('#index_banner').owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            lazyLoad: true,
+            autoplayTimeout: 5000,
+            animateOut: 'fadeOutLeft',
+            animateIn: 'fadeInLeft',
+            smartSpeed:450
+        });
+        $('#index_case_banner').owlCarousel({
+            margin:20,
+            nav:true,
+            dots:false,
+            navText:['',''],
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:4
+                }
+            }
+        });
+        $('#index_case_banner .owl-prev').addClass('fa fa-angle-left');
+        $('#index_case_banner .owl-next').addClass('fa fa-angle-right');
+    });
+</script>
+</body>
+</html>

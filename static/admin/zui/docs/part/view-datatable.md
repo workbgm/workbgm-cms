@@ -240,7 +240,7 @@ $('table.datatable').datatable({
 
 Datatable中的事件既可以使用jQuery原生方法来绑定，也可以写在选项中。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件名称</th>
@@ -421,7 +421,7 @@ $('table.datatable').datatable({
 
 每列的可定义属性如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性名称</th>
@@ -475,7 +475,7 @@ $('table.datatable').datatable({
 
 每行数据的可定义属性如下：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性名称</th>

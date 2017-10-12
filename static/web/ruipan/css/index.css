@@ -307,7 +307,7 @@
 }
 
 .index-news-item:first-child{
-    padding-right: 12%;
+    padding-right: 8%;
 }
 
 .index-news-container{
@@ -528,17 +528,17 @@
 .index-news-panel .content .article-thumbnail{
     display: block;
     float: left;
-    width:22%;
+    width:29%;
 }
 
 .index-news-panel .content .article{
     float: left;
-    width:78%;
+    width:100%;
 }
 
 .index-news-panel:first-child .content .article{
     float: left;
-    width:74%;
+    width:67%;
     padding-left: 4%;
 }
 
@@ -554,6 +554,7 @@
     float:right;
     color: #656565;
     font-size: 1.6rem;
+    font-weight: normal;
 }
 
 .index-news-panel .content .article .date-year{
@@ -689,6 +690,10 @@
     .index-about-more {
        position: relative;
         bottom: 0;
+    }
+
+    .index-hy{
+        width:55% !important;
     }
 
 }

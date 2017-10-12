@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="container-fluid">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>模块名称</th>
@@ -30,8 +30,8 @@
                                 {else /}
                                 <a href="{:url('admin/plugin/install',['name'=>$vo['name']])}"
                                    class="btn btn-mini btn-success">安装</a>
-                                <a href="{:url('admin/plugin/delete',['name'=>$vo['name']])}"
-                                   class="btn btn-mini btn-warning">删除</a>
+                                <button name="del" action="{:url('admin/plugin/delete',['name'=>$vo['name']])}"
+                                   class="btn btn-mini btn-warning">删除</button>
                                 {/if}
                             </td>
                         </tr>

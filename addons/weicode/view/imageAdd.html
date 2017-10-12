@@ -1,0 +1,24 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        {$wui}
+    </div>
+</div>
+{/block}
+{block name="js"}
+    $(function(){
+        $('#url1_group').hide();
+        $('#url2_group').show();
+        $('select[name="from"]').change(function(){
+            if($(this).children('option:selected').val()==1){
+                $('#url1_group').hide();
+                $('#url2_group').show();
+            }else{
+                $('#url1_group').show();
+                $('#url2_group').hide();
+            }
+        });
+    });
+{/block}

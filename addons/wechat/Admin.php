@@ -1,8 +1,7 @@
 <?php
 namespace addons\wechat;
 use app\common\controller\AddonsBase;
-use EasyWeChat\Foundation\Application;
-use app\Zui;
+use app\WUI;
 /**
  *  WORKBGM开发框架
  * User: 吴渭明
@@ -61,7 +60,7 @@ class Admin extends  AddonsBase
         $li2['name']='增加新微信';
         $li2['active']=true;
         $ul[1]=$li2;
-        $this->assign('zui',(new Zui())->addTab($ul)
+        $this->assign('wui',(new WUI())->addUL($ul)
             ->addFormBegin(site_url('wechat.wechatSave'))
             ->addFormGroup('appid','input',"wechat[appid]",'','required')
             ->addFormGroup('appsecret','input',"wechat[appsecret]",'','required')
@@ -90,7 +89,7 @@ class Admin extends  AddonsBase
         $li2['name']='编辑微信';
         $li2['active']=true;
         $ul[1]=$li2;
-        $this->assign('zui',(new Zui())->addTab($ul)
+        $this->assign('wui',(new WUI())->addUL($ul)
             ->addFormBegin(site_url('wechat.wechatUpdate'))
             ->addFormHiddenInfo('id',$wechat['id'])
             ->addFormGroup('appid','input',"wechat[appid]",$wechat['wechat']['appid'],'required')

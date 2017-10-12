@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="public/meta" /}
+    <link rel="stylesheet" href="{$W_CSS}/aboutus.css">
+</head>
+<body>
+{include file="public/browserupgrade" /}
+{include file="public/header" /}
+<!--banner-->
+<div class="banner">
+    <img src="{$W_IMG}/banner/banner1.jpg">
+</div>
+<div class="content">
+    <div class="public-container w-center-block w-clear" style="position: relative">
+        <!--menu-->
+        <div class="menu-header w-m-hide w-t-hide"><img src="{$W_IMG}/menu/cases.png"></div>
+        <div class="x-menu">
+            <ul>
+                <li><a
+                        href="{:url('ybd/Index/cases')}"
+                        {$Think.session.w_current_menu_2=='cases'?'class="active"':''}
+                ><span class="title">经典案例</span></a></li>
+            </ul>
+        </div>
+        <!--article list-->
+        <div class="article">
+            <?php if(isset($article)){?>
+            <div class="title">{$article.title}</div>
+            <div class="content_">{$article.content}</div>
+            <?php }?>
+            <?php if(isset($list)){?>
+            <?php foreach($list as $m){?>
+            <a class="item w-clear" href="{:url('ybd/Index/cases',['id'=>$m.id])}">
+                <img src="__ROOT__<?php echo $m['thumb'];?>" alt="<?php echo $m['title'];?>">
+                <div class="item-content">
+                    <div class="item-header w-clear">
+                        <div class="item-title w-ellipsis"><?php echo $m['title'];?></div>
+                        <div class="item-date"><?php echo explode(" ",$m['publish_time'])[0];?></div>
+                    </div>
+                    <div class="item-introduction">
+                        <?php echo $m['introduction'];?>
+                    </div>
+                </div>
+            </a>
+            <?php }?>
+            <!--分页-->
+            <div class="pagin w-clear">{$list->render()}</div>
+            <?php }?>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+</body>
+</html>

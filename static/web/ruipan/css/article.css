@@ -65,11 +65,13 @@ body{
     text-align: center;
     color: #656565;
     font-size: 1.2rem;
-    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #bdbdbd;
 }
 
 .article .content{
     overflow: hidden;
+    margin-top:20px;
     width:100%;
 }
 

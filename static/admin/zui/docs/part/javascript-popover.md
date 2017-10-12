@@ -298,7 +298,7 @@ $('#myPopover').popover('destroy');
 
 当弹出面板显示或隐藏时会在触发元素上触发如下事件：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 150px;">事件类型</th>

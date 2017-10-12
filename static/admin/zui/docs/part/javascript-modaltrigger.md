@@ -273,7 +273,7 @@ myModalTrigger.show();
 
 在初始化对话框或者显示时都能够使用参数来个性化你的对话框。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>
@@ -466,7 +466,7 @@ myModalTrigger.ajustPosition(options);
 
 因为对话框的DOM内容是动态生成的，不方便使用jQuery方法来绑定事件，不过可以将监听事件的回调函数传入参数中。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件</th>

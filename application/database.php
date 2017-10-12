@@ -25,9 +25,9 @@ return [
 //     'hostport'       => '3306',
 //    远程
     // 服务器地址
-    'hostname'       => '119.29.188.241',
+    'hostname'       => '180.76.232.235',
     // 数据库名
-    'database'       => 'app_workcloud',
+    'database'       => 'yn.zipscloud.com',
     // 用户名
     'username'       => 'root',
     // 密码

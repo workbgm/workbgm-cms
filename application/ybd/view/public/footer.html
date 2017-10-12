@@ -1,0 +1,62 @@
+<!--public footer-->
+<div class="public-footer">
+    <div class="public-footer-contactinfo">
+        <div class="public-container w-center-block w-clear">
+            <div class="footer-info w-pull-left">
+                <img src="{$W_IMG}/public/footer_logo.png" alt="云南耀邦达电力工程有限公司">
+                <ul class="w-clear">
+                    <li><i class="fa fa-phone-square" ></i><a href="tel:0871-65656498">0871-65656498</a></li>
+                    <li><i class="fa fa-fax" ></i><a>0871-65656346</a></li>
+                    <li><i class="fa fa-envelope" ></i><a>254652112@qq.com</a></li>
+                    <li><i class="fa fa-address-card"></i><a>云南省昆明市盘龙区联盟街道办事处瀚文云鼎厦12楼</a></li>
+                </ul>
+            </div>
+            <div class="footer-wechat w-pull-right">
+                <img src="{$W_IMG}/public/ewechat.png" style="margin-right:0.2rem;">
+                <img src="{$W_IMG}/public/wechat.png">
+            </div>
+        </div>
+    </div>
+    <div class="public-footer-copyright">
+        <div class="public-container w-center-block">
+            <div class="w-text-center" style="color:#fff;">版权所有 © 2009－2010  云南耀邦达电力工程有限公司  滇ICP备09011732号</div>
+        </div>
+    </div>
+</div>
+<div id="msgdialog"></div>
+<script src="{$W_JS}/jquery.min.js"></script>
+<script src="{$W_PLUGIN}/dialogBox/jquery.dialogBox.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.message').click(function(){
+            $('#msgdialog').dialogBox({
+                hasMask: true,
+                hasClose: true,
+                effect: 'sign',
+                title: '在线留言',
+                content: '{:url("ybd/Index/msgdialog")}'
+            });
+        });
+        if(screen.width>767) {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 100) {
+                    $(".backtotop-btn").fadeIn(1500);
+                } else {
+                    $(".backtotop-btn").fadeOut(1500);
+                }
+            });
+        }
+        $('.backtotop-btn').click(function(){
+            $('body,html').animate({ scrollTop: 0 }, 200);
+        });
+        $('#m_menu_btn').click(function(){
+            if($('#m_menu').hasClass('w-hide')){
+                $(this).removeClass('menu-out').addClass('menu-in');
+                $('#m_menu').removeClass('w-hide').addClass('w-show');
+            }else{
+                $(this).removeClass('menu-in').addClass('menu-out');
+                $('#m_menu').removeClass('w-show').addClass('w-hide');
+            }
+        });
+    });
+</script>

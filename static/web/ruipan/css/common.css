@@ -14,7 +14,7 @@
     width:164px;
     height:54px;
     background: url(../images/public-header-logo.png) no-repeat left;
-    background-size: 100%;
+    background-size: 164px 54px;
     margin: 22px 20px 22px 0;
     display: inline-block;
 }
@@ -57,7 +57,7 @@
     width:720px;
     padding: 40px 20px;
     background-color: #fff;
-    z-index: 2;
+    z-index: 10000;
     overflow: hidden;
 }
 
@@ -65,6 +65,7 @@
     float:left;
     padding-right:20px;
     padding-left:20px;
+    z-index: 10000;
 }
 
 .public-header-nav-item-content .content-list h4{
@@ -81,6 +82,7 @@
     color: #656565;
     font-size: 1.2rem;
     padding-top:20px;
+    z-index: 10000;
 }
 
 .public-header-nav-item-content .content-list .content-item a:hover{
@@ -121,7 +123,7 @@
 .index-banner-info .title-en{
     color: #fff;
     font-size: 1.4rem;
-    margin-top:12px;
+    margin-top:10px;
 }
 
 .index-banner-info .more{
@@ -404,9 +406,8 @@
         left: 0;
         width: 100%;
         background-color: #fff;
-        z-index:100;
+        z-index:10000;
     }
-
 }
 
 @media screen and (min-width: 1900px){
@@ -426,7 +427,19 @@
         left: 0;
         width: 100%;
         background-color: #fff;
-        z-index:100;
+        z-index:1000;
+    }
+
+    .public-header-nav .item a{
+        width:120px;
+    }
+
+    .index-banner-control .control-list .control-item  .control-item-logo{
+        margin:42px 30px 38px 80px;
+    }
+
+    .index-banner-info {
+        top: 40%;
     }
 
 }

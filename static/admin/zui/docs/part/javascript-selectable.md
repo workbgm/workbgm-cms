@@ -164,7 +164,7 @@ $('#selectableExample3').selectable({
 
 ### 选项
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 100px;">选项</th>
@@ -300,7 +300,7 @@ $('#selectable').selectable(options);
 
 ### 方法
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th style="width: 120px;">方法</th>

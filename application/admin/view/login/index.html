@@ -5,11 +5,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="shortcut icon" href="__STATIC__/admin/images/logo.ico">
     <link rel="stylesheet" href="__STATIC__/admin/zui/dist/css/zui.min.css">
     <style>
+
         .main >.container-fluid>.container-fluid>.container-fluid{
             padding:20px;
+        }
+        .main-login{
+            position: absolute;
+            top: 50%;
+            width:100%;
+            margin-top: -250px;
+            height:500px;
+            background-color: #2380e1;
+        }
+
+        .main-login-bg{
+            margin:0 auto;
+            display: block;
+        }
+
+
+        .form-control-login{
+            width: 90% !important;
+            margin: auto;
+        }
+        .main-login-logo{
+            position: absolute;
+            top:-60px;
+            left:30%;
+            display: block;
+        }
+
+        .panel-login{
+            width:360px;
+            border: none;
+            position: absolute;
+            top:100px;
+            left:54%;
         }
     </style>
     <!--CSS引用-->
@@ -20,33 +54,57 @@
     <![endif]-->
 </head>
 <body>
-<div class="container" style="max-width:600px;">
-    <div class="panel panel-primary" style="margin:20% auto;">
-        <div class="panel-heading">{$adminsite_title}</div>
-        <div class="panel-body">
-            <form class="form-horizontal" action="{:url('admin/login/login')}" method="post">
-                <div class="form-group">
-                    <label class="col-sm-3">用户名</label>
-                   <div class="col-md-6 col-sm-9">
-                        <input type="text" name="username" required  autocomplete="off" class="form-control">
-                    </div>
+    <div class="main-login hidden-xs hidden-sm">
+
+        <img class="main-login-bg" src="__STATIC__/admin/images/login-middle.png" />
+        <img class="main-login-logo" src="__STATIC__/admin/images/logo.png" />
+            <!--login start-->
+            <div class="panel panel-login" >
+                <div class="panel-body">
+                    <form class="form-horizontal" action="{:url('admin/login/login')}" method="post">
+                        <h3 class="text-primary" style="padding-left:8px;">登录</h3>
+                        <div class="form-group">
+                            <input placeholder="用户名" type="text" name="username" required  autocomplete="off" class="form-control form-control-login">
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="密码" type="password" name="password" required  class="form-control form-control-login">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block form-control-login">登 录</button>
+                        </div>
+                    </form>
+                    <div style="text-align: center;">没有帐号？<a>点击注册</a></div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3">密码</label>
-                   <div class="col-md-6 col-sm-9">
-                        <input type="password" name="password" required  class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                   <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-primary btn-block">登 录</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="panel-footer" style="text-align: center">2016 &copy; 半城山水</div>
+            </div>
+            <!--login end-->
     </div>
-</div>
+
+    <div class="container hidden-lg hidden-md" style="max-width:600px;">
+        <div class="panel" style="margin:20% auto;">
+            <div class="panel-heading"><img src="__STATIC__/admin/images/logo.png" /></div>
+            <div class="panel-body">
+                <form class="form-horizontal" action="{:url('admin/login/login')}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-3">用户名</label>
+                        <div class="col-md-6 col-sm-9">
+                            <input type="text" name="username" required  autocomplete="off" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">密码</label>
+                        <div class="col-md-6 col-sm-9">
+                            <input type="password" name="password" required  class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <button type="submit" class="btn btn-primary btn-block">登 录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <script>
     // 定义全局JS变量
     var GV = {

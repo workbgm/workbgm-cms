@@ -40,7 +40,7 @@ $('#calendar').calendar();
 
 ### 启动参数
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>参数</th>
@@ -160,7 +160,7 @@ calendar.addEvents(newEvents);
 
 事件对象实例可以指定以下属性：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性</th>
@@ -294,7 +294,7 @@ calendar.addCalendars(newCalendars);
 
 日历对象实例可以指定以下属性：
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>属性</th>
@@ -345,7 +345,7 @@ var events    = calendar.events;    // 获取所有事件对象实例
 
 日历中的事件既可以使用jQuery原生方法来绑定，也可以写在启动参数中。
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>事件名称</th>
