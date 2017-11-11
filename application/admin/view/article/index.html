@@ -27,11 +27,11 @@
             </form>
             <hr>
 
-            <form action="" method="post" class="ajax-form">
-                <button type="button" class="btn btn-sm ajax-action" data-action="{:url('admin/article/toggle',['type'=>'audit'])}">审核</button>
-                <button type="button" class="btn btn-sm ajax-action" data-action="{:url('admin/article/toggle',['type'=>'cancel_audit'])}">取消审核</button>
-                <button type="button" class="btn btn-danger btn-sm ajax-action" data-action="{:url('admin/article/delete')}">删除</button>
-                <hr>
+            <!--<form action="" method="post" class="ajax-form">-->
+                <!--<button type="button" class="btn btn-sm ajax-action" data-action="{:url('admin/article/toggle',['type'=>'audit'])}">审核</button>-->
+                <!--<button type="button" class="btn btn-sm ajax-action" data-action="{:url('admin/article/toggle',['type'=>'cancel_audit'])}">取消审核</button>-->
+                <!--<button type="button" class="btn btn-danger btn-sm ajax-action" data-action="{:url('admin/article/delete')}">删除</button>-->
+                <!--<hr>-->
                 <div class="container-fluid">
                     <div class="table-responsive">  <table class="table table-bordered table-hover">
                         <thead>
@@ -63,6 +63,7 @@
                             <td>
                                 <a href="{:url('admin/article/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
                                 <button name="del" type="button" action="{:url('admin/article/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</button>
+                                <button   data-title="{$vo.title}" data-iframe="{:url('admin/article/sendToIframe',['id'=>$vo['id']])}" data-toggle="modal" class="btn btn-mini btn-primary">推送</button>
                             </td>
                         </tr>
                         {/foreach}
@@ -71,7 +72,7 @@
                     <!--分页-->
                     {$article_list->render()}
                 </div>
-            </form>
+            <!--</form>-->
         </div>
     </div>
 </div>

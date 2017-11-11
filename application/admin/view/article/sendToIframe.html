@@ -1,0 +1,31 @@
+{extend name="./data/tpl/dialog.html" /}
+{block name="body"}
+<div class="container-fluid">
+<form class="form-horizontal" action="{:url('admin/article/sendTo')}" method="post">
+<!--weixi start-->
+<div class="form-group">
+    <label>要推送的微信标签组</label>
+    <select class="form-control" name="tagid">
+        <?php $tags=json_decode(get_weixin_tags(),true)['tags'];?>
+        <?php foreach($tags as $tag){?>
+        <option value="<?php echo $tag['id'];?>" }><?php echo $tag['name'];?></option>
+        <?php }?>
+    </select>
+</div>
+<!--weixin end-->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="hidden" name="id" value="{$id}">
+            <button type="submit" class="btn btn-primary">确定</button>
+            <button type="reset" class="btn btn-default">重置</button>
+        </div>
+    </div>
+</form>
+</div>
+{/block}
+{block name="js"}
+
+{/block}
+{block name="css"}
+
+{/block}

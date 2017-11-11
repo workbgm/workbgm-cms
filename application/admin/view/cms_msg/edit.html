@@ -1,0 +1,78 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+    <div class="container-fluid">
+        <!--tab标签-->
+        <div class="container-fluid">
+            <ul class="nav nav-tabs">
+                <li><a href="{:url('/cms_msg/index')}">管理</a></li>
+                <li class="active"><a>编辑</a></li>
+            </ul>
+            <div class="container-fluid">
+                <div class="container-fluid">
+                    <form class="form-horizontal" action="{:url('/cms_msg/update')}" method="post">
+                        <input type="hidden" name="id" value="{$CmsMsg.id ?? ''}">
+                                <div class="form-group">
+            <label class="col-sm-2 ">姓名：</label>
+            <div class="col-md-6 col-sm-10">
+                <input readonly type="text" class="form-control" placeholder="姓名" name="name" value="{$CmsMsg.name ?? ''}" >
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 ">联系电话：</label>
+            <div class="col-md-6 col-sm-10">
+                <input readonly type="text" class="form-control" placeholder="联系电话" name="phone" value="{$CmsMsg.phone ?? ''}" >
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 ">公司名称：</label>
+            <div class="col-md-6 col-sm-10">
+                <input readonly type="text" class="form-control" placeholder="公司名称" name="companyname" value="{$CmsMsg.companyname ?? ''}" >
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 ">感兴趣的业务：</label>
+            <div class="col-md-6 col-sm-10">
+                <input readonly type="text" class="form-control" placeholder="感兴趣的业务" name="solutions" value="{$CmsMsg.solutions ?? ''}" >
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 ">留言：</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea readonly rows="3" class="form-control" placeholder="留言" name="need"  >
+                    {$CmsMsg.need ?? ''}
+                </textarea>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 ">反馈结果：</label>
+                            <div class="col-md-6 col-sm-10">
+                                <textarea rows="3" class="form-control" placeholder="反馈结果" name="result" >
+                                    {$CmsMsg.result ?? ''}
+                                </textarea>
+                            </div>
+                            <div class="col-xs-3 col-sm-3"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">更新</button>
+                                <button type="reset" class="btn btn-default">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name="js"}
+    <script type="text/javascript">
+    $(function () {
+                $("[name='status'][value='{$vo.status ?? ''}']").attr("checked", true);
+    })
+    </script>
+{/block}

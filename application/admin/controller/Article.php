@@ -4,6 +4,8 @@ namespace app\admin\controller;
 use app\common\model\Article as ArticleModel;
 use app\common\model\Category as CategoryModel;
 use app\common\controller\AdminBase;
+use Cms;
+use think\Url;
 
 /**
  * 文章管理
@@ -60,6 +62,32 @@ class Article extends AdminBase
     public function add()
     {
         return $this->fetch();
+    }
+
+    /**
+     * 推送界面
+     * @param $id
+     * @return mixed
+     */
+    public function sendToIframe($id){
+        $this->assign('id',$id);
+        return $this->fetch();
+    }
+
+    public function sendTo(){
+        $id=input('id');
+        $tagId=input('tagid');
+        $article = $this->article_model->find($id);
+        $cid=$article['cid'];
+        $category=Cms::get_category_bycid($cid);
+        $alias=$category['alias'];
+        if(empty($alias)){
+            $this->error("该文章不能被推送，原因可能是该文章所属栏目别名未设置");
+        }
+        Url::root('/index.php');
+        $url=url('Index/'.$alias,['id'=>$id],'','yn.zipscloud.com');
+        $result=sendTemplateMessage($article['title'],$article['publish_time'],$url,$tagId);
+        $this->success($result);
     }
 
     /**

@@ -8,6 +8,7 @@
 namespace app\api\controller\v3;
 use app\api\ssapmodel\SsapAndroidMetadata;
 use app\api\ssapmodel\SsapCityTable;
+use app\api\ssapmodel\SsapEventLog;
 use app\api\ssapmodel\SsapImgMap;
 use app\api\ssapmodel\SsapLocalDicVersion;
 use app\api\ssapmodel\SsapOfflinemapCityTable;
@@ -19,6 +20,7 @@ use app\api\ssapmodel\SsapSpecClassify;
 use app\api\ssapmodel\SsapSpecEnterprise;
 use app\api\ssapmodel\SsapSpecImgInfo;
 use app\api\ssapmodel\SsapSpecLab;
+use app\api\ssapmodel\SsapSpecPackage;
 use app\api\ssapmodel\SsapSpecMakeCenter;
 use app\api\ssapmodel\SsapSpecNodeInfo;
 use app\api\ssapmodel\SsapSpecPollutantCategory;
@@ -118,6 +120,9 @@ class Ssap extends Controller
             case 'user_infos':
                 $objModel = new SsapUserInfos();
                 break;
+            case 'spec_package':
+                $objModel = new SsapSpecPackage();
+                break;
             case 'workgroup_trajectory_table':
                 $objModel = new SsapWorkgroupTrajectoryTable();
                 break;
@@ -210,6 +215,17 @@ class Ssap extends Controller
                 $ssapHeartbeat->imei=$IMEI;
                 $ssapHeartbeat->save();
             }
+        }
+        return 'success';
+    }
+
+    public function post_ssap_event(){
+        $IMEI = input('post.IMEI');
+        $log = input('post.LOG');
+        if(!empty($IMEI)){
+            $sel = new SsapEventLog();
+            $data = ["imei"=>$IMEI,"log"=>$log];
+            $sel->save($data);
         }
         return 'success';
     }

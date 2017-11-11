@@ -1,0 +1,13 @@
+{extend name="./data/tpl/dialog.html" /}
+{block name="body"}
+<button class="btn" type="button" onclick="location.reload();">刷新</button>
+<div>
+    {foreach name="data" item="vo"}
+    <p class="text-warning">{$vo.create_time}:{$vo.log}</p>
+    {/foreach}
+</div>
+{/block}
+{block name="js"}
+{/block}
+{block name="css"}
+{/block}

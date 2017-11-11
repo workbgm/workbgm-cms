@@ -275,4 +275,9 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    'wechat'=>[
+        'app_id'=>'wx8a459ca4b6296cfb',
+        'app_security'=>'28f3a5002236b2ed8f591df04dffaa06',
+        'token'=>'ybd'
+    ],
 ];

@@ -1,0 +1,53 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>管理</a></li>
+        </ul>
+        <div class="container-fluid">
+            <form action="" method="post" class="ajax-form">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+            <th>姓名</th>
+            <th>联系电话</th>
+            <th>公司名称</th>
+            <th>感兴趣的业务</th>
+            <th>留言</th>
+            <th>提交时间</th>
+            <th>回复时间</th>
+            <th>反馈结果</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="vo"}
+                                <tr>
+                                    <td>{$vo.id}</td>
+            <td>{$vo.name}</td>
+            <td>{$vo.phone}</td>
+            <td>{$vo.companyname}</td>
+            <td>{$vo.solutions}</td>
+            <td>{$vo.need}</td>
+            <td>{$vo.create_time}</td>
+            <td>{$vo.update_time}</td>
+            <td>{$vo.result}</td>
+                                    <td>
+                                        <a href="{:url('/cms_msg/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                                    </td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+

@@ -1,0 +1,48 @@
+
+.fixed-btns-box{
+  position: fixed;
+  top:50rpx;
+  right:12px;
+  width: 80rpx;
+  z-index:10;
+}
+
+.fiexd-cart {
+  /*overflow:visible;*/
+  /*overflow:unset;*/
+  /*overflow:scroll;*/
+  /*overflow:initial;*/
+  /*overflow:inherit;*/
+  overflow:hidden;
+}
+.fiexd-cart image{
+  height: 64rpx;
+  width: 64rpx;
+}
+.fiexd-cart view{
+  font-size: 24rpx;
+  background-color:#e64340;
+  color: white;
+  position: absolute;
+  right: 64rpx;
+  top: 0rpx;
+  height: 36rpx;
+  width: 36rpx;
+  line-height: 36rpx;
+  border-radius: 36rpx;
+  text-align: center;
+  
+}
+.fiexd-cart.animate{
+  animation: aCartScale 200ms cubic-bezier(.17,.67,.83,.67);
+  animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes aCartScale{
+  0%{
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}

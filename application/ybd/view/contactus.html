@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="public/meta" /}
+    <link rel="stylesheet" href="{$W_CSS}/aboutus.css">
+    <style>
+        .my-map { width: 100%; height: 370px;margin:40px auto; }
+        .my-map .icon { background: url(http://lbs.amap.com/console/public/show/marker.png) no-repeat; }
+        .my-map .icon-cir { height: 31px; width: 28px; }
+        .my-map .icon-cir-red { background-position: -11px -5px; }
+        .amap-container{height: 100%;}
+        .amap-info-content{
+            color:#484848;
+        }
+        /*Table 768px-1199px*/
+        @media screen and (min-width: 768px) and (max-width: 1199px) {
+            .article{
+                width:100% !important;
+                margin: -0.2rem auto 0.6rem auto !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+{include file="public/browserupgrade" /}
+{include file="public/header" /}
+<!--banner-->
+<div class="banner">
+    <img src="{$W_IMG}/banner/banner1.jpg">
+</div>
+<div class="content">
+    <div class="public-container w-center-block w-clear" style="position: relative">
+        <!--article-->
+        <div class="article">
+            <div class="title">联系地址</div>
+            <div id="wrap" class="my-map">
+                <div id="mapContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://webapi.amap.com/maps?v=1.4.0&key=e19d84c43c1d9ecf166cf62b7f49b0a7"></script>
+<script type="text/javascript">
+    var infoWindow;
+    var map = new AMap.Map("mapContainer", {
+        resizeEnable: false,
+        center: [102.720502,  25.062581],
+        zoom: 16
+    });
+
+   map.panBy(0, -60);
+
+    function openInfo() {
+        //构建信息窗体中显示的内容
+        var info = [];
+        info.push("<div> ");
+        info.push("<div style=\"padding:0px 0px 0px 4px;\"><b>云南耀邦达电力工程有限公司</b>");
+        info.push("电话 : 0871-65656498");
+        info.push("地址 :云南省昆明市忠明路345号瀚文云鼎商务大厦10-12楼</div></div>");
+        infoWindow = new AMap.InfoWindow({
+            content: info.join("<br/>")  //使用默认信息窗体框样式，显示信息内容
+        });
+        infoWindow.open(map, map.getCenter());
+    }
+
+    openInfo();
+</script>
+{include file="public/footer" /}
+</body>
+</html>

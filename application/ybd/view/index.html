@@ -101,7 +101,7 @@
 <div class="index-aboutus">
     <div class="public-container w-center-block">
         <div class="title w-text-center">
-            <h2>关于耀邦达</h2>
+            <h2>关于我们</h2>
             <span>about us</span>
         </div>
         <div class="content w-clear">
@@ -200,12 +200,19 @@
 <script src="{$W_PLUGIN}/OwlCarousel2-2.2.1/dist/owl.carousel.min.js"></script>
 <script>
     $(function () {
+//        $('.owl-carousel .owl-item').on('mouseenter',function(e){
+//            $(this).closest('.owl-carousel').trigger('stop.owl.autoplay');
+//        });
+//        $('.owl-carousel .owl-item').on('mouseleave',function(e){
+//            $(this).closest('.owl-carousel').trigger('play.owl.autoplay',[500]);
+//        });
         $('#index_banner').owlCarousel({
             items: 1,
+            autoplayHoverPause:true,
             loop: true,
             autoplay: true,
             lazyLoad: true,
-            autoplayTimeout: 5000,
+            autoplayTimeout: 6000,
             animateOut: 'fadeOutLeft',
             animateIn: 'fadeInLeft',
             smartSpeed:450

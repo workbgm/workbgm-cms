@@ -1,0 +1,49 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>管理</a></li>
+            <li><a href="{:url('/database_backups/add')}">添加</a></li>
+        </ul>
+        <div class="container-fluid">
+            <form action="" method="post" class="ajax-form">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+            <th>说明</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>是否删除</th>
+            <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="vo"}
+                                <tr>
+                                    <td>{$vo.id}</td>
+            <td>{$vo.description}</td>
+            <td>{$vo.create_time|unixTo}</td>
+            <td>{$vo.update_time|unixTo}</td>
+            <td>{$vo.isdelete}</td>
+            <td>{$vo.status|get_status}</td>
+                                    <td>
+                                        <a href="{:url('/database_backups/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                                        <a href="{:url('/database_backups/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                                    </td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+

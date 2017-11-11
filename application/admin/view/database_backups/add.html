@@ -1,0 +1,76 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <!--tab标签-->
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li><a href="{:url('admin/database_backups/index')}">管理</a></li>
+            <li class="active"><a>添加</a></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <form class="form-horizontal" action="{:url('admin/database_backups/save')}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2 ">说明：</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" placeholder="说明" name="description">
+                        </div>
+                        <div class="col-xs-3 col-sm-3"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 ">备份：</label>
+                        <div class="col-md-6 col-sm-10 ">
+                            <button class="btn btn-primary ajax-btn"
+                                    data-action="{:url('admin/database_backups/exportDatabase')}" type="button">备份数据库
+                            </button>
+                        </div>
+                        <div class="col-xs-3 col-sm-3"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script>
+    //ajax button
+    $('.ajax-btn').on('click', function () {
+        var _action = $(this).data('action');
+        bootbox.confirm({
+            message: "您确认要执行<span style='color:red'>" + $(this).text() + "</span>吗?",
+            buttons: {
+                confirm: {
+                    label: '确认',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: '取消',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        url: _action,
+                        success: function (data) {
+                            $('.ajax-btn').text(data.info);
+                            if(data.status){
+                                $('.ajax-btn').attr('disabled',true);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+        return false;
+    })
+</script>
+{/block}

@@ -1,0 +1,51 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>开发日志管理</a></li>
+            <li><a href="{:url('/devlog/add')}">添加开发日志</a></li>
+        </ul>
+        <div class="container-fluid">
+            <form action="" method="post" class="ajax-form">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>开发日志主键</th>
+            <th>主题</th>
+            <th>描述</th>
+            <th>状态，1-正常 | 0-禁用</th>
+            <th>删除状态，1-删除 | 0-正常</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="vo"}
+                                <tr>
+                                    <td>{$vo.id}</td>
+            <td>{$vo.title}</td>
+            <td>{$vo.content}</td>
+            <td>{$vo.status|get_status}</td>
+            <td>{$vo.isdelete}</td>
+            <td>{$vo.create_time|unixTo}</td>
+            <td>{$vo.update_time|unixTo}</td>
+                                    <td>
+                                        <a href="{:url('/devlog/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                                        <a href="{:url('/devlog/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</a>
+                                    </td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+

@@ -6,6 +6,7 @@ use app\common\model\Article as ArticleModel;
 use think\Session;
 use app\common\model\CmsMsg as CmsMsgModel;
 use Cms;
+use think\Url;
 
 class Index extends HomeBase
 {
@@ -15,6 +16,7 @@ class Index extends HomeBase
         parent::_initialize();
         $this->setResources();
         Session::set("w_current_menu","index");
+        Url::root('/index.php');
     }
 
     //    首页  in
@@ -69,6 +71,19 @@ class Index extends HomeBase
             $this->assign('list',Cms::get_articles_by_cid_paged(13,5));
         }
         return $this->fetch('/companynews');
+    }
+
+    // 内部公告  in
+    public function companyin(){
+        Session::set("w_current_menu","news");
+        Session::set("w_current_menu_2","companyin");
+        $id=input('id');
+        if(!empty($id)){
+            $this->assign('article',Cms::get_article_bycid($id));
+        }else{
+            $this->assign('list',Cms::get_articles_by_cid_paged(20,5));
+        }
+        return $this->fetch('/companyin');
     }
 
     // 行业资讯  in

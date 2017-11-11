@@ -3,6 +3,7 @@
 use think\Db;
 use think\Config;
 use think\Loader;
+use think\Cache;
 
 // 插件目录
 define('ADDON_PATH', ROOT_PATH . 'addons' . DS);
@@ -14,6 +15,51 @@ if (!is_dir(ADDON_PATH)) {
 
 // 注册类的根命名空间
 Loader::addNamespace('addons', ADDON_PATH);
+
+function G($arr,$keys){
+    $key_arr=explode('.',$keys);
+    $obj=$arr;
+    foreach ($key_arr as $key){
+        if(isset($obj[$key])){
+            $obj=$obj[$key];
+        }else{
+            return '';
+        }
+    }
+    return $obj;
+}
+
+function GA($arr,$keys,$and=''){
+    $key_arr=explode('|',$keys);
+    $result='';
+    $last = array_pop($key_arr);
+    foreach ($key_arr as $key){
+        $result.=G($arr,$key).$and;
+    }
+    $result.=G($arr,$last);
+    return $result;
+}
+
+function GF($arr,$keys,$and='')
+{
+    if(empty($keys)){return '';}
+    $key_arr = explode(':', $keys);
+    if(count($key_arr)==2){
+        return $key_arr[1](GA($arr,$key_arr[0]));
+    }else{
+        return GA($arr,$keys,$and);
+    }
+}
+
+function state($s){
+    if($s==1){
+        return "待流转";
+    }else if($s==2){
+        return "已流转";
+    }else{
+        return "";
+    }
+}
 
 /**
  * 获取当前admin.php路径
@@ -507,6 +553,14 @@ function getRandChar($length)
 
 
 
+function projectType($d){
+   if($d==2){
+       return '已寄出';
+   }else{
+       return '可用';
+   }
+}
+
 function fromArrayToModel($m , $array)
 {
     foreach ($array as $key => $value)
@@ -539,6 +593,15 @@ function getNodeState($status)
     return  $showText;
 }
 
+function getDeviceState($time)
+{
+    $status = time()-strtotime($time);
+    if(abs($status)<600){ //十分钟内
+        return '<span class="label label-success">在线</span>';
+    }
+    return '<span class="label">离线</span>';
+}
+
 
 function getDirectionState($status)
 {
@@ -553,31 +616,133 @@ function getDirectionState($status)
             if($status[$i]){
                 switch ($i){
                     case 0:
-                        $showText.='<span class="with-padding bg-primary">居民点</span>';
+                        $showText.='居民点';
                         break;
                     case 1:
-                        $showText.='<span class="with-padding bg-primary">厂矿</span>';
+                        $showText.='厂矿';
                         break;
                     case 2:
-                        $showText.='<span class="with-padding bg-primary">耕地</span>';
+                        $showText.='耕地';
                         break;
                     case 3:
-                        $showText.='<span class="with-padding bg-primary">林地</span>';
+                        $showText.='林地';
                         break;
                     case 4:
-                        $showText.='<span class="with-padding bg-primary">草地</span>';
+                        $showText.='草地';
                         break;
                     case 5:
-                        $showText.='<span class="with-padding bg-primary">水域</span>';
+                        $showText.='水域';
                         break;
                     case 6:
-                        $showText.='<span class="with-padding bg-primary">其他</span>';
+                        $showText.='其他';
                         break;
                 }
             }
         }
     }
     return $showText;
+}
+
+/**
+ * 获取微信token
+ */
+function get_weixin_access_token(){
+    $accessToken = Cache::get('access_token');
+    if(!$accessToken){
+        $appId=config('wechat.app_id');
+        $appSecurity=config('wechat.app_security');
+        $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$appId}&secret={$appSecurity}";
+        $result=curl_get($url);
+        $accessTokenArr=json_decode($result,true);
+        Cache::set('access_token',$accessTokenArr['access_token'],7200);
+        $accessToken=$accessTokenArr['access_token'];
+    }
+    return $accessToken;
+}
+
+/**
+ * 获取微信的标签组
+ * @return mixed
+ */
+function get_weixin_tags(){
+    $accessToken=get_weixin_access_token();
+    return curl_get("https://api.weixin.qq.com/cgi-bin/tags/get?access_token={$accessToken}");
+}
+
+/**
+ * 获取微信标签下所有用户的openid
+ * 链接:http://yn.zipscloud.com/api.php/v1/getopenidsbytagid
+ * //{"count":2,"data":{"openid":["offZnuFSCsgMZlBGsm97RrQiAC1g","offZnuEiImmBLDMpsnDPWbsFlEUI"]},"next_openid":"offZnuEiImmBLDMpsnDPWbsFlEUI"}
+ */
+function getOpenIdsByTagId($tagId){
+    $result="";
+    if(!empty($tagId)){
+        $accessToken=get_weixin_access_token();
+        $parms['tagid']=$tagId;
+        $parms['next_openid']='';
+        $url = "https://api.weixin.qq.com/cgi-bin/user/tag/get?access_token={$accessToken}";
+        $result=curl_post_raw($url,json_encode($parms));
+    }
+    return $result;
+}
+
+/**
+ * 发送模板消息
+ * 链接:http://yn.zipscloud.com/api.php/v1/sendtemplatemessage
+ */
+function sendTemplateMessage($title,$time,$url,$tagId){
+    $data=array(
+        'first'=>array('value'=>urlencode("您好，公司有新内部公告，请点击查看!"),'color'=>"#4a7d3b"),
+        'keyword1'=>array('value'=>urlencode($title),'color'=>'#4a7d3b'),
+        'keyword2'=>array('value'=>urlencode($time),'color'=>'#4a7d3b'),
+        'remark'=>array('value'=>urlencode('感谢您的使用。'),'color'=>'#4a7d3b'),
+    );
+    $toUsers=json_decode(getOpenIdsByTagId($tagId),true)['data']['openid'];
+    $accessToken=get_weixin_access_token();
+    $urlAPI="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={$accessToken}";
+    $result='';
+    foreach ($toUsers as $toUser){
+        $template = array(
+            'touser' => $toUser,
+            'template_id' => "D6A3SHR2bOEA-akkI4zVMBYtAKhpIPVFa9imyKVSJ90",
+            'url' => $url,
+            "topcolor"=>"#FF0000",
+            'data' => $data
+        );
+        $arr=json_decode(curl_post_raw($urlAPI,urldecode(json_encode($template))),true);
+        $errcode=$arr['errcode'];
+        if($errcode===0){
+            $result.=$toUser.':'.'发送成功'.'-';
+        }else{
+            $result.=$toUser.':'.'发送失败,错误代码【'.$errcode.'】-';
+        }
+
+    }
+    return  $result;
+}
+
+/*
+    字符串GBK转码为UTF-8，数字转换为数字。
+*/
+function ct2($s){
+    if(is_numeric($s)) {
+        return intval($s);
+    } else {
+        return iconv("GBK","UTF-8",$s);
+    }
+}
+/*
+    批量处理gbk->utf-8
+*/
+function icon_to_utf8($s) {
+    if(is_array($s)) {
+        foreach($s as $key => $val) {
+            $s[$key] = icon_to_utf8($val);
+        }
+    } else {
+        $s = ct2($s);
+    }
+    return $s;
 }
 
 include EXTEND_PATH ."cms/Cms.php";
@@ -587,3 +752,4 @@ include EXTEND_PATH ."html/Css.php";
 include EXTEND_PATH ."html/Js.php";
 include EXTEND_PATH ."html/WUI.php";
 include EXTEND_PATH ."weicode/WeiCode.php";
+include EXTEND_PATH ."excel/Excel.php";

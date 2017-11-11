@@ -1,0 +1,556 @@
+{extend name="./data/tpl/dialog.html" /}
+{block name="body"}
+<ul class="nav nav-tabs">
+    <li class="active"><a data-tab href="#ncp">农产品</a></li>
+    <li><a data-tab href="#bctr">表层土壤</a></li>
+    <li><a data-tab href="#sctr">深层土壤</a></li>
+</ul>
+<div class="tab-content di">
+    <div class="tab-pane active" id="ncp">
+        <div class="with-padding">
+        <a href="#ncpc" data-toggle="collapse" class="btn btn-link">查看采集数据</a>
+        </div>
+        <!--ncp start-->
+        <div id="ncpc" class="collapse">
+            <div class="cards">
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.ncp.img_path1.path?$data.ncp.img_path1.path:''}">
+                        <div class="card-content text-muted">GPS屏显</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.ncp.img_path2.path?$data.ncp.img_path2.path:''}">
+                        <div class="card-content text-muted">采样工作过程</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.ncp.img_path3.path?$data.ncp.img_path3.path:''}">
+                        <div class="card-content text-muted">采样负责人</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.ncp.img_path4.path?$data.ncp.img_path4.path:''}">
+                        <div class="card-content text-muted">样点变更图片</div>
+                    </a>
+                </div>
+            </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <tbody>
+                <tr>
+                    <td>样点编码</td>
+                    <td>{$data.ncp.SPECIMEN_CODE?$data.ncp.SPECIMEN_CODE:''}</td>
+                    <td>实际经纬度</td>
+                    <td>{$data.ncp.LATITUDE?$data.ncp.LATITUDE:''},{$data.ncp.LONGITUDE?$data.ncp.LONGITUDE:''}<span class="label label-danger">偏移距离:{$data.ncp.LNG_DISTANCE?$data.ncp.LNG_DISTANCE:''}m</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>样点变更说明</td>
+                    <td>{$data.ncp.DEPTH_INFO?$data.ncp.DEPTH_INFO:''}</td>
+                    <td>农产品类型</td>
+                    <td>{$data.ncp.farm_sample_type.OPTION_NAME?$data.ncp.farm_sample_type.OPTION_NAME:''}</td>
+                </tr>
+                <tr>
+                    <td>农产品名称</td>
+                    <td>{$data.ncp.farm_produce_name.OPTION_NAME?$data.ncp.farm_produce_name.OPTION_NAME:''}</td>
+                    <td>采样部位</td>
+                    <td>{$data.ncp.sampling_site.OPTION_NAME?$data.ncp.sampling_site.OPTION_NAME:''}</td>
+                </tr>
+                <tr>
+                    <td>是否质控样品</td>
+                    <td>{$data.ncp.is_quality_control.OPTION_NAME?$data.ncp.is_quality_control.OPTION_NAME:''}</td>
+                    <td>样品质量(g)</td>
+                    <td>{$data.ncp.WEIGHT?$data.ncp.WEIGHT:''}</td>
+                </tr>
+                <tr>
+                    <td>作物栽培季节</td>
+                    <td>{$data.ncp.crop_season.OPTION_NAME?$data.ncp.crop_season.OPTION_NAME:''}</td>
+                    <td>当季产量</td>
+                    <td>{$data.ncp.SINGLE_SEASON_YIELD?$data.ncp.SINGLE_SEASON_YIELD:''}</td>
+                </tr>
+                <tr>
+                    <td>施肥情况</td>
+                    <td>{$data.ncp.fertilization_condition.OPTION_NAME?$data.ncp.fertilization_condition.OPTION_NAME:''}</td>
+                    <td>亩施肥量(kg)</td>
+                    <td>{$data.ncp.MU_FERTILIZATION?$data.ncp.MU_FERTILIZATION:''}</td>
+                </tr>
+                <tr>
+                    <td>施用农药情况</td>
+                    <td>{$data.ncp.pesticide_condition.OPTION_NAME?$data.ncp.pesticide_condition.OPTION_NAME:''}</td>
+                    <td>施用农药情况(其它)</td>
+                    <td>{$data.ncp.PESTICIDE_CONDITION_OTHER?$data.ncp.PESTICIDE_CONDITION_OTHER:''}</td>
+                </tr>
+                <tr>
+                    <td>亩均用量(g)</td>
+                    <td>{$data.ncp.MU_DOSAGE?$data.ncp.MU_DOSAGE:''}</td>
+                    <td>作物品种</td>
+                    <td>{$data.ncp.CROP_TYPE?$data.ncp.CROP_TYPE:''}</td>
+                </tr>
+                <tr>
+                    <td>样品说明</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <!--ncp end-->
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    制样数据
+                </div>
+                <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-tab href="#ncp_make_dlz">待流转<span class="label label-danger">{$data.ncp.make_dlz?sizeof($data.ncp.make_dlz):0}</span></a></li>
+                <li><a data-tab href="#ncp_make_ylz">已流转<span class="label label-danger">{$data.ncp.make_ylz?sizeof($data.ncp.make_ylz):0}</span></a></li>
+            </ul>
+            <div class="tab-content ">
+                <div class="tab-pane active" id="ncp_make_dlz">
+                    <!--待流转 s-->
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 60px;">样品编号</th>
+                            <th>测试项目</th>
+                            <th>是否质控样</th>
+                            <th>样品重量(g)</th>
+                            <th>过筛孔径(mm)</th>
+                            <th>流转中心</th>
+                            <th>实验室名称</th>
+                            <th class="flex-col">样品编码</th>
+                            <th class="flex-col">样包编码</th>
+                            <th class="flex-col">样包类别</th>
+                            <th class="flex-col">样包状态</th>
+                            <th class="flex-col">样包创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {notempty name="data.ncp.make_dlz"}
+                        {foreach name="data.ncp.make_dlz" item="vo"}
+                        <tr>
+                            <td>{$vo.ID}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.WEIGHT_ID}</td>
+                            <td>{$vo.APERTURE}</td>
+                            <td>{$vo.NAME_PREP_LAB}</td>
+                            <td>{$vo.NAME_ANA_LAB}</td>
+                            <td>{$vo.SPEAR1}</td>
+                            <td>{$vo.package.PROJECT_SPARE1}</td>
+                            <td>{$vo.package.PROJECT_KIND_STR}<br>{$vo.package.PROJECT_SPARE3}</td>
+                            <td>{$vo.package.PROJECT_TYPE|projectType}</td>
+                            <td>{$vo.package.CREATE_TIME}</td>
+                        </tr>
+                            {/foreach}
+                        {/notempty}
+                        </tbody>
+                    </table>
+                    </div>
+                    <!--待流转 e-->
+                </div>
+                <div class="tab-pane" id="ncp_make_ylz">
+                    <!--已流转 s-->
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 60px;">样品编号</th>
+                            <th>测试项目</th>
+                            <th>是否质控样</th>
+                            <th>样品重量(g)</th>
+                            <th>过筛孔径(mm)</th>
+                            <th>流转中心</th>
+                            <th>实验室名称</th>
+                            <th class="flex-col">样品编码</th>
+                            <th class="flex-col">样包编码</th>
+                            <th class="flex-col">样包类别</th>
+                            <th class="flex-col">样包状态</th>
+                            <th class="flex-col">样包创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {notempty name="data.ncp.make_ylz"}
+                        {foreach name="data.ncp.make_ylz" item="vo"}
+                        <tr>
+                            <td>{$vo.ID}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.WEIGHT_ID}</td>
+                            <td>{$vo.APERTURE}</td>
+                            <td>{$vo.NAME_PREP_LAB}</td>
+                            <td>{$vo.NAME_ANA_LAB}</td>
+                            <td>{$vo.SPEAR1}</td>
+                            <td>{$vo.package.PROJECT_SPARE1}</td>
+                            <td>{$vo.package.PROJECT_KIND_STR}<br>{$vo.package.PROJECT_SPARE3}</td>
+                            <td>{$vo.package.PROJECT_TYPE|projectType}</td>
+                            <td>{$vo.package.CREATE_TIME}</td>
+                        </tr>
+                        {/foreach}
+                        {/notempty}
+                        </tbody>
+                    </table>
+                    </div>
+                    <!--已流转 e-->
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="bctr">
+        <!--bctr start-->
+        <div class="with-padding">
+        <a href="#bctrc" data-toggle="collapse" class="btn btn-link">查看采集数据</a>
+        </div>
+        <div class="collapse" id="bctrc">
+        <div class="container-fluid">
+            <div class="cards">
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.bctr.img_path1.path?$data.bctr.img_path1.path:''}">
+                        <div class="card-content text-muted">GPS屏显</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.bctr.img_path2.path?$data.bctr.img_path2.path:''}">
+                        <div class="card-content text-muted">采样工作过程</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.bctr.img_path3.path?$data.bctr.img_path3.path:''}">
+                        <div class="card-content text-muted">采样负责人</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.bctr.img_path4.path?$data.bctr.img_path4.path:''}">
+                        <div class="card-content text-muted">样点变更图片</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <tbody>
+                <tr>
+                    <td>样点编码</td>
+                    <td>{$data.bctr.SPECIMEN_CODE?$data.bctr.SPECIMEN_CODE:''}</td>
+                    <td>实际经纬度</td>
+                    <td>{$data.bctr.LATITUDE?$data.bctr.LATITUDE:''},{$data.bctr.LONGITUDE?$data.bctr.LONGITUDE:''}<span class="label label-danger">偏移距离:{$data.bctr.LNG_DISTANCE?$data.bctr.LNG_DISTANCE:''}m</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>采样深度备注</td>
+                    <td>{$data.bctr.DEPTH_INFO?$data.bctr.DEPTH_INFO:''}</td>
+                    <td>采样深度(cm)</td>
+                    <td>{$data.bctr.DEPTH_START?$data.bctr.DEPTH_START:''}-{$data.bctr.DEPTH_END?$data.bctr.DEPTH_END:''}</td>
+                </tr>
+                <tr>
+                    <td>是否质控样品</td>
+                    <td>{$data.bctr.is_quality_control.OPTION_NAME?$data.bctr.is_quality_control.OPTION_NAME:''}</td>
+                    <td>样品质量(g)</td>
+                    <td>{$data.bctr.WEIGHT?$data.bctr.WEIGHT:''}</td>
+                </tr>
+                <tr>
+                    <td>土壤质地</td>
+                    <td>{$data.bctr.soil_type_code.OPTION_NAME?$data.bctr.soil_type_code.OPTION_NAME:''}</td>
+                    <td>三角土壤颜色</td>
+                    <td>{$data.bctr.soil_colour.OPTION_NAME?$data.bctr.soil_colour.OPTION_NAME:''}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <!--bctr end-->
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    制样数据
+                </div>
+                <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-tab href="#bctr_make_dlz">待流转<span class="label label-danger">{$data.bctr.make_dlz?sizeof($data.bctr.make_dlz):0}</span></a></li>
+                <li><a data-tab href="#bctr_make_ylz">已流转<span class="label label-danger">{$data.bctr.make_ylz?sizeof($data.bctr.make_ylz):0}</span></a></li>
+            </ul>
+            <div class="tab-content ">
+                <div class="tab-pane active" id="bctr_make_dlz">
+                    <!--待流转 s-->
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 60px;">样品编号</th>
+                            <th>测试项目</th>
+                            <th>是否质控样</th>
+                            <th>样品重量(g)</th>
+                            <th>过筛孔径(mm)</th>
+                            <th>流转中心</th>
+                            <th>实验室名称</th>
+                            <th class="flex-col">样品编码</th>
+                            <th class="flex-col">样包编码</th>
+                            <th class="flex-col">样包类别</th>
+                            <th class="flex-col">样包状态</th>
+                            <th class="flex-col">样包创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {notempty name="data.bctr.make_dlz"}
+                        {foreach name="data.bctr.make_dlz" item="vo"}
+                        <tr>
+                            <td>{$vo.ID}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.WEIGHT_ID}</td>
+                            <td>{$vo.APERTURE}</td>
+                            <td>{$vo.NAME_PREP_LAB}</td>
+                            <td>{$vo.NAME_ANA_LAB}</td>
+                            <td>{$vo.SPEAR1}</td>
+                            <td>{$vo.package.PROJECT_SPARE1}</td>
+                            <td>{$vo.package.PROJECT_KIND_STR}<br>{$vo.package.PROJECT_SPARE3}</td>
+                            <td>{$vo.package.PROJECT_TYPE|projectType}</td>
+                            <td>{$vo.package.CREATE_TIME}</td>
+                        </tr>
+                        {/foreach}
+                        {/notempty}
+                        </tbody>
+                    </table>
+                    </div>
+                    <!--待流转 e-->
+                </div>
+                <div class="tab-pane" id="bctr_make_ylz">
+                    <!--已流转 s-->
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 60px;">样品编号</th>
+                            <th>测试项目</th>
+                            <th>是否质控样</th>
+                            <th>样品重量(g)</th>
+                            <th>过筛孔径(mm)</th>
+                            <th>流转中心</th>
+                            <th>实验室名称</th>
+                            <th class="flex-col">样品编码</th>
+                            <th class="flex-col">样包编码</th>
+                            <th class="flex-col">样包类别</th>
+                            <th class="flex-col">样包状态</th>
+                            <th class="flex-col">样包创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {notempty name="data.bctr.make_ylz"}
+                        {foreach name="data.bctr.make_ylz" item="vo"}
+                        <tr>
+                            <td>{$vo.ID}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.WEIGHT_ID}</td>
+                            <td>{$vo.APERTURE}</td>
+                            <td>{$vo.NAME_PREP_LAB}</td>
+                            <td>{$vo.NAME_ANA_LAB}</td>
+                            <td>{$vo.SPEAR1}</td>
+                            <td>{$vo.package.PROJECT_SPARE1}</td>
+                            <td>{$vo.package.PROJECT_KIND_STR}<br>{$vo.package.PROJECT_SPARE3}</td>
+                            <td>{$vo.package.PROJECT_TYPE|projectType}</td>
+                            <td>{$vo.package.CREATE_TIME}</td>
+                        </tr>
+                        {/foreach}
+                        {/notempty}
+                        </tbody>
+                    </table>
+                    </div>
+                    <!--已流转 e-->
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="sctr">
+        <div class="with-padding">
+        <a href="#sctrc" data-toggle="collapse" class="btn btn-link">查看采集数据</a>
+        </div>
+        <div class="collapse" id="sctrc">
+        <!--sctr start-->
+        <div class="container-fluid">
+            <div class="cards">
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.sctr.img_path1.path?$data.sctr.img_path1.path:''}">
+                        <div class="card-content text-muted">GPS屏显</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.sctr.img_path2.path?$data.sctr.img_path2.path:''}">
+                        <div class="card-content text-muted">采样工作过程</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.sctr.img_path3.path?$data.sctr.img_path3.path:''}">
+                        <div class="card-content text-muted">采样负责人</div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 col-lg-3">
+                    <a class="card" href="###">
+                        <img class="lightbox" src="{$data.sctr.img_path4.path?$data.sctr.img_path4.path:''}">
+                        <div class="card-content text-muted">样点变更图片</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <tbody>
+                <tr>
+                    <td>样点编码</td>
+                    <td>{$data.sctr.SPECIMEN_CODE?$data.sctr.SPECIMEN_CODE:''}</td>
+                    <td>实际经纬度</td>
+                    <td>{$data.sctr.LATITUDE?$data.sctr.LATITUDE:''},{$data.sctr.LONGITUDE?$data.sctr.LONGITUDE:''}<span class="label label-danger">偏移距离:{$data.sctr.LNG_DISTANCE?$data.sctr.LNG_DISTANCE:''}m</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>采样深度备注</td>
+                    <td>{$data.sctr.DEPTH_INFO?$data.sctr.DEPTH_INFO:''}</td>
+                    <td>采样深度(cm)</td>
+                    <td>{$data.sctr.DEPTH_START?$data.sctr.DEPTH_START:''}-{$data.sctr.DEPTH_END?$data.sctr.DEPTH_END:''}</td>
+                </tr>
+                <tr>
+                    <td>是否质控样品</td>
+                    <td>{$data.sctr.is_quality_control.OPTION_NAME?$data.sctr.is_quality_control.OPTION_NAME:''}</td>
+                    <td>样品质量(g)</td>
+                    <td>{$data.sctr.WEIGHT?$data.sctr.WEIGHT:''}</td>
+                </tr>
+                <tr>
+                    <td>土壤质地</td>
+                    <td>{$data.sctr.soil_type_code.OPTION_NAME?$data.sctr.soil_type_code.OPTION_NAME:''}</td>
+                    <td>三角土壤颜色</td>
+                    <td>{$data.sctr.soil_colour.OPTION_NAME?$data.sctr.soil_colour.OPTION_NAME:''}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <!--sctr end-->
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    制样数据
+                </div>
+                <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-tab href="#sctr_make_dlz">待流转<span class="label label-danger">{$data.sctr.make_dlz?sizeof($data.sctr.make_dlz):0}</span></a></li>
+                <li><a data-tab href="#sctr_make_ylz">已流转<span class="label label-danger">{$data.sctr.make_ylz?sizeof($data.sctr.make_ylz):0}</span></a></li>
+            </ul>
+            <div class="tab-content ">
+                <div class="tab-pane active" id="sctr_make_dlz">
+                    <!--待流转 s-->
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 60px;">样品编号</th>
+                            <th>测试项目</th>
+                            <th>是否质控样</th>
+                            <th>样品重量(g)</th>
+                            <th>过筛孔径(mm)</th>
+                            <th>流转中心</th>
+                            <th>实验室名称</th>
+                            <th class="flex-col">样品编码</th>
+                            <th class="flex-col">样包编码</th>
+                            <th class="flex-col">样包类别</th>
+                            <th class="flex-col">样包状态</th>
+                            <th class="flex-col">样包创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {notempty name="data.sctr.make_dlz"}
+                        {foreach name="data.sctr.make_dlz" item="vo"}
+                        <tr>
+                            <td>{$vo.ID}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.WEIGHT_ID}</td>
+                            <td>{$vo.APERTURE}</td>
+                            <td>{$vo.NAME_PREP_LAB}</td>
+                            <td>{$vo.NAME_ANA_LAB}</td>
+                            <td>{$vo.SPEAR1}</td>
+                            <td>{$vo.package.PROJECT_SPARE1}</td>
+                            <td>{$vo.package.PROJECT_KIND_STR}<br>{$vo.package.PROJECT_SPARE3}</td>
+                            <td>{$vo.package.PROJECT_TYPE|projectType}</td>
+                            <th class="flex-col">样包状态</th>
+                            <td>{$vo.package.CREATE_TIME}</td>
+                        </tr>
+                        {/foreach}
+                        {/notempty}
+                        </tbody>
+                    </table>
+                    </div>
+                    <!--待流转 e-->
+                </div>
+                <div class="tab-pane" id="sctr_make_ylz">
+                    <!--已流转 s-->
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 60px;">样品编号</th>
+                            <th>测试项目</th>
+                            <th>是否质控样</th>
+                            <th>样品重量(g)</th>
+                            <th>过筛孔径(mm)</th>
+                            <th>流转中心</th>
+                            <th>实验室名称</th>
+                            <th class="flex-col">样品编码</th>
+                            <th class="flex-col">样包编码</th>
+                            <th class="flex-col">样包类别</th>
+                            <th class="flex-col">样包状态</th>
+                            <th class="flex-col">样包创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {notempty name="data.sctr.make_ylz"}
+                        {foreach name="data.sctr.make_ylz" item="vo"}
+                        <tr>
+                            <td>{$vo.ID}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.TEST_NAME}</td>
+                            <td>{$vo.WEIGHT_ID}</td>
+                            <td>{$vo.APERTURE}</td>
+                            <td>{$vo.NAME_PREP_LAB}</td>
+                            <td>{$vo.NAME_ANA_LAB}</td>
+                            <td>{$vo.SPEAR1}</td>
+                            <td>{$vo.package.PROJECT_SPARE1}</td>
+                            <td>{$vo.package.PROJECT_KIND_STR}<br>{$vo.package.PROJECT_SPARE3}</td>
+                            <td>{$vo.package.PROJECT_TYPE|projectType}</td>
+                            <td>{$vo.package.CREATE_TIME}</td>
+                        </tr>
+                        {/foreach}
+                        {/notempty}
+                        </tbody>
+                    </table>
+                    </div>
+                    <!--已流转 e-->
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+$('.lightbox').lightbox();
+$('table.datatable').datatable();
+{/block}
+{block name="css"}
+<style>
+    .di table tr td:nth-child(odd){
+        color:blue;
+    }
+</style>
+{/block}

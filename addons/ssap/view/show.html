@@ -2,7 +2,7 @@
 {block name="body"}
 <ul class="nav nav-tabs">
     <li class="active"><a data-tab href="#fhdcdw">复合调查点位</a></li>
-    <li><a data-tab href="#ncp">农产品</a></li>
+    <li ><a data-tab href="#ncp">农产品</a></li>
     <li><a data-tab href="#bctr">表层土壤</a></li>
     <li><a data-tab href="#sctr">深层土壤</a></li>
 </ul>
@@ -13,25 +13,25 @@
             <div class="cards">
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.fhdcdw.img_path1.path}">
+                        <img class="lightbox" src="{$data.fhdcdw.img_path1.path?$data.fhdcdw.img_path1.path:''}">
                         <div class="card-content text-muted">样点东侧</div>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.fhdcdw.img_path2.path}">
+                        <img class="lightbox" src="{$data.fhdcdw.img_path2.path?$data.fhdcdw.img_path2.path:''}">
                         <div class="card-content text-muted">样点南侧</div>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.fhdcdw.img_path3.path}">
+                        <img class="lightbox" src="{$data.fhdcdw.img_path3.path?$data.fhdcdw.img_path3.path:''}">
                         <div class="card-content text-muted">样点西侧</div>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.fhdcdw.img_path4.path}">
+                        <img class="lightbox" src="{$data.fhdcdw.img_path4.path?$data.fhdcdw.img_path4.path:''}">
                         <div class="card-content text-muted">样点北侧</div>
                     </a>
                 </div>
@@ -42,79 +42,79 @@
                 <tbody>
                 <tr>
                     <td>样点编码</td>
-                    <td>{$data.fhdcdw.NODE_CODE}</td>
+                    <td>{$data.fhdcdw.NODE_CODE?$data.fhdcdw.NODE_CODE:''}</td>
                     <td>布点网格大小</td>
-                    <td>{$data.fhdcdw.grid_size.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.grid_size.OPTION_NAME?$data.fhdcdw.grid_size.OPTION_NAME:''}</td>
                     <td>样品所在区域</td>
-                    <td>{$data.fhdcdw.site_region.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.site_region.OPTION_NAME?$data.fhdcdw.site_region.OPTION_NAME:''}</td>
                     <td>计划经纬度</td>
-                    <td>{$data.fhdcdw.PLAN_LATITUDE},{$data.fhdcdw.PLAN_LONGITUDE}</td>
+                    <td>{$data.fhdcdw.PLAN_LATITUDE?$data.fhdcdw.PLAN_LATITUDE:''},{$data.fhdcdw.PLAN_LONGITUDE?$data.fhdcdw.PLAN_LONGITUDE:''}</td>
                 </tr>
                 <tr>
                     <td>样点类型</td>
-                    <td>{$data.fhdcdw.spec_type.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.spec_type.OPTION_NAME?$data.fhdcdw.spec_type.OPTION_NAME:''}</td>
                     <td>计划采样地点</td>
-                    <td>{$data.fhdcdw.PLAN_NODE_ADDRESS}</td>
+                    <td>{$data.fhdcdw.PLAN_NODE_ADDRESS?$data.fhdcdw.PLAN_NODE_ADDRESS:''}</td>
                     <td>海拔高度(m)</td>
-                    <td>{$data.fhdcdw.ELEVATION}</td>
+                    <td>{$data.fhdcdw.ELEVATION?$data.fhdcdw.ELEVATION:''}</td>
                     <td>土壤发生分类1</td>
-                    <td>{$data.fhdcdw.soil_type_code.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.soil_type_code.OPTION_NAME?$data.fhdcdw.soil_type_code.OPTION_NAME:''}</td>
                 </tr>
                 <tr>
                     <td>土壤发生分类2</td>
-                    <td>{$data.fhdcdw.soil_type_code2.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.soil_type_code2.OPTION_NAME?$data.fhdcdw.soil_type_code2.OPTION_NAME:''}</td>
                     <td>土壤系统分类1</td>
-                    <td>{$data.fhdcdw.soil_sys_code.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.soil_sys_code.OPTION_NAME?$data.fhdcdw.soil_sys_code.OPTION_NAME:''}</td>
                     <td>土壤系统分类2</td>
-                    <td>{$data.fhdcdw.soil_sys_code2.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.soil_sys_code2.OPTION_NAME?$data.fhdcdw.soil_sys_code2.OPTION_NAME:''}</td>
                     <td>土壤系统分类3</td>
-                    <td>{$data.fhdcdw.soil_sys_code3.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.soil_sys_code3.OPTION_NAME?$data.fhdcdw.soil_sys_code3.OPTION_NAME:''}</td>
                 </tr>
                 <tr>
                     <td>土地利用方式</td>
-                    <td>{$data.fhdcdw.soil_use_type.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.soil_use_type.OPTION_NAME?$data.fhdcdw.soil_use_type.OPTION_NAME:''}</td>
                     <td>耕作方式</td>
-                    <td>{$data.fhdcdw.tillage_fashion.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.tillage_fashion.OPTION_NAME?$data.fhdcdw.tillage_fashion.OPTION_NAME:''}</td>
                     <td>灌溉方式</td>
-                    <td>{$data.fhdcdw.irrigate_fashion.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.irrigate_fashion.OPTION_NAME?$data.fhdcdw.irrigate_fashion.OPTION_NAME:''}</td>
                     <td>灌溉水类型</td>
-                    <td>{$data.fhdcdw.parent_rock_type.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.parent_rock_type.OPTION_NAME?$data.fhdcdw.parent_rock_type.OPTION_NAME:''}</td>
                 </tr>
                 <tr>
                     <td>地形类型</td>
-                    <td>{$data.fhdcdw.landform_type.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.landform_type.OPTION_NAME?$data.fhdcdw.landform_type.OPTION_NAME:''}</td>
                     <td></td>
                     <td></td>
                     <td>正东(多选)</td>
-                    <td>{$data.fhdcdw.DUE_EAST|getDirectionState}</td>
+                    <td>{$data.fhdcdw.DUE_EAST?getDirectionState($data.fhdcdw.DUE_EAST):''}</td>
                     <td>正东其它</td>
-                    <td>{$data.fhdcdw.DUE_EASTOTHER}</td>
+                    <td>{$data.fhdcdw.DUE_EASTOTHER?$data.fhdcdw.DUE_EASTOTHER:''}</td>
                 </tr>
                 <tr>
                     <td>正南(多选)</td>
-                    <td>{$data.fhdcdw.DUE_SOUTH|getDirectionState}</td>
+                    <td>{$data.fhdcdw.DUE_SOUTH?getDirectionState($data.fhdcdw.DUE_SOUTH):''}</td>
                     <td>正南其它</td>
-                    <td>{$data.fhdcdw.DUE_SOUTH_OTHER}</td>
+                    <td>{$data.fhdcdw.DUE_SOUTH_OTHER?$data.fhdcdw.DUE_SOUTH_OTHER:''}</td>
                     <td>正西(多选)</td>
-                    <td>{$data.fhdcdw.DUE_WEST|getDirectionState}</td>
+                    <td>{$data.fhdcdw.DUE_WEST?getDirectionState($data.fhdcdw.DUE_WEST):''}</td>
                     <td>正西其它</td>
-                    <td>{$data.fhdcdw.DUE_WEST_OTHER}</td>
+                    <td>{$data.fhdcdw.DUE_WEST_OTHER?$data.fhdcdw.DUE_WEST_OTHER:''}</td>
                 </tr>
                 <tr>
                     <td>正北(多选)</td>
-                    <td>{$data.fhdcdw.DUE_NORTH|getDirectionState}</td>
+                    <td>{$data.fhdcdw.DUE_NORTH?getDirectionState($data.fhdcdw.DUE_NORTH):''}</td>
                     <td>正北其它</td>
-                    <td>{$data.fhdcdw.DUE_NORTH_OTHER}</td>
+                    <td>{$data.fhdcdw.DUE_NORTH_OTHER?$data.fhdcdw.DUE_NORTH_OTHER:''}</td>
                     <td>天气情况</td>
-                    <td>{$data.fhdcdw.weather_type_code.OPTION_NAME}</td>
+                    <td>{$data.fhdcdw.weather_type_code.OPTION_NAME?$data.fhdcdw.weather_type_code.OPTION_NAME:''}</td>
                     <td>周边潜在污染源</td>
-                    <td>{$data.fhdcdw.POLLUTION_INFO}</td>
+                    <td>{$data.fhdcdw.POLLUTION_INFO?$data.fhdcdw.POLLUTION_INFO:''}</td>
                 </tr>
                 <tr>
                     <td>污染源距离(m)</td>
-                    <td>{$data.fhdcdw.POLLUTION_DISTANCES}</td>
+                    <td>{$data.fhdcdw.POLLUTION_DISTANCES?$data.fhdcdw.POLLUTION_DISTANCES:''}</td>
                     <td>采样日期</td>
-                    <td>{$data.fhdcdw.ADD_TIME}</td>
+                    <td>{$data.fhdcdw.ADD_TIME?$data.fhdcdw.ADD_TIME:''}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -125,219 +125,223 @@
     </div>
     <div class="tab-pane" id="ncp">
         <!--ncp start-->
-        <div class="container-fluid">
+        <div class="col-md-12">
             <div class="cards">
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.ncp.img_path1.path}">
+                        <img class="lightbox" src="{$data.ncp.img_path1.path?$data.ncp.img_path1.path:''}">
                         <div class="card-content text-muted">GPS屏显</div>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.ncp.img_path2.path}">
+                        <img class="lightbox" src="{$data.ncp.img_path2.path?$data.ncp.img_path2.path:''}">
                         <div class="card-content text-muted">采样工作过程</div>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.ncp.img_path3.path}">
+                        <img class="lightbox" src="{$data.ncp.img_path3.path?$data.ncp.img_path3.path:''}">
                         <div class="card-content text-muted">采样负责人</div>
                     </a>
                 </div>
                 <div class="col-md-4 col-sm-6 col-lg-3">
                     <a class="card" href="###">
-                        <img class="lightbox" src="{$data.ncp.img_path4.path}">
+                        <img class="lightbox" src="{$data.ncp.img_path4.path?$data.ncp.img_path4.path:''}">
                         <div class="card-content text-muted">样点变更图片</div>
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <tbody>
-                <tr>
-                    <td>样点编码</td>
-                    <td>{$data.ncp.SPECIMEN_CODE}</td>
-                    <td>实际经纬度</td>
-                    <td>{$data.ncp.LATITUDE},{$data.ncp.LONGITUDE}<span class="label label-danger">偏移距离:{$data.ncp.LNG_DISTANCE}m</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>样点变更说明</td>
-                    <td>{$data.ncp.DEPTH_INFO}</td>
-                    <td>农产品类型</td>
-                    <td>{$data.ncp.farm_sample_type.OPTION_NAME}</td>
-                </tr>
-                <tr>
-                    <td>农产品名称</td>
-                    <td>{$data.ncp.farm_produce_name.OPTION_NAME}</td>
-                    <td>采样部位</td>
-                    <td>{$data.ncp.sampling_site.OPTION_NAME}</td>
-                </tr>
-                <tr>
-                    <td>是否质控样品</td>
-                    <td>{$data.ncp.is_quality_control.OPTION_NAME}</td>
-                    <td>样品质量(g)</td>
-                    <td>{$data.ncp.WEIGHT}</td>
-                </tr>
-                <tr>
-                    <td>作物栽培季节</td>
-                    <td>{$data.ncp.crop_season.OPTION_NAME}</td>
-                    <td>当季产量</td>
-                    <td>{$data.ncp.SINGLE_SEASON_YIELD}</td>
-                </tr>
-                <tr>
-                    <td>施肥情况</td>
-                    <td>{$data.ncp.fertilization_condition.OPTION_NAME}</td>
-                    <td>亩施肥量(kg)</td>
-                    <td>{$data.ncp.MU_FERTILIZATION}</td>
-                </tr>
-                <tr>
-                    <td>施用农药情况</td>
-                    <td>{$data.ncp.pesticide_condition.OPTION_NAME}</td>
-                    <td>施用农药情况(其它)</td>
-                    <td>{$data.ncp.PESTICIDE_CONDITION_OTHER}</td>
-                </tr>
-                <tr>
-                    <td>亩均用量(g)</td>
-                    <td>{$data.ncp.MU_DOSAGE}</td>
-                    <td>作物品种</td>
-                    <td>{$data.ncp.CROP_TYPE}</td>
-                </tr>
-                <tr>
-                    <td>样品说明</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>样点编码</td>
+                        <td>{$data.ncp.SPECIMEN_CODE?$data.ncp.SPECIMEN_CODE:''}</td>
+                        <td>实际经纬度</td>
+                        <td>{$data.ncp.LATITUDE?$data.ncp.LATITUDE:''},{$data.ncp.LONGITUDE?$data.ncp.LONGITUDE:''}<span class="label label-danger">偏移距离:{$data.ncp.LNG_DISTANCE?$data.ncp.LNG_DISTANCE:''}m</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>样点变更说明</td>
+                        <td>{$data.ncp.DEPTH_INFO?$data.ncp.DEPTH_INFO:''}</td>
+                        <td>农产品类型</td>
+                        <td>{$data.ncp.farm_sample_type.OPTION_NAME?$data.ncp.farm_sample_type.OPTION_NAME:''}</td>
+                    </tr>
+                    <tr>
+                        <td>农产品名称</td>
+                        <td>{$data.ncp.farm_produce_name.OPTION_NAME?$data.ncp.farm_produce_name.OPTION_NAME:''}</td>
+                        <td>采样部位</td>
+                        <td>{$data.ncp.sampling_site.OPTION_NAME?$data.ncp.sampling_site.OPTION_NAME:''}</td>
+                    </tr>
+                    <tr>
+                        <td>是否质控样品</td>
+                        <td>{$data.ncp.is_quality_control.OPTION_NAME?$data.ncp.is_quality_control.OPTION_NAME:''}</td>
+                        <td>样品质量(g)</td>
+                        <td>{$data.ncp.WEIGHT?$data.ncp.WEIGHT:''}</td>
+                    </tr>
+                    <tr>
+                        <td>作物栽培季节</td>
+                        <td>{$data.ncp.crop_season.OPTION_NAME?$data.ncp.crop_season.OPTION_NAME:''}</td>
+                        <td>当季产量</td>
+                        <td>{$data.ncp.SINGLE_SEASON_YIELD?$data.ncp.SINGLE_SEASON_YIELD:''}</td>
+                    </tr>
+                    <tr>
+                        <td>施肥情况</td>
+                        <td>{$data.ncp.fertilization_condition.OPTION_NAME?$data.ncp.fertilization_condition.OPTION_NAME:''}</td>
+                        <td>亩施肥量(kg)</td>
+                        <td>{$data.ncp.MU_FERTILIZATION?$data.ncp.MU_FERTILIZATION:''}</td>
+                    </tr>
+                    <tr>
+                        <td>施用农药情况</td>
+                        <td>{$data.ncp.pesticide_condition.OPTION_NAME?$data.ncp.pesticide_condition.OPTION_NAME:''}</td>
+                        <td>施用农药情况(其它)</td>
+                        <td>{$data.ncp.PESTICIDE_CONDITION_OTHER?$data.ncp.PESTICIDE_CONDITION_OTHER:''}</td>
+                    </tr>
+                    <tr>
+                        <td>亩均用量(g)</td>
+                        <td>{$data.ncp.MU_DOSAGE?$data.ncp.MU_DOSAGE:''}</td>
+                        <td>作物品种</td>
+                        <td>{$data.ncp.CROP_TYPE?$data.ncp.CROP_TYPE:''}</td>
+                    </tr>
+                    <tr>
+                        <td>样品说明</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--ncp end-->
     </div>
     <div class="tab-pane" id="bctr">
         <!--bctr start-->
-        <div class="container-fluid">
-            <div class="cards">
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.bctr.img_path1.path}">
-                        <div class="card-content text-muted">GPS屏显</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.bctr.img_path2.path}">
-                        <div class="card-content text-muted">采样工作过程</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.bctr.img_path3.path}">
-                        <div class="card-content text-muted">采样负责人</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.bctr.img_path4.path}">
-                        <div class="card-content text-muted">样点变更图片</div>
-                    </a>
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <div class="cards">
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.bctr.img_path1.path?$data.bctr.img_path1.path:''}">
+                            <div class="card-content text-muted">GPS屏显</div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.bctr.img_path2.path?$data.bctr.img_path2.path:''}">
+                            <div class="card-content text-muted">采样工作过程</div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.bctr.img_path3.path?$data.bctr.img_path3.path:''}">
+                            <div class="card-content text-muted">采样负责人</div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.bctr.img_path4.path?$data.bctr.img_path4.path:''}">
+                            <div class="card-content text-muted">样点变更图片</div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <tbody>
-                <tr>
-                    <td>样点编码</td>
-                    <td>{$data.bctr.SPECIMEN_CODE}</td>
-                    <td>实际经纬度</td>
-                    <td>{$data.bctr.LATITUDE},{$data.bctr.LONGITUDE}<span class="label label-danger">偏移距离:{$data.bctr.LNG_DISTANCE}m</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>采样深度备注</td>
-                    <td>{$data.bctr.DEPTH_INFO}</td>
-                    <td>采样深度(cm)</td>
-                    <td>{$data.bctr.DEPTH_START}-{$data.bctr.DEPTH_END}</td>
-                </tr>
-                <tr>
-                    <td>是否质控样品</td>
-                    <td>{$data.bctr.is_quality_control.OPTION_NAME}</td>
-                    <td>样品质量(g)</td>
-                    <td>{$data.bctr.WEIGHT}</td>
-                </tr>
-                <tr>
-                    <td>土壤质地</td>
-                    <td>{$data.bctr.soil_type_code.OPTION_NAME}</td>
-                    <td>三角土壤颜色</td>
-                    <td>{$data.bctr.soil_colour.OPTION_NAME}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>样点编码</td>
+                        <td>{$data.bctr.SPECIMEN_CODE?$data.bctr.SPECIMEN_CODE:''}</td>
+                        <td>实际经纬度</td>
+                        <td>{$data.bctr.LATITUDE?$data.bctr.LATITUDE:''},{$data.bctr.LONGITUDE?$data.bctr.LONGITUDE:''}<span class="label label-danger">偏移距离:{$data.bctr.LNG_DISTANCE?$data.bctr.LNG_DISTANCE:''}m</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>采样深度备注</td>
+                        <td>{$data.bctr.DEPTH_INFO?$data.bctr.DEPTH_INFO:''}</td>
+                        <td>采样深度(cm)</td>
+                        <td>{$data.bctr.DEPTH_START?$data.bctr.DEPTH_START:''}-{$data.bctr.DEPTH_END?$data.bctr.DEPTH_END:''}</td>
+                    </tr>
+                    <tr>
+                        <td>是否质控样品</td>
+                        <td>{$data.bctr.is_quality_control.OPTION_NAME?$data.bctr.is_quality_control.OPTION_NAME:''}</td>
+                        <td>样品质量(g)</td>
+                        <td>{$data.bctr.WEIGHT?$data.bctr.WEIGHT:''}</td>
+                    </tr>
+                    <tr>
+                        <td>土壤质地</td>
+                        <td>{$data.bctr.soil_type_code.OPTION_NAME?$data.bctr.soil_type_code.OPTION_NAME:''}</td>
+                        <td>三角土壤颜色</td>
+                        <td>{$data.bctr.soil_colour.OPTION_NAME?$data.bctr.soil_colour.OPTION_NAME:''}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--bctr end-->
     </div>
     <div class="tab-pane" id="sctr">
-        <!--sctr start-->
-        <div class="container-fluid">
-            <div class="cards">
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.sctr.img_path1.path}">
-                        <div class="card-content text-muted">GPS屏显</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.sctr.img_path2.path}">
-                        <div class="card-content text-muted">采样工作过程</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.sctr.img_path3.path}">
-                        <div class="card-content text-muted">采样负责人</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6 col-lg-3">
-                    <a class="card" href="###">
-                        <img class="lightbox" src="{$data.sctr.img_path4.path}">
-                        <div class="card-content text-muted">样点变更图片</div>
-                    </a>
+        <div class="col-md-12">
+            <!--sctr start-->
+            <div class="container-fluid">
+                <div class="cards">
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.sctr.img_path1.path?$data.sctr.img_path1.path:''}">
+                            <div class="card-content text-muted">GPS屏显</div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.sctr.img_path2.path?$data.sctr.img_path2.path:''}">
+                            <div class="card-content text-muted">采样工作过程</div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.sctr.img_path3.path?$data.sctr.img_path3.path:''}">
+                            <div class="card-content text-muted">采样负责人</div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-lg-3">
+                        <a class="card" href="###">
+                            <img class="lightbox" src="{$data.sctr.img_path4.path?$data.sctr.img_path4.path:''}">
+                            <div class="card-content text-muted">样点变更图片</div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <tbody>
-                <tr>
-                    <td>样点编码</td>
-                    <td>{$data.sctr.SPECIMEN_CODE}</td>
-                    <td>实际经纬度</td>
-                    <td>{$data.sctr.LATITUDE},{$data.sctr.LONGITUDE}<span class="label label-danger">偏移距离:{$data.sctr.LNG_DISTANCE}m</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>采样深度备注</td>
-                    <td>{$data.sctr.DEPTH_INFO}</td>
-                    <td>采样深度(cm)</td>
-                    <td>{$data.sctr.DEPTH_START}-{$data.sctr.DEPTH_END}</td>
-                </tr>
-                <tr>
-                    <td>是否质控样品</td>
-                    <td>{$data.sctr.is_quality_control.OPTION_NAME}</td>
-                    <td>样品质量(g)</td>
-                    <td>{$data.sctr.WEIGHT}</td>
-                </tr>
-                <tr>
-                    <td>土壤质地</td>
-                    <td>{$data.sctr.soil_type_code.OPTION_NAME}</td>
-                    <td>三角土壤颜色</td>
-                    <td>{$data.sctr.soil_colour.OPTION_NAME}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>样点编码</td>
+                        <td>{$data.sctr.SPECIMEN_CODE?$data.sctr.SPECIMEN_CODE:''}</td>
+                        <td>实际经纬度</td>
+                        <td>{$data.sctr.LATITUDE?$data.sctr.LATITUDE:''},{$data.sctr.LONGITUDE?$data.sctr.LONGITUDE:''}<span class="label label-danger">偏移距离:{$data.sctr.LNG_DISTANCE?$data.sctr.LNG_DISTANCE:''}m</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>采样深度备注</td>
+                        <td>{$data.sctr.DEPTH_INFO?$data.sctr.DEPTH_INFO:''}</td>
+                        <td>采样深度(cm)</td>
+                        <td>{$data.sctr.DEPTH_START?$data.sctr.DEPTH_START:''}-{$data.sctr.DEPTH_END?$data.sctr.DEPTH_END:''}</td>
+                    </tr>
+                    <tr>
+                        <td>是否质控样品</td>
+                        <td>{$data.sctr.is_quality_control.OPTION_NAME?$data.sctr.is_quality_control.OPTION_NAME:''}</td>
+                        <td>样品质量(g)</td>
+                        <td>{$data.sctr.WEIGHT?$data.sctr.WEIGHT:''}</td>
+                    </tr>
+                    <tr>
+                        <td>土壤质地</td>
+                        <td>{$data.sctr.soil_type_code.OPTION_NAME?$data.sctr.soil_type_code.OPTION_NAME:''}</td>
+                        <td>三角土壤颜色</td>
+                        <td>{$data.sctr.soil_colour.OPTION_NAME?$data.sctr.soil_colour.OPTION_NAME:''}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--sctr end-->
     </div>
@@ -345,6 +349,7 @@
 {/block}
 {block name="js"}
 $('.lightbox').lightbox();
+$('table.datatable').datatable();
 {/block}
 {block name="css"}
 <style>

@@ -1,0 +1,8 @@
+<template name="cart">
+<view class="fixed-btns-box" bindtap="onCartTap">
+            <view class="fiexd-cart {{isShake?'animate':''}}">
+                <image src="../../imgs/icon/cart@top.png"></image>
+                <view wx:if="{{cartTotalCounts>0}}">{{cartTotalCounts}}</view>
+            </view>
+        </view>
+</template>

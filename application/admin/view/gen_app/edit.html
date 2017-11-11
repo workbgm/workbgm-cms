@@ -1,0 +1,55 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+    <div class="container-fluid">
+        <!--tab标签-->
+        <div class="container-fluid">
+            <ul class="nav nav-tabs">
+                <li><a href="{:url('/gen_app/index')}">生成应用管理</a></li>
+                <li><a href="{:url('/gen_app/add')}">添加生成应用</a></li>
+                <li class="active"><a>编辑生成应用</a></li>
+            </ul>
+            <div class="container-fluid">
+                <div class="container-fluid">
+                    <form class="form-horizontal" action="{:url('/gen_app/update')}" method="post">
+                        <input type="hidden" name="id" value="{$GenApp.id ?? ''}">
+                                <div class="form-group">
+            <label class="col-sm-2 required">应用名称：</label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" placeholder="应用名称" name="name" value="{$GenApp.name ?? ''}"  datatype="*" nullmsg="请填写应用名称">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 required">二级域名：</label>
+            <div class="col-md-6 col-sm-10">
+                <input type="text" class="form-control" placeholder="二级域名" name="domain" value="{$GenApp.domain ?? ''}"  datatype="*" nullmsg="请填写二级域名">
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 ">描述：</label>
+            <div class="col-md-6 col-sm-10">
+                <textarea class="form-control"  rows="3"placeholder="" name="describe" >{$vo.describe ?? ''}</textarea>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">更新</button>
+                                <button type="reset" class="btn btn-default">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name="js"}
+    <script type="text/javascript">
+    $(function () {
+        
+    })
+    </script>
+{/block}

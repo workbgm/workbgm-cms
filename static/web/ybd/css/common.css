@@ -151,6 +151,7 @@
     line-height: 0.87rem;
     height:0.87rem;
     color:#484848;
+    cursor: pointer;
 }
 
 .public-header-nav>.public-container .public-menu>li{

@@ -60,6 +60,26 @@ Route::post(':version/ssap_file',':version.SsapUpload/upload');
 Route::get(':version/ssap_version',':version.Ssap/get_ssap_version');
 //心跳
 Route::post(':version/ssap_heartbeat',':version.Ssap/post_ssap_heartbeat');
+//日志
+Route::post(':version/ssap_event',':version.Ssap/post_ssap_event');
+
+//wechat
+Route::get(':version/wechat',':version.Wechat/index');
+
+//setAccess
+Route::get(':version/access',':version.Wechat/setAccess');
+
+//tags
+Route::get(':version/tags',':version.Wechat/getTags');
+
+//getopenidsbytagid
+Route::get(':version/getopenidsbytagid',':version.Wechat/getOpenIdsByTagId');
+
+//sendmessage
+Route::get(':version/sendmessage',':version.Wechat/sendMessage');
+
+//sendtemplatemessage
+Route::get(':version/sendtemplatemessage',':version.Wechat/sendTemplateMessage');
 return [
     '__pattern__' => [
         'name' => '\w+',

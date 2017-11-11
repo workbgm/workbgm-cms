@@ -1,0 +1,44 @@
+{extend name="./data/tpl/base.html" /}
+{block name="body"}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>生成应用管理</a></li>
+            <li><a href="{:url('/gen_app/add')}">添加生成应用</a></li>
+        </ul>
+        <div class="container-fluid">
+            <form action="" method="post" class="ajax-form">
+                <div class="container-fluid">
+                    <div class="table-responsive">  <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>应用名称</th>
+            <th>二级域名</th>
+            <th>描述</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="vo"}
+                                <tr>
+                                    <td>{$vo.name}</td>
+            <td>{$vo.domain}</td>
+            <td>{$vo.describe}</td>
+                                    <td>
+                                        <a href="{:url('/gen_app/edit',['id'=>$vo['id']])}" class="btn btn-mini btn-warning">编辑</a>
+                                        <a href="{:url('/gen_app/gen',['id'=>$vo['id']])}" class="btn btn-mini btn-info">写入服务器</a>
+                                        <button name="del" action="{:url('/gen_app/delete',['id'=>$vo['id']])}" class="btn btn-mini btn-danger">删除</button>
+                                    </td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table></div>
+                    <!--分页-->
+                    {$list->render()}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}
+

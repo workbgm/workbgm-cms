@@ -11,6 +11,7 @@
         <!--搜索end-->
         <div class="container-fluid">
                 <div class="container-fluid">
+                        <a target="_blank" href="{:site_url('ssap.excelAll')}" class="btn btn-success">导出Excel</a>
                     <div class="table-responsive">  <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
@@ -33,8 +34,9 @@
                         <td>{$vo.group.GROUP_NAME}</td>
                         <td>{$vo.STATE|getNodeState}</td>
                         <td>
-                            <button data-size="fullscreen" data-title="{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}" data-iframe="{:site_url('ssap.show',['NODE_ID'=>$vo['NODE_ID']])}" data-toggle="modal" class="btn btn-mini btn-primary">查看采样数据</button>
-                            <a target="_blank" href="{:site_url('ssap.excel',['NODE_ID'=>$vo['NODE_ID']])}" class="btn btn-mini btn-success">导出Excel</a>
+                            <button data-size="fullscreen" data-title="{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}" data-iframe="{:site_url('ssap.show',['NODE_ID'=>$vo['NODE_ID']])}" data-toggle="modal" class="btn btn-mini btn-primary">采样数据</button>
+                            <button data-size="fullscreen" data-title="{$vo.PROVINCE_NAME}{$vo.CITY_NAME}{$vo.COUNTRY_NAME} {$vo.PLAN_NODE_ADDRESS}" data-iframe="{:site_url('ssap.make',['NODE_ID'=>$vo['NODE_ID']])}" data-toggle="modal" class="btn btn-mini btn-warning">制样数据</button>
+                            <a target="_blank" href="{:site_url('ssap.excel',['NODE_ID'=>$vo['NODE_ID']])}" class="btn btn-mini btn-success">导出</a>
                         </td>
                     </tr>
                     {/foreach}
