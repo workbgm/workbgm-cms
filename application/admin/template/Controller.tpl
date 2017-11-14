@@ -19,7 +19,31 @@ class [NAME] extends AdminBase
     */
     public function index($page = 1)
     {
-        $[NAME]_List   = $this->[NAME]_Model->where('isdelete',0)->order(['id' => 'ASC'])->paginate(15, false, ['page' => $page]);;
+        $where=$this->request->post();
+        $order=['id' => 'ASC'];
+        $this->assign('order',"");
+        if(isset($where['order'])){
+            $order_=$where['order'];
+            unset($where['order']);
+            $order=[];
+            foreach( $order_ as $k=>$v){
+                $arr=explode('|',$v);
+                if($arr[1]=='ASC'){
+                     $arr[1]='DESC';
+                }else{
+                     $arr[1]='ASC';
+                }
+                $order[$arr[0]]=$arr[1];
+            }
+            $this->assign('order',$order);
+        }
+        unset($where['page']);
+        foreach( $where as $k=>$v){
+            if( $v==='' ){
+                unset( $where[$k] );
+            }
+        }
+        $[NAME]_List   = $this->[NAME]_Model->where($where)->where('isdelete',0)->order($order)->paginate(15, false, ['page' => $page]);;
         return $this->fetch('index',['list' => $[NAME]_List]);
     }
 
@@ -39,7 +63,15 @@ class [NAME] extends AdminBase
         if ($this->request->isPost()) {
             $data            = $this->request->post();
             $validate_result = $this->validate($data, '[NAME]');
-
+            foreach ($data as $k=>$v){
+                if(is_array($v)){
+                    $arr=[];
+                    foreach ($v as $k_=>$v_){
+                        $arr[]=$v_;
+                    }
+                    $data[$k]=implode(',',$arr);
+                }
+            }
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
@@ -72,7 +104,15 @@ class [NAME] extends AdminBase
         if ($this->request->isPost()) {
             $data            = $this->request->post();
             $validate_result = $this->validate($data, '[NAME]');
-
+            foreach ($data as $k=>$v){
+                if(is_array($v)){
+                    $arr=[];
+                foreach ($v as $k_=>$v_){
+                    $arr[]=$v_;
+                }
+                    $data[$k]=implode(',',$arr);
+                }
+            }
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {

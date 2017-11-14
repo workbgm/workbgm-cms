@@ -745,6 +745,30 @@ function icon_to_utf8($s) {
     return $s;
 }
 
+/**
+ * 表格排序
+ * @param $title
+ * @param $name
+ */
+function sort_by($title,$name,$reset=''){
+    $order='ASC';
+    $color='style="color:#000"';
+    if(!empty($reset)){
+        if(isset($reset[$name])){
+            $order=$reset[$name];
+            $color='';
+        }
+    }
+    $html='<input type="hidden" class="sort" name="order[]" sort="'.$name.'" value="'.$name.'|'.$order.'">';
+    if($order=='ASC'){
+        $btn_text='<i class="icon icon-chevron-up" '.$color.'></i>';
+    }else if($order=='DESC'){
+        $btn_text='<i class="icon icon-chevron-down" '.$color.'></i>';
+    }
+    $html.='<button class="btn btn-sm btn-link order-th-btn" sort="'.$name.'" type="button">'.$btn_text.'</button>';
+    echo $title.$html;
+}
+
 include EXTEND_PATH ."cms/Cms.php";
 include EXTEND_PATH ."data/Data.php";
 include EXTEND_PATH ."html/Html.php";

@@ -79,7 +79,11 @@ var workbgm=w={
         //文件上传
         $('input[type="file"]').ajaxfileupload({
             action:window.FILE_UPLOAD_PATH,
+            dataType:'json',
             onComplete: function (d) {
+                d=d.replace('html, * {-webkit-user-select:text!important; -moz-user-select:text!important;}', "");
+                console.log(d);
+                d=eval('('+d+')');
                 if (d.error == 0) {
                     $('input[name="' + $(this).attr('imge') + '"]').val(d.url);
                 } else {
@@ -106,12 +110,10 @@ var workbgm=w={
                     if(result){
                         $.ajax({
                             url: _action,
+                            type:'POST',
                             data: $('.ajax-form').serialize(),
                             success: function (info) {
-                                if (info.code === 1) {
-                                    location.href = info.url;
-                                }
-                                w.message(info.msg,null);
+                                w.zmsg(info.msg);
                             }
                         });
                     }
@@ -166,6 +168,13 @@ var workbgm=w={
             message: msg,
             callback: callback
         })
+    },
+    zmsg:function(msg){
+        var eM = new $.zui.Messager(msg, {
+            type: 'primary',
+            time: 5000
+        });
+        eM.show();
     }
 };
 

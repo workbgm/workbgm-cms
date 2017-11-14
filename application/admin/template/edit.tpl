@@ -24,6 +24,23 @@
             </div>
         </div>
     </div>
+    <script src="__STATIC__/admin/js/Validform_v5.3.2_min.js"></script>
+    <script>
+        var Showmsg=function(msg){
+            var eM = new $.zui.Messager(msg, {
+                type: 'warning',
+                time: 5000
+            });
+            eM.show();
+        }
+        $("form").Validform({
+            tiptype:function(msg,obj){
+                if( (msg != '') &&  (obj.type==3) ){
+                    Showmsg(msg);
+                }
+            }
+        });
+    </script>
 {/block}
 {block name="js"}
     <script type="text/javascript">

@@ -60,11 +60,7 @@ class Generate
     public function run($data, $option = 'all')
     {
         // 检查方法是否存在
-        if (isset($data['delete_file']) && $data['delete_file']) {
-            $action = 'del' . ucfirst($option);
-        } else {
-            $action = 'build' . ucfirst($option);
-        }
+        $action = 'build' . ucfirst($option);
         if (!method_exists($this, $action)) {
             throw new Exception('选项不存在：' . $option, 404);
         }
@@ -78,12 +74,11 @@ class Generate
         if (!self::checkWritable($pathCheck)) {
             throw new Exception("目录没有权限不可写，请执行一下命令修改权限：<br>chmod -R 755 " . realpath($pathCheck), 403);
         }
-        if (isset($data['model']) && $data['model']) {
-            $module = $this->readConfig($this->module, 'app', 'model_path', Config::get('app.model_path'));
-            $pathCheck = APP_PATH . $module . DS;
-            if (!self::checkWritable($pathCheck)) {
-                throw new Exception("目录没有权限不可写，请执行一下命令修改权限：<br>chmod -R 755 " . realpath($pathCheck), 403);
-            }
+        //创建模型
+        $module = $this->readConfig($this->module, 'app', 'model_path', Config::get('app.model_path'));
+        $pathCheck = APP_PATH . $module . DS;
+        if (!self::checkWritable($pathCheck)) {
+            throw new Exception("目录没有权限不可写，请执行一下命令修改权限：<br>chmod -R 755 " . realpath($pathCheck), 403);
         }
         if (isset($data['validate']) && $data['validate']) {
             $module = $this->readConfig($this->module, 'app', 'validate_path', Config::get('app.validate_path'));
@@ -119,7 +114,6 @@ class Generate
             $pathView = APP_PATH . $this->module . DS .'view'.DS. $this->dir . $this->nameLower . DS;
             $fileName = APP_PATH . "%MODULE%" . DS . "%NAME%" . DS . $this->dir . $this->name . ".php";
             $this->$action($pathView, $fileName);
-
             return true;
         }
 
@@ -666,7 +660,7 @@ class Generate
 
         return file_put_contents($file, str_replace(
                 ["[MODULE]", "[TITLE]", "[NAME]", "[FILTER]", "[NAMESPACE]","[TABLECOMMENT]"],
-                [$this->module, $this->data['title'], $this->name, $code['filter'], $this->namespaceSuffix,$data['table_comment']],
+                [$this->module, $this->data['table_comment'], $this->name, $code['filter'], $this->namespaceSuffix,$data['table_comment']],
                 $template
             )
         );
@@ -695,7 +689,7 @@ class Generate
 
         return file_put_contents($file, str_replace(
                 ["[MODULE]", "[TITLE]", "[NAME]", "[NAMESPACE]", "[TABLE]", "[AUTO_TIMESTAMP]"],
-                [$module, $this->data['title'], $name, '', $tableName, $autoTimestamp],
+                [$module, $this->data['table_comment'], $name, '', $tableName, $autoTimestamp],
                 $template
             )
         );
@@ -720,7 +714,7 @@ class Generate
 
         return file_put_contents($file, str_replace(
                 ["[MODULE]", "[TITLE]", "[NAME]", "[NAMESPACE]", "[RULE]"],
-                [$module, $this->data['title'], $this->name, $this->namespaceSuffix, $code['validate']],
+                [$module, $this->data['table_comment'], $this->name, $this->namespaceSuffix, $code['validate']],
                 $template
             )
         );
@@ -754,20 +748,16 @@ class Generate
         $fieldAttr = [];
         $key = [];
         if (in_array('id', $auto_create_field)) {
-            $fieldAttr[] = tab(1) . "`id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '{$this->data['title']}主键'";
+            $fieldAttr[] = tab(1) . "`id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '{$this->data['table_comment']}主键'";
         }
-        foreach ($this->data['field'] as $field) {
+        foreach ($this->data['form'] as $field) {
             if (!in_array($field['name'], $auto_create_field)) {
                 // 字段属性
-                $fieldAttr[] = tab(1) . "`{$field['name']}` {$field['type']}"
-                    . ($field['extra'] ? ' ' . $field['extra'] : '')
-                    . (isset($field['not_null']) && $field['not_null'] ? ' NOT NULL' : '')
-                    . (strtolower($field['default']) == 'null' ? '' : " DEFAULT '{$field['default']}'")
-                    . ($field['comment'] === '' ? '' : " COMMENT '{$field['comment']}'");
-            }
-            // 索引
-            if (isset($field['key']) && $field['key'] && $field['name'] != 'id') {
-                $key[] = tab(1) . "KEY `{$field['name']}` (`{$field['name']}`)";
+               // $fieldAttr[] = tab(1) . "`{$field['name']}` {$field['type']}"
+                      $fieldAttr[] = tab(1) . "`{$field['name']}` text"
+                    . (isset($field['require']) && $field['require'] ? ' NOT NULL' : '')
+//                    . (strtolower($field['default']) == 'null' ? '' : " DEFAULT '{$field['default']}'")
+                    . ($field['title'] === '' ? '' : " COMMENT '{$field['title']}'");
             }
         }
 
@@ -800,7 +790,7 @@ class Generate
         $sql_create = "CREATE TABLE `{$tableName}` (\n"
             . implode(",\n", array_merge($fieldAttr, $key))
             . "\n)ENGINE=" . (isset($this->data['table_engine']) ? $this->data['table_engine'] : 'InnoDB')
-            . " DEFAULT CHARSET=utf8 COMMENT '{$this->data['title']}'";
+            . " DEFAULT CHARSET=utf8 COMMENT '{$this->data['table_comment']}'";
 
         // 写入执行的SQL到日志中，如果不是想要的表结构，请到日志中搜索BUILD_SQL，找到执行的SQL到数据库GUI软件中修改执行，修改表结构
 //        Log::write("BUILD_SQL：\n{$sql_drop};\n{$sql_create};", Log::SQL);
@@ -863,7 +853,7 @@ class Generate
         // 是否开启排序
         $sortable = false;
         // 生成 form.html 文件的代码
-        $search = ['<form class="mb-20" method="get" action="{:\\\\think\\\\Url::build($Request.action)}">'];
+        $search = ['<form class="form-inline"  method="post" action="{:\\\\think\\\\Url::build($Request.action)}"><div class="search-form">'];
         // 生成 th.html 文件的代码
         // $th = ['<th style="width: 30px;">ID</th>'];
         $th = '';
@@ -904,8 +894,8 @@ class Generate
                             $td[] = '<td>{$vo.' . $form['name'] . $this->td_deal($form) . '}</td>';
                             // 默认选中
                             $searchSelected .= tab(2) . '$("[name=\'' . $form['name'] . '\']").find("[value=\'{$Request.param.' . $form['name'] . '}\']").attr("selected", true);' . "\n";
-                            $search[] = tab(1) . '<div class="select-box" style="width:250px">';
-                            $search[] = tab(2) . '<select name="' . $form['name'] . '" class="select">';
+                            $search[] = tab(1) . '<div class="form-group"> <label>'. $form['title'] .'</label>';
+                            $search[] = tab(2) . '<select name="' . $form['name'] . '" class="form-control">';
                             $search = array_merge($search, $this->getOption($options, $form, true, 3));
                             $search[] = tab(2) . '</select>';
                             $search[] = tab(1) . '</div>';
@@ -913,12 +903,10 @@ class Generate
                         case 'date':
                             // td
                             $td[] = '<td>{$vo.' . $form['name'] . $this->td_deal($form) . '}</td>';
-                            $search[] = tab(1) . '<input type="text" class="form-control Wdate" style="width:250px" '
-                                . 'placeholder="' . $form['title'] . '" name="' . $form['name'] . '" '
+                            $search[] = tab(1) . '<div class="form-group"> <label>'. $form['title'] .'</label><input type="text" class="form-control form-date" '
+                                . 'placeholder="请输入' . $form['title'] . '" name="' . $form['name'] . '" '
                                 . 'value="{$Request.param.' . $form['name'] . '}" '
-                                . '{literal} onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd\'})" {/literal} '
-                                . '>';
-                            $scriptSearch['date'] = "\n" . '<script type="text/javascript" src="__LIB__/My97DatePicker/WdatePicker.js"></script>';
+                                . '></div>';
                             break;
                         default:
                             // td
@@ -935,10 +923,10 @@ class Generate
                             $filter .= tab(2) . 'if ($this->request->param("' . $form['name'] . '")) {' . "\n"
                                 . tab(3) . '$map[\'' . $form['name'] . '\'] = ["like", "%" . $this->request->param("' . $form['name'] . '") . "%"];' . "\n"
                                 . tab(2) . '}' . "\n";
-                            $search[] = tab(1) . '<input type="text" class="form-control" style="width:250px" '
-                                . 'placeholder="' . $form['title'] . '" name="' . $form['name'] . '" '
+                            $search[] = tab(1) . ' <div class="form-group"> <label>'. $form['title'] .'</label><input type="text" class="form-control"  '
+                                . 'placeholder="请输入' . $form['title'] . '" name="' . $form['name'] . '" '
                                 . 'value="{$Request.param.' . $form['name'] . '}" '
-                                . '>';
+                                . '></div>';
                             break;
                     }
                 } else {
@@ -957,7 +945,7 @@ class Generate
                 // th
                 if (isset($form['sort']) && $form['sort']) {
                     // 带有表单排序的需使用表单排序方法
-                    $th[] = '<th>' . "{:sort_by('{$form['title']}','{$form['name']}')}</th>";
+                    $th[] = '<th>' . "{:sort_by('{$form['title']}','{$form['name']}',\$order)}</th>";
                 } else {
                     $th[] = '<th>' . $form['title'] . "</th>";
                 }
@@ -976,15 +964,15 @@ class Generate
                             . (isset($form['require']) && $form['require'] ? 'require' : '') . '",' . "\n";
                     }
                     $editField .= tab(2) . '<div class="form-group">' . "\n"
-                        . tab(3) . '<label class="col-sm-2 '.(isset($form['require']) && $form['require'] ? 'required' : '').'">'
+                        . tab(3) . '<label class="col-sm-2 col-md-2 '.(isset($form['require']) && $form['require'] ? 'required' : '').'">'
                         . $form['title']. '：</label>' . "\n"
-                        . tab(3) . '<div class="col-md-6 col-sm-10'
+                        . tab(3) . '<div class="col-md-10 col-sm-10'
                         . (in_array($form['type'], ['radio', 'checkbox']) ? ' ' : '')
                         . '">' . "\n";
                     $addField .= tab(2) . '<div class="form-group">' . "\n"
-                        . tab(3) . '<label class="col-sm-2 '.(isset($form['require']) && $form['require'] ? 'required' : '').'">'
+                        . tab(3) . '<label class="col-sm-2 col-md-2 '.(isset($form['require']) && $form['require'] ? 'required' : '').'">'
                         . $form['title'] . '：</label>' . "\n"
-                        . tab(3) . '<div class="col-md-6 col-sm-10'
+                        . tab(3) . '<div class="col-md-10 col-sm-10'
                         . (in_array($form['type'], ['radio', 'checkbox']) ? ' ' : '')
                         . '">' . "\n";
                     switch ($form['type']) {
@@ -992,9 +980,9 @@ class Generate
                         case "checkbox":
                             if ($form['type'] == "radio") {
                                 // radio类型的控件进行编辑状态赋值，checkbox类型控件请自行根据情况赋值
-                                $setChecked[] = tab(2) . '$("[name=\'' . $form['name'] . '\'][value=\'{$vo.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}\']").attr("checked", true);';
+                                $setChecked[] = tab(2) . '$("[name=\'' . $form['name'] . '\'][value=\'{$'.$this->name.'.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}\']").attr("checked", true);';
                             } else {
-                                $setChecked[] = tab(2) . 'var checks = \'' . $form['default'] . '\'.split(",");' . "\n"
+                                $setChecked[] = tab(2) . 'var checks = \'{$'.$this->name.'.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}\'.split(",");' . "\n"
                                     . tab(2) . 'if (checks.length > 0){' . "\n"
                                     . tab(3) . 'for (var i in checks){' . "\n"
                                     . tab(4) . '$("[name=\'' . $form['name'] . '[]\'][value=\'"+checks[i]+"\']").attr("checked", true);' . "\n"
@@ -1007,8 +995,8 @@ class Generate
 
                             switch ($options[0]) {
                                 case 'string':
-                                    $editField .= $this->getCheckbox($form, $name, $validateForm, $options[1], '', 0);
-                                    $addField .= $this->getCheckbox($form, $name, $validateForm, $options[1], '', 0);
+                                    $editField .= $this->getCheckbox($form, $name, $validateForm, $options[0], '', 0);
+                                    $addField .= $this->getCheckbox($form, $name, $validateForm, $options[0], '', 0);
                                     break;
                                 case 'var':
                                     $editField .= tab(4) . '{foreach name="$Think.config.conf.' . $options[1] . '" item=\'v\' key=\'k\'}' . "\n"
@@ -1020,8 +1008,8 @@ class Generate
                                     break;
                                 case 'array':
                                     foreach ($options[1] as $option) {
-                                        $editField .= $this->getCheckbox($form, $name, $validateForm, $option[1], $option[0], $option[0]);
-                                        $addField .= $this->getCheckbox($form, $name, $validateForm, $option[1], $option[0], $option[0]);
+                                        $editField .= $this->getCheckbox($form, $name, $validateForm, $option[0], $option[1], $option[1]);
+                                        $addField .= $this->getCheckbox($form, $name, $validateForm,$option[0], $option[1] , $option[1]);
                                     }
                                     break;
                             }
@@ -1030,12 +1018,12 @@ class Generate
                             // select类型的控件进行编辑状态赋值
                             $setSelected[] = tab(2) . '$("[name=\'' . $form['name'] . '\']").find("[value=\'{$'.$this->name.'.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}\']").attr("selected", true);';
                             $editField .= tab(4) . '<div class="select-box">' . "\n"
-                                . tab(5) . '<select name="' . $form['name'] . '" class="select"' . $validateForm . '>' . "\n"
+                                . tab(5) . '<select name="' . $form['name'] . '" class="form-control"' . $validateForm . '>' . "\n"
                                 . implode("\n", $this->getOption($options, $form, false, 6)) . "\n"
                                 . tab(5) . '</select>' . "\n"
                                 . tab(4) . '</div>' . "\n";
                             $addField .= tab(4) . '<div class="select-box">' . "\n"
-                                . tab(5) . '<select name="' . $form['name'] . '" class="select"' . $validateForm . '>' . "\n"
+                                . tab(5) . '<select name="' . $form['name'] . '" class="form-control"' . $validateForm . '>' . "\n"
                                 . implode("\n", $this->getOption($options, $form, false, 6)) . "\n"
                                 . tab(5) . '</select>' . "\n"
                                 . tab(4) . '</div>' . "\n";
@@ -1045,23 +1033,22 @@ class Generate
                             // 如果不需要字符长度实时统计，请在生成代码中删除textarea上的onKeyUp事件和下面p标签那行
                             $editField .= tab(4) . '<textarea class="form-control"  rows="3"placeholder="" name="' . $form['name'] . '" '
                                 . $validateForm . '>'
-                                . '{$vo.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}'
+                                . '{$'.$this->name.'.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}'
                                 . '</textarea>' . "\n";
                             $addField .= tab(4) . '<textarea class="form-control" placeholder="" name="' . $form['name'] . '" '
                                 .  $validateForm . '>'
-                                . '{$vo.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}'
+                                 .  $form['default']
                                 . '</textarea>' . "\n";
                             break;
                         case "date":
-                            $editField .= tab(4) . '<input type="text" class="form-control Wdate" '
+                            $editField .= tab(4) . '<input type="text" class="form-control form-date" '
                                 . 'placeholder="' . $form['title'] . '" name="' . $form['name'] . '" '
                                 . 'value="' . '{$'.$this->name.'.' . $form['name'] . ' ?? \'' . $form['default'] . '\'}' . '" '
-                                . '{literal} onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd\'})" {/literal} '
                                 . $validateForm . '>' . "\n";
-                            $addField .= tab(4) . '<input type="text" class="form-control Wdate" '
+                            $addField .= tab(4) . '<input type="text" class="form-control form-date" '
                                 . 'placeholder="' . $form['title'] . '" name="' . $form['name'] . '" '
                                  . '" '
-                                . '{literal} onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd\'})" {/literal} '
+                                . 'value="' .  $form['default'] . '"  '
                                 . $validateForm . '>' . "\n";
                             break;
                         case "text":
@@ -1074,6 +1061,7 @@ class Generate
                                 . $validateForm . '>' . "\n";
                             $addField .= tab(4) . '<input type="' . $form['type'] . '" class="form-control" '
                                 . 'placeholder="' . $form['title'] . '" name="' . $form['name'] . '" '
+                                . 'value="' .  $form['default'] . '"  '
                                 . $validateForm . '>' . "\n";
                             break;
                     }
@@ -1088,11 +1076,11 @@ class Generate
         }
         if (count($search) > 1) {
             // 有设置搜索则显示
-            $search[] = tab(1) . '<button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>';
-            $search[] = '</form>';
+            $search[] = tab(1) . '<button type="submit" class="btn btn-success"><i class="icon icon-search"></i>搜索</button>';
+            $search[]='</div>';
         } else {
-            // 不设置将form.html置空
-            $search = [];
+            // 不设置
+            $search = ['<form class="form-inline search-form"  method="post" action="{:\\\\think\\\\Url::build($Request.action)}">'];
         }
 
 
@@ -1123,6 +1111,7 @@ class Generate
             }
         }
 
+        $th[]='</form>';
         return [
             'search' => $search,
             'th' => $th,
@@ -1185,7 +1174,7 @@ class Generate
             case 'array':
                 $ret = [];
                 foreach ($options[1] as $option) {
-                    $ret[] = tab($tab) . '<option value="' . $option[0] . '">' . $option[1] . '</option>';
+                    $ret[] = tab($tab) . '<option value="' . $option[1] . '">' . $option[0] . '</option>';
                 }
 
                 return $ret;
@@ -1220,7 +1209,6 @@ class Generate
                     $ret[] = [$keyVal[0], $keyVal[1]];
                 }
             }
-
             return ['array', $ret];
         }
     }

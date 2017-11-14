@@ -52,8 +52,7 @@ class Upload extends Controller
                 'message' => $file->getError()
             ];
         }
-
-        return json($result);
+        return $result;
     }
 
 }

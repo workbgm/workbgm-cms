@@ -4,6 +4,7 @@ namespace app\admin\controller;
 use think\Config;
 use think\Loader;
 use think\Db;
+use Overtrue\Pinyin\Pinyin;
 use app\common\controller\AdminBase;
 
 /**
@@ -14,8 +15,10 @@ use app\common\controller\AdminBase;
 class Generate extends AdminBase
 {
 
+    protected $pinyin;
     protected function _initialize()
     {
+        $this->pinyin=new Pinyin();
         parent::_initialize();
     }
 
@@ -25,23 +28,23 @@ class Generate extends AdminBase
      */
     public function index()
     {
-        $tables = Db::getTables();
-        $this->assign('tables', $tables);
-        $table_name=$this->request->param('table');
-        if ($table_name) {
-            $table = $this->request->param('table');
-            $prefix = Config::get('database.prefix');
-            $tableInfo = Db::getTableInfo($table);
-            $controller = Loader::parseName(preg_replace('/^(' . $prefix . ')/', '', $table), 1);
-            $fields_name=array();
-            for($i=0;$i<count($tableInfo['fields']);$i++){
-                $fields_name[$i]=getFieldComment($table_name,$tableInfo['fields'][$i]);
-            }
-            $tableInfo['names']=$fields_name;
-            $tableInfo['comment']=getTableComment($table_name);
-            $this->assign('table_info', json_encode($tableInfo));
-            $this->assign('controller', $controller);
-        }
+//        $tables = Db::getTables();
+//        $this->assign('tables', $tables);
+//        $table_name=$this->request->param('table');
+//        if ($table_name) {
+//            $table = $this->request->param('table');
+//            $prefix = Config::get('database.prefix');
+//            $tableInfo = Db::getTableInfo($table);
+//            $controller = Loader::parseName(preg_replace('/^(' . $prefix . ')/', '', $table), 1);
+//            $fields_name=array();
+//            for($i=0;$i<count($tableInfo['fields']);$i++){
+//                $fields_name[$i]=getFieldComment($table_name,$tableInfo['fields'][$i]);
+//            }
+//            $tableInfo['names']=$fields_name;
+//            $tableInfo['comment']=getTableComment($table_name);
+//            $this->assign('table_info', json_encode($tableInfo));
+//            $this->assign('controller', $controller);
+//        }
         return $this->fetch();
     }
 
@@ -72,12 +75,12 @@ class Generate extends AdminBase
     {
         $generate = new \Generate();
         $data = $this->request->post();
-        unset($data['file']);
-        $generate->run($data, $this->request->post('file'));
-
-        if (isset($data['delete_file']) && $data['delete_file']) {
-            return $this->success('删除成功');
-        }
-        return $this->success('生成成功');
+        $arr=$this->pinyin->convert($data['table_comment']);
+        $controller=ucfirst(implode('',$arr));
+        $data['controller']=$controller;
+        $generate->run($data, "all");
+        $data['msg']="生成成功!";
+        $data['code']=1;
+       return $data;
     }
 }

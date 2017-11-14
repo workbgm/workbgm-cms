@@ -110,9 +110,9 @@ class Cms
         $fileds = array_merge(['id', 'cid', 'title', 'introduction', 'thumb', 'reading', 'publish_time'], (array)$filed);
         $map = array_merge(['cid' => ['IN', $ids], 'status' => 1, 'publish_time' => ['<= time', date('Y-m-d H:i:s')]], (array)$where);
         $sort = array_merge(['is_top' => 'DESC', 'sort' => 'DESC', 'publish_time' => 'DESC'], (array)$order);
-
-        $article_list = Db::name('article')->where($map)->field($fileds)->order($sort)->paginate($page_size);
-
+        //->order(['publish_time' => 'DESC'])
+        $article_list = Db::name('article')->where($map)->field($fileds)->order(['publish_time' => 'DESC'])->paginate($page_size);
+        //$article_list = Db::name('article')->where($map)->field($fileds)->order($sort)->paginate($page_size);
         return $article_list;
     }
 
